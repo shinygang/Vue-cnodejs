@@ -1,0 +1,7 @@
+
+wer_components
+node_modules
+.idea
+*.swp
+.DS_Store
+.DS_Store?

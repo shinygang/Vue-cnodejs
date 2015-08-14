@@ -1,0 +1,20 @@
+{
+  "name": "vuejs-in-action",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Yunkou/vuejs-in-action",
+  "authors": [
+    "寇云 <koopking@gmail.com>"
+  ],
+  "description": "vuejs in action",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "~0.12.9"
+  }
+}
