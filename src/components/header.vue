@@ -1,42 +1,107 @@
 <template>
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="/">
-          <img src="//dn-cnodestatic.qbox.me/public/images/cnodejs_light.svg">
-      </a>
-      <form id="search_form" class="navbar-search" action="/search">
-        <input type="text" id="q" name="q" class="search-query span3" value="">
-      </form>
-      <ul class="nav pull-right">
-        <li><a v-link="{name:'home'}">首页</a></li>
-        <li>
-            <a v-link="{name:'myMessage'}">
-              未读消息
-            </a>
-        </li>
-        <li><a v-link="{name:'getstart'}" >新手入门</a></li>
-        <li><a v-link="{name:'api'}" >API</a></li>
-        <li><a v-link="{name:'about'}" target="">关于</a></li>
-        <li><a v-link="{name:'setting'}" v-show="!isLogin">注册</a></li>
-        <li><a v-link="{name:'signup'}"  v-show="!isLogin">登录</a></li>
-        <li><a v-link="{name:'signin'}"  v-show="isLogin">设置</a></li>
-        <li>
-          <a v-link="{name:'signout'}" data-method="post" rel="nofollow"  v-show="isLogin">退出</a>
-        </li>
-      </ul>
-      <a class="btn btn-navbar" id="responsive-sidebar-trigger">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
+    <div class="page-cover" 
+            v-if="showMenu&&fixHead" 
+            @click="showMenus">
     </div>
-  </div>
-</div>
+    <header :class="{'show':showMenu&&fixHead,'fix-header':fixHead,'no-fix':!fixHead}" id="hd">
+        <div class="nv-toolbar">
+            <div class="toolbar-nav" 
+                    @click="openMenu"
+                    v-if="fixHead">
+            </div>
+            <span v-text="pageType"></span>
+        </div>
+    </header>
+    <nv-menu :show-menu="showMenu" 
+            :page-type="pageType" 
+            :nick-name="nickname" 
+            :profile-url="profileimgurl"
+            v-if="fixHead" ></nv-menu>
 </template>
+
 <script>
-  module.exports={
-      replace:true,
-      prop:['mesNum',"isLogin"]
-  }
+    var utils = require('../libs/utils'),       //加载公用函数
+        $ = require('webpack-zepto');
+
+    module.exports={
+        replace:true,
+        props: ['pageType','fixHead'],
+        data: function(){
+            return {
+                showMenu:false,
+                nickname: '',
+                profileimgurl: ''
+            }
+        },
+        methods: {
+            openMenu: function(){
+                $("html, body, #page").addClass("scroll-hide");
+                var self = this;
+                self.showMenu=!self.showMenu;
+            },
+            showMenus:function(){
+                this.showMenu=!this.showMenu;
+                $("html, body, #page").removeClass("scroll-hide");
+            }
+        },
+        components:{
+            'nvMenu':require('./menu.vue')
+        }
+    }
 </script>
+<style>
+#hd {
+    border-bottom: 1px solid #e8e8e8;
+    &.fix-header {
+        width: 100%;
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: all .3s ease;
+        z-index: 6;
+    }
+    &.no-fix {
+        width: 100%;
+        background-color: #fff;
+        overflow: hidden;
+    }
+    &.show {
+        transform: translateX(200px);
+    }
+}
+.nv-toolbar {
+    width: 100%;
+    height: 44px;
+    display:-webkit-box;
+    -webkit-box-align:center;
+
+    
+    .toolbar-nav {
+        width: 49px;
+        height: 44px;
+        position: absolute;
+        background: url("../assets/images/components/nav_icon.png") no-repeat center center;
+        background-size: 19px 16px;
+        margin: 0;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+    
+    &>span {
+        display: block;
+        text-align: center;
+        height: 100%;
+        line-height: 44px;
+        font-size: 16px;
+        width: 100%;
+        position: relative;  
+        z-index: 0;
+    }
+}
+.scroll-hide{
+    height: 100%;
+    overflow: hidden;
+}
+</style>

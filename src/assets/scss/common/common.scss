@@ -1,0 +1,79 @@
+$color31:#313131;
+$colorf0:#f0f0f0;
+$colorfff:#fff;
+$colore7:#e7e7e7;
+$colorfa:#fafafa;
+$color62:#626262;
+$colord4:#d4d4d4;
+$colora0:#a0a0a0;
+$red:#ff5a5f;
+$yellow:#feb501;
+$color80:#80bd01;
+$gap:5px;
+
+body{
+    height: 100%;
+    width: 100%;
+    background: #f7f7f7;
+    font-size: 14px;
+    color: #313131;
+    overflow-x: hidden;
+    line-height:1;
+}
+
+.mt5{
+    margin-top:$gap;
+}
+
+.mt10{
+    margin-top:$gap*2;
+}
+
+.color80{
+    color:$color80;
+}
+
+.clear {
+    *zoom: 1;
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+.display-flex {
+    display: inline-flex;
+    display: -moz-box; /* Firefox */
+    display: -ms-flexbox; /* IE10 */
+    display: -webkit-box; /* Safari */
+    display: -webkit-flex; /* Chrome, WebKit */
+    display: flexbox;
+    display: flex;
+}
+
+.flex1 {
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    flex: 1;
+}
+
+.align-justify {
+    -moz-box-align: justify-content;
+    -ms-flex-align: align-content;
+    -ms-flex-item-align: justify-content;
+    -webkit-box-align: justify-content; /*老语法*/
+    -webkit-align-items: justify-content; /*新语法*/
+    align-content: justify-content;
+    align-items: justify-content;
+    justify-content: justify-content;
+}
+
+.break{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}

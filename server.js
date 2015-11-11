@@ -9,7 +9,7 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin());
 // 相当于通过本地node服务代理请求到了http://cnodejs.org/api
 var proxy = [{
     path: "/api/*",
-    target: "http://cnodejs.org",
+    target: "https://cnodejs.org",
     host: "cnodejs.org"
 }]
 //启动服务

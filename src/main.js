@@ -1,12 +1,11 @@
 var Vue = require('vue');
-var VueRouter = require('vue-router');
 var app = Vue.extend({});
+var VueResource = require('vue-resource');
+Vue.use(VueResource);
+var VueRouter = require('vue-router');
 Vue.use(VueRouter);
 var validator = require('vue-validator');
 Vue.use(validator);
-var $ = require('webpack-zepto');
-
-$.ajaxSettings.crossDomain = true;
 
 //实例化Vue的filter
 var filters = require('./filters');

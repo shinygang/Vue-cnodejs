@@ -1,0 +1,95 @@
+@import 'common/reset.scss';
+@import 'common/common.scss';
+#brim-mask {
+    pointer-events: none;
+}
+
+#page {
+    padding-top: 44px;
+    transition: all .3s ease;
+}
+
+.show-menu {
+    transform: translateX($gap*40);
+}
+
+.page-cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .4);
+    z-index: 7;
+}
+
+
+/*模块入口样式*/
+
+.module-enter {
+    ul {
+        background-color: $colorfff;
+        overflow: hidden;
+        li {
+            width: 100%;
+            padding: $gap*3;
+            display: inline-block;
+            position: relative;
+            border-bottom: 1px solid $colore7;
+            .til {
+                width: 100%;
+                @extend .display-flex;
+                .tab {
+                    width: $gap*8;
+                    color: $color62;
+                    border-radius: $gap;
+                    background-color: $colore7;
+                    margin-right: $gap*2;
+                    text-align: center;
+                    height: $gap*4;
+                    line-height: $gap*4;
+                    vertical-align: middle;
+                }
+                .good {
+                    background-color: $color80;
+                    color: $colorfff;
+                }
+                .title {
+                    font-size: $gap*3.6;
+                    font-weight: bold;
+                    @extend .flex1;
+                    @extend .break;
+                }
+                .head {
+                    display: inline-block;
+                    width: $gap*8;
+                    height: $gap*8;
+                    border-radius: 50%;
+                    margin-right: $gap*2;
+                }
+                .content {
+                    display: inline-block;
+                    @extend .flex1;
+                    .cl {
+                        float: left;
+                        width: 70%;
+                        .name {
+                            display: block;
+                            color: $color62;
+                        }
+                    }
+                    .cr {
+                        float: right;
+                        width: 30%;
+                        text-align:right;
+                        .name {
+                            display: block;
+                            color: $color62;
+                            font-size:$gap*2.4;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

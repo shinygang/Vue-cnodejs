@@ -1,0 +1,148 @@
+<template>
+    <nv-head :page-type="登录" :fix-head="false">
+    </nv-head>
+    <section class="page-body">
+        <label>
+            <input type="text" placeholder="Access Token" v-model="token" maxlength="36">
+        </label>
+        <label>
+            <button type="button" @click="logon">登录</button>
+        </label>
+    </section>
+    <nv-alert :content="alert.txt" :show="alert.show"></nv-alert>
+</template>
+
+<script>
+    var $ = require('webpack-zepto');
+    module.exports = {
+        data: function () {
+            var self = this;
+            return {
+                token: '',
+                /*弱提示*/
+                alert: {
+                    txt: '',
+                    show: false,
+                    hideFn:function(){
+                        var timer;
+                        clearTimeout(timer);
+                        timer = setTimeout(function () {
+                            self.alert.show = false;
+                        }, 1000);
+                    }
+                }
+            }
+        },
+        methods: {
+            logon: function(){
+                var self = this;
+                if(self.token == ''){
+                    var text = "令牌格式错误,应为36位UUID字符串";
+                    self.alert.txt = text;
+                    self.alert.show = true;
+                    self.alert.hideFn();
+                    return false;
+                }
+                $.ajax({
+                    type:'POST',
+                    url:'/api/v1/accesstoken',
+                    data:{accesstoken:self.token},
+                    dataType: 'json',
+                    success:function(res){
+                        window.user = res;
+                        //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
+                        var redirect = decodeURIComponent(self.$route.query.redirect);
+                        console.log(redirect);
+                        self.$route.router.go(redirect);
+                    },
+                    error:function(res){
+                        console.log('error');
+                        console.log(res);
+                        self.alert.txt = res.error_msg;
+                        self.alert.show = true;
+                        self.alert.hideFn();
+                        return false;
+                    }
+                })
+
+                // self.$http.post('/api/v1/accesstoken',{accesstoken:self.token},function(res){
+                //     console.log('aaaaa');
+                //     window.user = res;
+                //     //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
+                //     var redirect = decodeURIComponent(self.$route.query.redirect);
+                //     console.log(redirect);
+                //     self.$route.router.go(redirect);
+                //     return false;
+                // }).error(function(e){
+                //     console.log('error');
+                //     console.log(e);
+                //     self.alert.txt = e.error_msg;
+                //     self.alert.show = true;
+                //     self.alert.hideFn();
+                //     return false;
+                // });
+            }
+        },
+        components:{
+            "nvHead":require('../components/header.vue'),
+            "nvAlert":require('../components/nvAlert.vue')
+        }
+    }
+</script>
+<style>
+    .login-no a {
+        display: block;
+        color: #313131;
+    }
+    .login-thr {
+        margin: 68px 0 53px;
+        border-top: 1px solid #dcdcdc;
+        position: relative;
+        p {
+            padding: 0 8px;
+            background-color: #80bd01;
+            color: #fff;
+            font-size: 12px;
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            margin-left: -50px;
+        }
+    }
+    input{
+        padding: 12px 0;
+        border:none;
+        border-bottom: 2px solid #80bd01;
+        background-color: transparent;
+        display: block;
+        -webkit-box-flex: 1;
+        font-size: 14px;
+        color: #313131;
+    }
+
+.page-body {
+    padding: 50px 15px;
+   
+    label{
+        width: 100%;
+        margin-top: 15px;
+        display: -webkit-box;
+        position: relative;
+    }
+    button {
+        width: 100%;
+        height: 42px;
+        border-radius: 5px;
+        background-color: #80bd01;
+        color: #fff;
+        font-size: 16px;
+        -webkit-box-flex: 1;
+        display: block;
+        border: 1px solid #80bd01;
+        text-align: center;
+    }
+    .reg-email {
+        line-height: 42px;
+    }
+}
+</style>

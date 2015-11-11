@@ -5,7 +5,7 @@ var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var vue = require("vue-loader");
 var isProduction = function() {
-	return process.env.NODE_ENV === 'production';
+    return process.env.NODE_ENV === 'production';
 }
 
 //webpck插件
@@ -43,12 +43,18 @@ module.exports = {
             test: /\.vue$/,
             loader: vue.withLoaders({
                 css: ExtractTextPlugin.extract(
-                    "style-loader", "css-loader?sourceMap!less-loader!cssnext-loader")
+                    "style-loader", "css-loader?sourceMap!sass-loader!cssnext-loader"),
+                babel: ExtractTextPlugin.extract(
+                    'babel-loader', 'babel-loader')
             }),
+        }, {
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel'
         }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract(
-                "style-loader", 'css-loader?sourceMap!;less-loader!cssnext-loader')
+                "style-loader", 'css-loader?sourceMap!sass-loader!cssnext-loader')
         }, {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
@@ -56,6 +62,12 @@ module.exports = {
         }, {
             test: /\.(jpg|png|gif)$/,
             loader: "file-loader?name=images/[hash].[ext]"
+        }, {
+            test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: "url-loader?limit=10000&minetype=application/font-woff"
+        }, {
+            test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            loader: "file-loader"
         }, {
             test: /\.(html|tpl)$/,
             loader: 'html-loader'

@@ -1,11 +1,11 @@
-@gray1: #e1e1e1;
-@gray2: #f6f6f6;
-@node_green: #80bd01;
-@node_black: #444444;
+$gray1: #e1e1e1;
+$gray2: #f6f6f6;
+$node_green: #80bd01;
+$node_black: #444444;
 
 /* base */
 body {
-  background-color: @gray1;
+  background-color: $gray1;
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
 }
 
@@ -133,7 +133,7 @@ body {
 }
 
 .header .col_fade {
-  color: @node_black;
+  color: $node_black;
 }
 
 .bold {
@@ -179,12 +179,12 @@ a.light:hover {
 }
 
 .breadcrumb a {
-  color: @node_green;
+  color: $node_green;
 }
 
 .panel .header {
   padding: 10px 10px;
-  background-color: @gray2;
+  background-color: $gray2;
   border-radius: 3px 3px 0 0;
 
   &.topic_header {
@@ -346,7 +346,7 @@ a.last_time {
   border-radius: 8px;
 
   padding: 1px 5px;
-  background-color: @node_green;
+  background-color: $node_green;
   color: white;
   margin-right: 0.5em;
 }
@@ -636,7 +636,7 @@ a.topic_title {
 }
 
 .put_top {
-  background: @node_green;
+  background: $node_green;
   padding: 2px 4px;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -647,7 +647,7 @@ a.topic_title {
 }
 
 .put_good {
-  background: @node_green;
+  background: $node_green;
   padding: 1px 2px;
   border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -784,7 +784,7 @@ textarea#title {
   z-index: 9;
   width: 100%;
   position: relative;
-  background: @node_black;
+  background: $node_black;
   font-size: 13px;
 }
 
@@ -885,11 +885,11 @@ textarea#title {
 
 .pagination a {
   line-height: 30px;
-  color: @gray2;
+  color: $gray2;
 }
 
 .pagination li.active a {
-  color: @node_green;
+  color: $node_green;
 }
 
 .topic_content {
@@ -981,7 +981,6 @@ div[class$=part] {
 
 textarea, textarea:focus, input, input:focus {
   box-shadow: 0px 0px 2px rgba(60, 60, 60, 0.5);
-  // border: none;
 }
 
 textarea.editor {
@@ -1083,17 +1082,17 @@ textarea.editor {
 }
 
 .span-success {
-  .span-common();
+  @extend .span-common;
 
   color: white;
-  background-color: @node_green;
+  background-color: $node_green;
   &:hover {
     background-color: #6ba44e;
   }
 }
 
 .span-primary {
-  .span-common();
+  @extend .span-common;
 
   color: white;
   background-color: #08c;
@@ -1103,7 +1102,7 @@ textarea.editor {
 }
 
 .span-info {
-  .span-common();
+  @extend .span-common;
   color: white;
   background-color: #5bc0de;
   &:hover {
@@ -1121,9 +1120,9 @@ textarea.editor {
 
 .topic-tab {
   margin: 0 10px;
-  color: @node_green;
+  color: $node_green;
   &.current-tab {
-    background-color: @node_green;
+    background-color: $node_green;
     color: white;
     padding: 3px 4px;
     border-radius: 3px;
