@@ -6,7 +6,7 @@ module.exports=function(router){
         },
         '/topic/:id':{               //首页
             name:'topic',
-            component:require('./views/index.vue')
+            component:require('./views/topic.vue')
         },
         '/message':{               //首页
             name:'message',

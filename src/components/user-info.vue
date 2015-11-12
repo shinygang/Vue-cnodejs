@@ -5,7 +5,7 @@
             <li class="login" @click="goEnter"><a >登录</a></li>
         </ul>
         <!-- 已登录 -->
-        <div class="login-yes" v-if="loginname" v-on="click:goProfile">
+        <div class="login-yes" v-if="loginname">
             <div class="avertar"><img v-if="avatar_url" :src="avatar_url"></div>
             <div class="info">
                 <p v-if="loginname" v-text="loginname"></p>

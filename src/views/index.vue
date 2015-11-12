@@ -3,7 +3,7 @@
     <div id="page" v-class="show-menu:showMenu">
 	    <section class="module-enter">
 			<ul>
-				<li v-for="item in topics">
+				<li v-for="item in topics" v-link="{name:'topic',params:{id:item.id}}">
 					<div class="til">
 						<span class="tab" :class="{'good':item.good || item.top}"
 							v-text="item.tab | getTabStr item.good item.top"></span>

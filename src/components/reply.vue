@@ -1,0 +1,84 @@
+<template>
+    <section class="reply">
+        <textarea id="content" rows="8" class="text" 
+            :class="{'err':hasErr}"
+            v-model="content" 
+            placeholder='回复支持Markdown语法,请注意标记代码'>
+        </textarea>
+        <a class="btn" @click="addReply()">确定</a>
+    </section>
+</template>
+<script>
+
+    var $ = require('webpack-zepto'),
+        marked = require('marked'),
+        markdown = require( "markdown" ).markdown;
+
+    module.exports={
+        replace:true,
+        props: ['topic','replyId','topicId','replyTo','show'],
+        data:function(){
+            return {
+                hasErr:false,
+                content:'',
+                userId:localStorage.userId || '',
+                authorTxt:'<a href="https://github.com/shinygang/Vue-cnodejs">From CNodeJS-VueJS</a>',
+            }
+        },
+        ready: function(){
+            var _self = this;
+            if(_self.replyTo){
+                this.content = '<a href="/user/'+_self.replyTo+'" target="_blank">@'+_self.replyTo+'</a>';
+            }
+        },
+        methods:{
+            addReply:function(){
+                var _self = this;
+                if(!_self.content){
+                    _self.hasErr = true;
+                }
+                else{
+                    var time=new Date()
+                        , htmlText = markdown.toHTML(_self.content) + _self.authorTxt
+                        , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML
+                        ,postData={accesstoken:localStorage.token,content: reply_content};
+
+                    if(_self.replyId){
+                        postData.reply_id = _self.replyId;
+                    }
+
+                    $.ajax({
+                        type:'POST',
+                        url:'/api/v1/topic/'+_self.topicId+'/replies',
+                        data: postData,
+                        dataType: 'json',
+                        success:function(res){
+                            if(res.success){
+                                _self.topic.replies.push({
+                                    id:res.reply_id,
+                                    author:{
+                                        loginname:_self.userId,
+                                        avatar_url:localStorage.avatar_url
+                                    },
+                                    content:reply_content,
+                                    ups:[],
+                                    create_at:time
+                                });
+                            }
+                            if(_self.show){
+                                _self.show = '';
+                            }
+                        },
+                        error:function(res){
+                            var error = JSON.parse(res.responseText);
+                            _self.alert.txt = error.error_msg;
+                            _self.alert.show = true;
+                            _self.alert.hideFn();
+                            return false;
+                        }
+                    });
+                }
+            }
+        }
+    }
+</script>
