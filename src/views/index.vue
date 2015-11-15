@@ -1,5 +1,5 @@
 <template>
-    <nv-head :page-type="title" :fix-head="true"></nv-head>
+    <nv-head :page-type="searchKey.tab | getTitleStr" fix-head="true" :show-menu.sync="showMenu"></nv-head>
     <div id="page" v-class="show-menu:showMenu">
 	    <section class="module-enter">
 			<ul>
@@ -42,9 +42,8 @@
         data: function(){
             return {
                 showMenu: false,
-                isLoadShow: true,
+                scroll:true,
                 topics:[],
-                title:"全部",
                 searchKey:{
                 	page:0,
                 	limit:20,
@@ -53,20 +52,58 @@
                 }
             }
         },
-        ready:function(){
-            console.log("ready");
-        },
         route:{
         	data:function(transition){
-                console.log('index');
-        		var self = this;
-        		var params = $.param(self.searchKey);
-        		$.get('/api/v1/topics?'+params,function(d){
-        			if(d && d.data){
-        				self.topics = d.data;
-        			}
-        		})
-        	}
+                var _self = this;
+
+                _self.searchKey.page = 0;
+        		if(transition.to.query.tab){
+                    _self.searchKey.tab = transition.to.query.tab;
+                }
+
+                _self.showMenu = false;
+
+                //页面初次加载获取的数据
+                _self.getTopics(self.searchData);
+
+                //滚动加载
+                $(window).on('scroll', function() {
+                    _self.getScrollData();
+                });
+               
+        	},
+            deactivate:function(transition){
+                transition.next();
+            }
+        },
+        methods:{
+            getTopics:function(){
+                var _self = this
+                    , params = $.param(_self.searchKey);
+                $.get('/api/v1/topics?'+params,function(d){
+                    _self.scroll = true;
+                    if(d && d.data){
+                        if(_self.searchKey.page == 0){
+                            _self.topics = d.data;
+                        }
+                        else{
+                            _self.topics = _self.topics.concat(d.data);
+                        }
+                    }
+                })
+            },
+            //滚动加载数据
+            getScrollData:function(){
+                var _self = this;
+                if(_self.scroll){
+                    var totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+                    if ($(document).height() <= totalheight + 100) {
+                        _self.scroll = false;
+                        _self.searchKey.page += 1;
+                        _self.getTopics();
+                    }
+                }
+            }
         },
         components:{
             "nvHead":require('../components/header.vue')

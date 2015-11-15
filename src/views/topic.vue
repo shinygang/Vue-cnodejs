@@ -68,7 +68,7 @@
                 topic:{},           //主题
                 topicId:'',
                 curReplyId:'',
-                userId:localStorage.userId || '',
+                userId:localCache.userId || '',
                 /*弱提示*/
                 alert: {
                     txt: '',
@@ -118,7 +118,7 @@
                     $.ajax({
                         type:'POST',
                         url:'/api/v1/reply/'+item.id+'/ups',
-                        data:{accesstoken:localStorage.token},
+                        data:{accesstoken:localCache.token},
                         dataType: 'json',
                         success:function(res){
                             if(res.success){

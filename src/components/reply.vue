@@ -8,10 +8,11 @@
         <a class="btn" @click="addReply()">确定</a>
     </section>
 </template>
+<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script> -->
 <script>
 
     var $ = require('webpack-zepto'),
-        marked = require('marked'),
         markdown = require( "markdown" ).markdown;
 
     module.exports={
@@ -21,7 +22,7 @@
             return {
                 hasErr:false,
                 content:'',
-                userId:localStorage.userId || '',
+                userId:localCache.userId || '',
                 authorTxt:'<a href="https://github.com/shinygang/Vue-cnodejs">From CNodeJS-VueJS</a>',
             }
         },
@@ -41,7 +42,7 @@
                     var time=new Date()
                         , htmlText = markdown.toHTML(_self.content) + _self.authorTxt
                         , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML
-                        ,postData={accesstoken:localStorage.token,content: reply_content};
+                        ,postData={accesstoken:localCache.token,content: reply_content};
 
                     if(_self.replyId){
                         postData.reply_id = _self.replyId;
@@ -58,7 +59,7 @@
                                     id:res.reply_id,
                                     author:{
                                         loginname:_self.userId,
-                                        avatar_url:localStorage.avatar_url
+                                        avatar_url:localCache.avatar_url
                                     },
                                     content:reply_content,
                                     ups:[],

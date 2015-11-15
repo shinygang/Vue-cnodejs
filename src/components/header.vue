@@ -25,10 +25,9 @@
 
     module.exports={
         replace:true,
-        props: ['pageType','fixHead'],
+        props: ['pageType','fixHead','showMenu'],
         data: function(){
             return {
-                showMenu:false,
                 nickname: '',
                 profileimgurl: ''
             }
@@ -36,8 +35,7 @@
         methods: {
             openMenu: function(){
                 $("html, body, #page").addClass("scroll-hide");
-                var self = this;
-                self.showMenu=!self.showMenu;
+                this.showMenu=!this.showMenu;
             },
             showMenus:function(){
                 this.showMenu=!this.showMenu;

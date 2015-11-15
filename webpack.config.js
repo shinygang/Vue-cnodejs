@@ -43,14 +43,8 @@ module.exports = {
             test: /\.vue$/,
             loader: vue.withLoaders({
                 css: ExtractTextPlugin.extract(
-                    "style-loader", "css-loader?sourceMap!sass-loader!cssnext-loader"),
-                babel: ExtractTextPlugin.extract(
-                    'babel-loader', 'babel-loader')
+                    "style-loader", "css-loader?sourceMap!sass-loader!cssnext-loader")
             }),
-        }, {
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: 'babel'
         }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract(

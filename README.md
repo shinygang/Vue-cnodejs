@@ -42,3 +42,8 @@ npm run dist
 └── webpack.config.js  // Webpack 配置文件
 </pre>
 
+
+##todo list
+1、localStorage 隐私模式
+2、文本编辑器
+

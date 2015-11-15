@@ -23,6 +23,10 @@ module.exports=function(router){
         '/login':{               //首页
             name:'login',
             component:require('./views/login.vue')
+        },
+        '/user/:loginname':{               //首页
+            name:'user',
+            component:require('./views/login.vue')
         }
     })
 }

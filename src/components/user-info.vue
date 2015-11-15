@@ -9,7 +9,6 @@
             <div class="avertar"><img v-if="avatar_url" :src="avatar_url"></div>
             <div class="info">
                 <p v-if="loginname" v-text="loginname"></p>
-                <p v-if="loginname">积分:{{score}}</p>
             </div>
         </div>
     </div>
@@ -19,17 +18,12 @@
         replace:true,
         data: function() {
             return {
-                loginname: window.user?window.user.loginname:"",
-                avatar_url: window.user?window.user.avatar_url:""
+                loginname: localCache.loginname || "",
+                avatar_url: localCache.avatar_url || ""
             }
-        },
-        ready:function(){
-            console.log('user-info');
-            console.log(window.user);
         },
         methods:{
             goEnter: function(){
-                console.log('login');
                 var link = '/login?redirect='+ encodeURIComponent(this.$route.path);
                 this.$route.router.go(link);
             }

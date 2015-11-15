@@ -1,5 +1,5 @@
 <template>
-    <nv-head :page-type="登录" :fix-head="false">
+    <nv-head page-type="登录">
     </nv-head>
     <section class="page-body">
         <label>
@@ -49,38 +49,23 @@
                     data:{accesstoken:self.token},
                     dataType: 'json',
                     success:function(res){
-                        window.user = res;
+                        localCache.loginname = res.loginname;
+                        localCache.avatar_url = res.avatar_url;
+                        localCache.userId = res.id;
+                        localCache.token = self.token;
                         //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
                         var redirect = decodeURIComponent(self.$route.query.redirect);
                         console.log(redirect);
                         self.$route.router.go(redirect);
                     },
                     error:function(res){
-                        console.log('error');
-                        console.log(res);
-                        self.alert.txt = res.error_msg;
+                        var error = JSON.parse(res.responseText);
+                        self.alert.txt = error.error_msg;
                         self.alert.show = true;
                         self.alert.hideFn();
                         return false;
                     }
                 })
-
-                // self.$http.post('/api/v1/accesstoken',{accesstoken:self.token},function(res){
-                //     console.log('aaaaa');
-                //     window.user = res;
-                //     //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
-                //     var redirect = decodeURIComponent(self.$route.query.redirect);
-                //     console.log(redirect);
-                //     self.$route.router.go(redirect);
-                //     return false;
-                // }).error(function(e){
-                //     console.log('error');
-                //     console.log(e);
-                //     self.alert.txt = e.error_msg;
-                //     self.alert.show = true;
-                //     self.alert.hideFn();
-                //     return false;
-                // });
             }
         },
         components:{
