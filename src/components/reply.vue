@@ -13,7 +13,8 @@
 <script>
 
     var $ = require('webpack-zepto'),
-        markdown = require( "markdown" ).markdown;
+        utils = require('../libs/utils'),
+        markdown = require("markdown").markdown;
 
     module.exports={
         replace:true,
@@ -29,25 +30,26 @@
         ready: function(){
             var _self = this;
             if(_self.replyTo){
-                this.content = '<a href="/user/'+_self.replyTo+'" target="_blank">@'+_self.replyTo+'</a>';
+                _self.content = '@'+_self.replyTo+' ';
             }
         },
         methods:{
             addReply:function(){
+                 
                 var _self = this;
                 if(!_self.content){
                     _self.hasErr = true;
                 }
                 else{
                     var time=new Date()
-                        , htmlText = markdown.toHTML(_self.content) + _self.authorTxt
+                        , linkUsers = utils.linkUsers(_self.content)
+                        , htmlText = markdown.toHTML(linkUsers) + _self.authorTxt
                         , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML
-                        ,postData={accesstoken:localCache.token,content: reply_content};
+                        , postData={accesstoken:localCache.token,content: _self.content}
 
                     if(_self.replyId){
                         postData.reply_id = _self.replyId;
                     }
-
                     $.ajax({
                         type:'POST',
                         url:'/api/v1/topic/'+_self.topicId+'/replies',
@@ -66,6 +68,7 @@
                                     create_at:time
                                 });
                             }
+                            _self.content = '';
                             if(_self.show){
                                 _self.show = '';
                             }

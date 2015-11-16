@@ -10,7 +10,8 @@ module.exports=function(router){
         },
         '/message':{               //首页
             name:'message',
-            component:require('./views/index.vue')
+            component:require('./views/message.vue'),
+            auth: true
         },
         '/setting':{               //首页
             name:'setting',

@@ -10,27 +10,26 @@ $red:#ff5a5f;
 $yellow:#feb501;
 $color80:#80bd01;
 $gap:5px;
-
-body{
+body {
     height: 100%;
     width: 100%;
     background: #f7f7f7;
     font-size: 14px;
     color: #313131;
     overflow-x: hidden;
-    line-height:1;
+    line-height: 1;
 }
 
-.mt5{
-    margin-top:$gap;
+.mt5 {
+    margin-top: $gap;
 }
 
-.mt10{
-    margin-top:$gap*2;
+.mt10 {
+    margin-top: $gap*2;
 }
 
-.color80{
-    color:$color80;
+.color80 {
+    color: $color80;
 }
 
 .clear {
@@ -44,10 +43,14 @@ body{
 
 .display-flex {
     display: inline-flex;
-    display: -moz-box; /* Firefox */
-    display: -ms-flexbox; /* IE10 */
-    display: -webkit-box; /* Safari */
-    display: -webkit-flex; /* Chrome, WebKit */
+    display: -moz-box;
+    /* Firefox */
+    display: -ms-flexbox;
+    /* IE10 */
+    display: -webkit-box;
+    /* Safari */
+    display: -webkit-flex;
+    /* Chrome, WebKit */
     display: flexbox;
     display: flex;
 }
@@ -65,15 +68,89 @@ body{
     -moz-box-align: justify-content;
     -ms-flex-align: align-content;
     -ms-flex-item-align: justify-content;
-    -webkit-box-align: justify-content; /*老语法*/
-    -webkit-align-items: justify-content; /*新语法*/
+    -webkit-box-align: justify-content;
+    /*老语法*/
+    -webkit-align-items: justify-content;
+    /*新语法*/
     align-content: justify-content;
     align-items: justify-content;
     justify-content: justify-content;
 }
 
-.break{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+.break {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user {
+    width: 100%;
+    margin: $gap*3 0;
+    padding: 0 $gap*2;
+    @extend .display-flex;
+    .tab {
+        display: inline-block;
+        width: $gap*8;
+        color: $color62;
+        border-radius: $gap;
+        background-color: $colore7;
+        margin-right: $gap*2;
+        text-align: center;
+        height: $gap*4;
+        line-height: $gap*4;
+        vertical-align: middle;
+    }
+    .good {
+        background-color: $color80;
+        color: $colorfff;
+    }
+    .title {
+        font-size: $gap*3.6;
+        font-weight: bold;
+        @extend .flex1;
+        @extend .break;
+    }
+    .head {
+        display: inline-block;
+        width: $gap*8;
+        height: $gap*8;
+        border-radius: 50%;
+        margin-right: $gap*2;
+    }
+    .info {
+        display: inline-block;
+        @extend .flex1;
+        .cl {
+            float: left;
+            width: 70%;
+            .name {
+                display: block;
+                color: $color62;
+            }
+        }
+        .cr {
+            float: right;
+            width: 30%;
+            text-align: right;
+            .name {
+                display: block;
+                margin-top: $gap;
+                color: $color80;
+                font-size: $gap*2.4;
+            }
+        }
+    }
+}
+
+.reply_content {
+    padding: 0 $gap*3;
+    margin-bottom: $gap*3;
+    img {
+        width: auto\9;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+        border: 0;
+        -ms-interpolation-mode: bicubic;
+    }
 }

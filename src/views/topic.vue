@@ -2,14 +2,14 @@
     <nv-head page-type="主题" 
             :show-menu.sync="showMenu" 
             fix-head="true"></nv-head>
-    <div id="page" class="page" v-class="show-menu:showMenu">
+    <div id="page" class="page markdown-body" v-class="show-menu:showMenu">
         <h2 class="title" v-text="topic.title"></h2>
         <section class="user">
             <img class="head" :src="topic.author.avatar_url" />
             <div class="info">
                 <span class="cl">
                     <span class="name">{{topic.author.loginname}}</span>
-                    <span class="name mt10">
+                    <span class="name">
                         发布于:{{topic.create_at | getLastTimeStr true}}</span>
                 </span>
                 <span class="cr">
@@ -31,7 +31,7 @@
                         <div class="info">
                             <span class="cl">
                                 <span class="name" v-text="item.author.loginname"></span>
-                                <span class="name mt10">
+                                <span class="name">
                                     <span></span>
                                     发布于:{{item.create_at | getLastTimeStr true}}</span>
                             </span>
@@ -58,6 +58,7 @@
 </template>
 <script>
     require('../assets/scss/detail.scss');
+    require('../assets/scss/github-markdown.css');
     var $ = require('webpack-zepto');
 
     module.exports = {
@@ -108,6 +109,10 @@
             },
             addReply:function(id){
                 this.curReplyId = id;
+                var _self = this;
+                if(!_self.userId){
+                    _self.$route.router.go('/login?redirect='+encodeURIComponent(this.$route.path));
+                }
             },
             upReply:function(item){
                 var _self = this;

@@ -27,7 +27,7 @@ try {
     localCache.removeItem('test');
     localCache = localStorage;
     sessionCache = sessionStorage;
-} catch(e) {
+} catch (e) {
     var noop = function() {};
     //声明操作方法
     var fn = {
@@ -36,7 +36,7 @@ try {
         removeItem: noop,
         clear: noop
     };
-    if(!window.localCache){
+    if (!window.localCache) {
         localCache = sessionCache = noop;
         localCache.__proto__ = sessionCache.__proto__ = fn;
     }
@@ -47,14 +47,12 @@ router.beforeEach(function(transition) {
     //处理左侧滚动不影响右边
     $("html, body, #page").removeClass("scroll-hide");
     if (transition.to.auth) {
-        utils.isLogin(function(b) {
-            if (b) {
-                transition.next();
-            } else {
-                var redirect = encodeURIComponent(transition.to.path);
-                transition.redirect('/logon?redirect=' + redirect);
-            }
-        });
+        if (localCache.userId) {
+            transition.next();
+        } else {
+            var redirect = encodeURIComponent(transition.to.path);
+            transition.redirect('/login?redirect=' + redirect);
+        }
     } else {
         transition.next();
     }
