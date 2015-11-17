@@ -117,7 +117,7 @@
         z-index: 10;
     }
     .add-icon{
-        color: #80bd01;
+        color: #42b983;
         position: absolute;
         right: 10px;
         top: 10px;

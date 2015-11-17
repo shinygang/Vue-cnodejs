@@ -48,13 +48,18 @@
     overflow: hidden;
     padding-top: 2.5vh;
     li {
+        font-size: 14px;
+        font-weight: 200;
         padding: 2.5vh 0;
         text-align: left;
         text-indent: 1px;
         line-height: 15px;
-       
+        color: #7f8c8d;
         &:last-child {
             margin-bottom: 50px;
+        }
+        &:before{
+            color: #2c3e50;
         }
     }
 
