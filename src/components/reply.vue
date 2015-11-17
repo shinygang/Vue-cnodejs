@@ -45,7 +45,7 @@
                         , linkUsers = utils.linkUsers(_self.content)
                         , htmlText = markdown.toHTML(linkUsers) + _self.authorTxt
                         , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML
-                        , postData={accesstoken:localStorage.token,content: _self.content}
+                        , postData={accesstoken:localStorage.token,content: _self.content+ _self.authorTxt}
 
                     if(_self.replyId){
                         postData.reply_id = _self.replyId;

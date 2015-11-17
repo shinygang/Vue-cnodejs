@@ -39,6 +39,7 @@
                     accesstoken:localStorage.token
                 },
                 err:'',
+                authorTxt:'<a href="https://github.com/shinygang/Vue-cnodejs">From CNodeJS-VueJS</a>',
                 alert: {
                     txt: '',
                     show: false,
@@ -65,6 +66,7 @@
                     self.err = 'content';
                     return false;
                 }
+                self.topic.content = self.topic.content+self.authorTxt;
                 $.ajax({
                     type:'POST',
                     url:'/api/v1/topics',
