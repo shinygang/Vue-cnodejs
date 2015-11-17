@@ -56,11 +56,12 @@
     border-bottom: 1px solid #e8e8e8;
     &.fix-header {
         width: 100%;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.95);
         position: fixed;
         top: 0;
         left: 0;
         transition: all .3s ease;
+        box-shadow: 0 0 4px rgba(0,0,0,0.25);
         z-index: 6;
     }
     &.no-fix {
