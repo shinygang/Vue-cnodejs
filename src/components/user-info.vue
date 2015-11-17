@@ -5,7 +5,7 @@
             <li class="login" @click="goEnter"><a >登录</a></li>
         </ul>
         <!-- 已登录 -->
-        <div class="login-yes" v-if="loginname">
+        <div class="login-yes" v-if="loginname" @click="goUser">
             <div class="avertar"><img v-if="avatar_url" :src="avatar_url"></div>
             <div class="info">
                 <p v-if="loginname" v-text="loginname"></p>
@@ -26,6 +26,9 @@
             goEnter: function(){
                 var link = '/login?redirect='+ encodeURIComponent(this.$route.path);
                 this.$route.router.go(link);
+            },
+            goUser:function(){
+                this.$route.router.go({name:'user',params:{loginname:localStorage.loginname}});
             }
         }
     }

@@ -104,6 +104,7 @@ body {
         background-color: $color80;
         color: $colorfff;
     }
+
     .title {
         font-size: $gap*3.6;
         font-weight: bold;
@@ -120,6 +121,14 @@ body {
     .info {
         display: inline-block;
         @extend .flex1;
+
+        .t-title{
+            font-size: $gap*3.6;
+            font-weight: bold;
+            width:100%;
+            @extend .break;
+        }
+
         .cl {
             float: left;
             width: 70%;
