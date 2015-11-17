@@ -1,5 +1,8 @@
 <template>
-    <nv-head :page-type="searchKey.tab | getTitleStr" fix-head="true" :show-menu.sync="showMenu"></nv-head>
+    <nv-head :page-type="searchKey.tab | getTitleStr" 
+            fix-head="true" 
+            :need-add="true" 
+            :show-menu.sync="showMenu"></nv-head>
     <div id="page" v-class="show-menu:showMenu">
 	    <section class="module-enter">
 			<ul>

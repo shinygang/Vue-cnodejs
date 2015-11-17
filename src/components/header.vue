@@ -10,7 +10,9 @@
                     v-if="fixHead">
             </div>
             <span v-text="pageType"></span>
-            <i class="num" v-show="messageCount"> {{messageCount}}</i>
+            <i class="num" v-if="messageCount > 0"> {{messageCount}}</i>
+            <i v-if="needAdd" v-show="!messageCount || messageCount <= 0" 
+                class="iconfont add-icon" v-link="{name:'add'}">&#xe60f;</i>
         </div>
     </header>
     <nv-menu :show-menu="showMenu" 
@@ -21,12 +23,13 @@
 </template>
 
 <script>
+    require('../assets/scss/iconfont/iconfont.css');
     var utils = require('../libs/utils'),       //加载公用函数
         $ = require('webpack-zepto');
 
     module.exports={
         replace:true,
-        props: ['pageType','fixHead','showMenu','messageCount'],
+        props: ['pageType','fixHead','showMenu','messageCount','needAdd'],
         data: function(){
             return {
                 nickname: '',
@@ -112,6 +115,15 @@
         right: 10px;
         top: 10px;
         z-index: 10;
+    }
+    .add-icon{
+        color: #80bd01;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10;
+        padding: 5px 15px;
+        border-radius: 5px;
     }
 }
 .scroll-hide{

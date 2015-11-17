@@ -1,6 +1,7 @@
 <template>
     <nv-head page-type="主题" 
             :show-menu.sync="showMenu" 
+            :need-add="true" 
             fix-head="true"></nv-head>
     <div id="page" class="page markdown-body" v-class="show-menu:showMenu">
         <h2 class="title" v-text="topic.title"></h2>

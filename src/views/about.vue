@@ -1,5 +1,5 @@
 <template>
-    <nv-head page-type="关于" fix-head="true" ></nv-head>
+    <nv-head page-type="关于" fix-head="true" :need-add="true" ></nv-head>
     <ul class="ainfo">
         <li>
             <div class="v-title">关于项目</div>
