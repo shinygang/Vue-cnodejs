@@ -71,10 +71,7 @@
                     _self.getScrollData();
                 });
                
-        	},
-            deactivate:function(transition){
-                transition.next();
-            }
+        	}
         },
         methods:{
             getTopics:function(){

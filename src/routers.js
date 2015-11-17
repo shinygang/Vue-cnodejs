@@ -28,7 +28,7 @@ module.exports=function(router){
         },
         '/user/:loginname':{               //用户信息
             name:'user',
-            component:require('./views/login.vue')
+            component:require('./views/user.vue')
         }
     })
 }
