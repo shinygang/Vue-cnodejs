@@ -1,6 +1,6 @@
 <template>
     <nv-head page-type="消息" fix-head="true" :show-menu.sync="showMenu" 
-            :message-count="message.hasnot_read_messages.length"></nv-head>
+            :message-count="message.hasnot_read_messages.length" :need-add="true" ></nv-head>
     <div class="page" >
         <ul class="tabs">
             <li class="item br" :class='{"selected":selectItem === 2}' @click="changeItem(2)">已读消息</li>

@@ -1,4 +1,5 @@
 <template>
+    <nv-head page-type="用户信息" fix-head="true" :show-menu="false" :need-add="true" ></nv-head>
     <section class="userinfo">
         <img class="u-img" :src="user.avatar_url" /><br/>
         <span class="u-name" v-text="user.loginname"></span>

@@ -2,7 +2,6 @@
     <section id="sideBar" class="nav-list" :class="{'show':showMenu}">
         <user-info></user-info>
         <ul class="list-ul">
-            <li class="icon-tianjia iconfont" v-link="{'name':'add'}">发布</li>
             <li class="icon-quanbu iconfont" v-link="{'name':'home',query:{tab:'all'}}">全部</li>
             <li class="icon-hao iconfont" v-link="{name:'home',query:{tab:'good'}}">精华</li>
             <li class="icon-fenxiang iconfont" v-link="{name:'home',query:{tab:'share'}}">分享</li>
