@@ -18,8 +18,8 @@
         replace:true,
         data: function() {
             return {
-                loginname: localCache.loginname || "",
-                avatar_url: localCache.avatar_url || ""
+                loginname: localStorage.loginname || "",
+                avatar_url: localStorage.avatar_url || ""
             }
         },
         methods:{

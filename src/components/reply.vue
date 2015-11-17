@@ -23,7 +23,7 @@
             return {
                 hasErr:false,
                 content:'',
-                userId:localCache.userId || '',
+                userId:localStorage.userId || '',
                 authorTxt:'<a href="https://github.com/shinygang/Vue-cnodejs">From CNodeJS-VueJS</a>',
             }
         },
@@ -45,7 +45,7 @@
                         , linkUsers = utils.linkUsers(_self.content)
                         , htmlText = markdown.toHTML(linkUsers) + _self.authorTxt
                         , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML
-                        , postData={accesstoken:localCache.token,content: _self.content}
+                        , postData={accesstoken:localStorage.token,content: _self.content}
 
                     if(_self.replyId){
                         postData.reply_id = _self.replyId;
@@ -61,7 +61,7 @@
                                     id:res.reply_id,
                                     author:{
                                         loginname:_self.userId,
-                                        avatar_url:localCache.avatar_url
+                                        avatar_url:localStorage.avatar_url
                                     },
                                     content:reply_content,
                                     ups:[],

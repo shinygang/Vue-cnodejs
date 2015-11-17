@@ -154,3 +154,12 @@ body {
         -ms-interpolation-mode: bicubic;
     }
 }
+
+.no-data{
+    width:100%;
+    height:100%;
+    padding:40% 0;
+    display:inline-block;
+    font-size:18px;
+    text-align:center;
+}

@@ -4,28 +4,29 @@ module.exports=function(router){
             name:'home',
             component:require('./views/index.vue')
         },
-        '/topic/:id':{               //首页
+        '/topic/:id':{               //专题
             name:'topic',
             component:require('./views/topic.vue')
         },
-        '/message':{               //首页
+        '/add':{               //首页
+            name:'add',
+            component:require('./views/new.vue'),
+            auth: true
+        },
+        '/message':{               //消息
             name:'message',
             component:require('./views/message.vue'),
             auth: true
         },
-        '/setting':{               //首页
-            name:'setting',
-            component:require('./views/index.vue')
-        },
-        '/about':{               //首页
+        '/about':{               //关于
             name:'about',
-            component:require('./views/index.vue')
+            component:require('./views/about.vue')
         },
-        '/login':{               //首页
+        '/login':{               //登录
             name:'login',
             component:require('./views/login.vue')
         },
-        '/user/:loginname':{               //首页
+        '/user/:loginname':{               //用户信息
             name:'user',
             component:require('./views/login.vue')
         }

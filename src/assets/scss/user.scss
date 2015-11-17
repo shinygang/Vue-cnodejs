@@ -1,0 +1,32 @@
+@import 'common/reset.scss';
+@import 'common/common.scss';
+#page {
+    padding-top: 60px;
+    transition: all .3s ease;
+}
+
+.page {
+    background-color: $colorfff;
+    height: 100%;
+    padding: $gap*3 0;
+
+    .userinfo{
+        width:100%;
+        text-align:center;
+
+        .u-img{
+            width:100px;
+            height:100px;
+            margin-top:$gap*3;
+            display:inline-block;
+        }
+        .u-name{
+            color:$colorfff;
+        }
+
+        .u-bottom{
+            background-color:$colore7;
+            width:100%;
+        }
+    }
+}

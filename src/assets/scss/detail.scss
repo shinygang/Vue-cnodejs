@@ -13,7 +13,6 @@
         font-size: 20px;
         margin: 0 $gap*2;
     }
-   
     .reply_num {
         margin-top: $gap*4;
         background-color: $colore7;
@@ -27,7 +26,7 @@
         ul {
             width: 100%;
             list-style: none;
-            padding-left:0;
+            padding-left: 0;
             li {
                 width: 100%;
                 list-style: none;
@@ -41,9 +40,11 @@
                 .icon {
                     font-size: 26px;
                 }
-                
             }
         }
+    }
+    .topic_content {
+        margin: 0 $gap*2;
     }
     .reply {
         width: 100%;
@@ -70,12 +71,51 @@
             border-color: red;
         }
     }
-    .topic-title{
-        margin:$gap $gap*2;
-        background-color:$colore7;
-        padding:$gap;
-        font-weight:bold;
-        border-radius:$gap;
+    .message {
+        border-bottom: solid 1px $colord4;
+        padding: $gap*2 0;
+    }
+    .topic-title {
+        margin: $gap $gap*2;
+        background-color: $colore7;
+        padding: $gap;
+        font-weight: bold;
+        border-radius: $gap;
+    }
+    .tabs {
+        width: 100%;
+        height: $gap*8.2;
+        margin-top: $gap*6;
+        list-style: none;
+        border-bottom: solid 1px $colord4;
+        position: relative;
+        .item {
+            width: 50%;
+            padding: $gap*2.5 0;
+            float: left;
+            font-size: 16;
+            text-align: center;
+            font-weight: bold;
+            
+        }
+        .read {
+            font-size:$gap*5;
+            color: $color80;
+            position:absolute;
+            right:$gap*1;
+            top:$gap*1.5;
+            font-weight:bold;
+        }
+        .br {
+            border-right: solid 1px $colord4;
+        }
+        .selected {
+            color: $red;
+            border-bottom: solid 2px $red;
+        }
+    }
+    .icon-empty {
+        font-size: $gap*25;
+        display: block;
     }
 }
-

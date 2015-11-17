@@ -3,7 +3,7 @@
     </nv-head>
     <section class="page-body">
         <label>
-            <input type="text" placeholder="Access Token" v-model="token" maxlength="36">
+            <input class="txt" type="text" placeholder="Access Token" v-model="token" maxlength="36">
         </label>
         <label>
             <button type="button" @click="logon">登录</button>
@@ -49,13 +49,12 @@
                     data:{accesstoken:self.token},
                     dataType: 'json',
                     success:function(res){
-                        localCache.loginname = res.loginname;
-                        localCache.avatar_url = res.avatar_url;
-                        localCache.userId = res.id;
-                        localCache.token = self.token;
+                        localStorage.loginname = res.loginname;
+                        localStorage.avatar_url = res.avatar_url;
+                        localStorage.userId = res.id;
+                        localStorage.token = self.token;
                         //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
                         var redirect = decodeURIComponent(self.$route.query.redirect);
-                        console.log(redirect);
                         self.$route.router.go(redirect);
                     },
                     error:function(res){
@@ -94,7 +93,7 @@
             margin-left: -50px;
         }
     }
-    input{
+    .txt{
         padding: 12px 0;
         border:none;
         border-bottom: 2px solid #80bd01;

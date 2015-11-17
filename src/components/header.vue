@@ -10,6 +10,7 @@
                     v-if="fixHead">
             </div>
             <span v-text="pageType"></span>
+            <i class="num" v-show="messageCount"> {{messageCount}}</i>
         </div>
     </header>
     <nv-menu :show-menu="showMenu" 
@@ -25,7 +26,7 @@
 
     module.exports={
         replace:true,
-        props: ['pageType','fixHead','showMenu'],
+        props: ['pageType','fixHead','showMenu','messageCount'],
         data: function(){
             return {
                 nickname: '',
@@ -96,6 +97,20 @@
         width: 100%;
         position: relative;  
         z-index: 0;
+    }
+    .num {
+        background-color: #80bd01;
+        color: #fff;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        vertical-align: middle;
+        text-align: center;
+        border-radius: 50%;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10;
     }
 }
 .scroll-hide{
