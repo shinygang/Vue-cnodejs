@@ -28,7 +28,8 @@
             <ul>
                 <li v-for="item in topic.replies">
                     <section class="user">
-                        <img class="head" :src="item.author.avatar_url" />
+                        <img class="head" :src="item.author.avatar_url" 
+                            v-link="{name:'user',params:{loginname:item.author.loginname}}"/>
                         <div class="info">
                             <span class="cl">
                                 <span class="name" v-text="item.author.loginname"></span>

@@ -46,4 +46,4 @@ npm run dist
 ##Todo List
 1. localStorage 隐私模式
 2. 文本编辑器
-
+3. 扫描登录
