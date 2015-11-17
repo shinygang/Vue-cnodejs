@@ -13,7 +13,7 @@ git clone https://github.com/shinygang/Vue-cnodejs.git
 ```
 npm install
 ```
-启动服务
+启动服务(http://localhost:8090)
 
 ```
 node server.js
@@ -44,6 +44,6 @@ npm run dist
 
 
 ##todo list
-1、localStorage 隐私模式
-2、文本编辑器
+1. []localStorage 隐私模式
+2. []文本编辑器
 
