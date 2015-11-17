@@ -40,17 +40,15 @@
                 width: 100%;
                 @extend .display-flex;
                 .tab {
+                    padding: 5px 6px;
                     font-size: 10px;
                     font-weight: 400;
-                    width: $gap*8;
                     color: $color62;
                     border-radius: 3px;
                     background-color: $colore7;
                     margin-right: $gap*2;
                     margin-top: -3px;
                     text-align: center;
-                    height: $gap*4;
-                    line-height: $gap*4;
                     vertical-align: middle;
                 }
                 .good {
