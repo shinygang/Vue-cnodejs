@@ -4,6 +4,10 @@ module.exports=function(router){
             name:'home',
             component:require('./views/index.vue')
         },
+        '/cnodevue':{               //首页
+            name:'home',
+            component:require('./views/index.vue')
+        },
         '/topic/:id':{               //专题
             name:'topic',
             component:require('./views/topic.vue')

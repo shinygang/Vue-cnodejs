@@ -28056,6 +28056,10 @@ webpackJsonp([0,1],[
 	            name:'home',
 	            component:__webpack_require__(186)
 	        },
+	        '/cnodevue':{               //首页
+	            name:'home',
+	            component:__webpack_require__(186)
+	        },
 	        '/topic/:id':{               //专题
 	            name:'topic',
 	            component:__webpack_require__(205)

@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <title>用Vue.js重写了Cnodejs.org社区</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>基于Vue.js的Cnodejs社区webapp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <link rel="stylesheet" href="style.min.css">
 </head>
 
 <body>
-    <div id="app">
-        <router-view v-transition="fade"></router-view>
+    <div id="app">	
+        <router-view v-transition="fade" transition-mode="out-in"></router-view>
     </div>
-    <script src="common.js"></script>
-    <script src="build.js"></script>
+    <script src="common.min.js"></script>
+    <script src="build.min.js"></script>
 </body>
-
 </html>
