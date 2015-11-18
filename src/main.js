@@ -18,8 +18,8 @@ Object.keys(filters).forEach(function(k) {
     })
     //实例化VueRouter
 var router = new VueRouter({
-    hashbang: false,
-    history: true,
+    hashbang: true,
+    history: false,
     saveScrollPosition: true,
     transitionOnLoad: true
 });
