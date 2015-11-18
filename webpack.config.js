@@ -25,11 +25,10 @@ var entry = ['./src/main'],
 //生产环境js压缩和图片cdn
 if (isProduction()) {
     //plugins.push(new webpack.optimize.UglifyJsPlugin());
-    cdnPrefix = "http://http://dn-cnode.qbox.me/";
+    cdnPrefix = "http://dn-cnode.qbox.me/";
     publishPath = cdnPrefix;
 }
 //编译输出路径
-
 module.exports = {
     debug: true,
     entry: entry,
