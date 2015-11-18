@@ -319,7 +319,7 @@ body {
     width: 49px;
     height: 44px;
     position: absolute;
-    background: url(http://dn-cnode.qbox.me/images/9cf96e7cfe4b992a542814b6dae9cf56.png) no-repeat center center;
+    background: url(images/9cf96e7cfe4b992a542814b6dae9cf56.png) no-repeat center center;
     background-size: 19px 16px;
     margin: 0;
     z-index: 1;
@@ -453,20 +453,20 @@ body {
   .login-no .login {
     float: left; }
     .login-no .login:before {
-      background: url(http://dn-cnode.qbox.me/images/76c0f3299044482b9c022de20671e5a5.png) no-repeat left center;
+      background: url(images/76c0f3299044482b9c022de20671e5a5.png) no-repeat left center;
       background-size: 24px 24px; }
 
 /*已登录*/
 .login-yes {
   height: 100%;
-  background: url(http://dn-cnode.qbox.me/images/89abb3c7af6e1c95538e1489fed4feee.png) no-repeat right center;
+  background: url(images/89abb3c7af6e1c95538e1489fed4feee.png) no-repeat right center;
   background-size: 6px 10px;
   overflow: hidden;
   position: relative; }
   .login-yes .avertar {
     width: 40px;
     height: 40px;
-    background: url(http://dn-cnode.qbox.me/images/f95d81473c5e661b988fb30f31e36621.png) no-repeat center center;
+    background: url(images/f95d81473c5e661b988fb30f31e36621.png) no-repeat center center;
     background-size: 40px 40px;
     border-radius: 20px;
     overflow: hidden;
@@ -491,7 +491,7 @@ body {
       line-height: 20px; }
   .login-yes:after {
     display: block;
-    background: url(http://dn-cnode.qbox.me/images/0d6e28274d02050cc49a67eeef5f1c70.png) no-repeat center right;
+    background: url(images/0d6e28274d02050cc49a67eeef5f1c70.png) no-repeat center right;
     background-size: 7px 7px; }
 @charset "UTF-8";
 /**

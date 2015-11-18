@@ -53,7 +53,7 @@
                 var _self = this;
                 var loginname = transition.to.params.loginname;
 
-                $.get('/api/v1/user/'+loginname,function(d){
+                $.get('https://cnodejs.org/api/v1/user/'+loginname,function(d){
                     if(d && d.data){
                         var data = d.data;
                         _self.user = data;

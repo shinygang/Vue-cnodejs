@@ -69,7 +69,7 @@
                 self.topic.content = self.topic.content+self.authorTxt;
                 $.ajax({
                     type:'POST',
-                    url:'/api/v1/topics',
+                    url:'https://cnodejs.org/api/v1/topics',
                     data: self.topic,
                     dataType: 'json',
                     success:function(res){

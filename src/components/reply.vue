@@ -52,7 +52,7 @@
                     }
                     $.ajax({
                         type:'POST',
-                        url:'/api/v1/topic/'+_self.topicId+'/replies',
+                        url:'https://cnodejs.org/api/v1/topic/'+_self.topicId+'/replies',
                         data: postData,
                         dataType: 'json',
                         success:function(res){

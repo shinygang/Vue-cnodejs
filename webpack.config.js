@@ -25,7 +25,7 @@ var entry = ['./src/main'],
 //生产环境js压缩和图片cdn
 if (isProduction()) {
     //plugins.push(new webpack.optimize.UglifyJsPlugin());
-    cdnPrefix = "http://dn-cnode.qbox.me/";
+    cdnPrefix = "";
     publishPath = cdnPrefix;
 }
 //编译输出路径

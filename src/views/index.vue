@@ -80,7 +80,7 @@
             getTopics:function(){
                 var _self = this
                     , params = $.param(_self.searchKey);
-                $.get('/api/v1/topics?'+params,function(d){
+                $.get('https://cnodejs.org/api/v1/topics?'+params,function(d){
                     _self.scroll = true;
                     if(d && d.data){
                         if(_self.searchKey.page == 0){

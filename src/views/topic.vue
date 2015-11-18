@@ -97,7 +97,7 @@
 
                 //加载主题数据
                 var _self = this;
-                $.get('/api/v1/topic/'+_self.topicId,function(d){
+                $.get('https://cnodejs.org/api/v1/topic/'+_self.topicId,function(d){
                     if(d && d.data){
                         _self.topic = d.data;
                     }
@@ -124,7 +124,7 @@
                 else{
                     $.ajax({
                         type:'POST',
-                        url:'/api/v1/reply/'+item.id+'/ups',
+                        url:'https://cnodejs.org/api/v1/reply/'+item.id+'/ups',
                         data:{accesstoken:localStorage.token},
                         dataType: 'json',
                         success:function(res){
