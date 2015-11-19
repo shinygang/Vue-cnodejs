@@ -1,40 +1,49 @@
 <template>
+    <!-- 全局header -->
     <nv-head :page-type="searchKey.tab | getTitleStr" 
             fix-head="true" 
             :need-add="true" 
-            :show-menu.sync="showMenu"></nv-head>
-    <div id="page" v-class="show-menu:showMenu">
-	    <section class="module-enter">
-			<ul>
-				<li v-for="item in topics" v-link="{name:'topic',params:{id:item.id}}">
-					<div class="til">
-						<span class="tab" :class="{'good':item.good || item.top}"
-							v-text="item.tab | getTabStr item.good item.top"></span>
-						<span class="title" v-text="item.title"></span>
-					</div>
-					<div class="til mt10">
-						<img class="head" :src="item.author.avatar_url" />
-						<div class="content">
-							<span class="cl">
-								<span class="name" v-text="item.author.loginname"></span>
-								<span class="name mt10">
-									创建于:{{item.create_at | getLastTimeStr}}</span>
-							</span>
-							<span class="cr">
-								<span>
-									<span class="color80" v-if="item.reply_count>0">
-										{{item.reply_count}}/</span>{{item.visit_count}}</span>
-								<span class="name mt10" v-if="item.reply_count > 0" 
-									v-text="item.last_reply_at | getLastTimeStr true"></span>
-								<span v-else class="name mt10" 
-									v-text="item.create_at | getLastTimeStr true"></span>
-							</span>
-						</div>
-					</div> 
-				</li>
-			</ul>
-		</section>
-    </div>
+            :show-menu.sync="showMenu">
+    </nv-head>
+    
+
+    <section id="page" v-class="show-menu:showMenu">
+
+        <!-- 首页列表 -->
+		<ul class="posts-list">
+			<li v-for="item in topics" 
+                    v-link="{name:'topic',params:{id:item.id}}">
+
+				<h3 v-text="item.title"
+                        :class="item.tab | getTabClassName item.good item.top"
+                        :title="item.tab | getTabStr item.good item.top">
+                </h3>
+                <div class="content">
+                    <img class="avatar" :src="item.author.avatar_url" />
+                    <div class="info">
+                        <p>
+                            <span class="name">
+                                {{item.author.loginname}}
+                            </span>
+                            <span class="status" v-if="item.reply_count > 0">
+                                <b>{{item.reply_count}}</b>
+                                /{{item.visit_count}}
+                            </span>
+                        </p>
+                        <p>
+                            <time>
+                                {{item.create_at | getLastTimeStr true}}
+                            </time>
+                            <time>
+                                {{tem.last_reply_at | getLastTimeStr true}}
+                            </time>
+                        </p>
+                    </div>
+                </div>
+			</li>
+		</ul>
+
+    </section>
 </template>
 
 <script>

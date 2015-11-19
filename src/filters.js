@@ -46,6 +46,37 @@ exports.getTabStr = function(tab, good, top) {
     return str;
 }
 
+/** 获取标签样式
+ *  @param {string} tab Tab分类
+ *  @param {bool} good 是否是精华帖
+ *  @param {bool} top 是否是置顶帖
+ */
+exports.getTabClassName = function(tab, good, top) {
+    var className = '';
+
+    if (top) {
+        className = "top";
+    } else if (good) {
+        className = "good";
+    } else {
+        switch (tab) {
+            case "share":
+                className = "share";
+                break;
+            case "ask":
+                className = "ask";
+                break;
+            case "job":
+                className = "job";
+                break;
+            default:
+                className = "default";
+                break;
+        }
+    }
+    return className;
+}
+
 /** 获取title文字
  *  @param {string} tab Tab分类
  */

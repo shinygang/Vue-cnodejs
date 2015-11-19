@@ -1,5 +1,6 @@
 @import 'common/reset.scss';
 @import 'common/common.scss';
+
 #brim-mask {
     pointer-events: none;
 }
@@ -26,74 +27,61 @@
 
 /*模块入口样式*/
 
-.module-enter {
-    ul {
-        background-color: $colorfff;
-        overflow: hidden;
-        li {
-            width: 100%;
-            padding: $gap*3;
-            display: inline-block;
-            position: relative;
-            border-bottom: 1px solid #d5dbdb;
-            .til {
-                width: 100%;
-                @extend .display-flex;
-                .tab {
-                    padding: 5px 6px;
-                    font-size: 10px;
-                    font-weight: 400;
-                    color: $color62;
-                    border-radius: 3px;
-                    background-color: $colore7;
-                    margin-right: $gap*2;
-                    margin-top: -3px;
-                    text-align: center;
-                    vertical-align: middle;
-                }
-                .good {
-                    background-color: #42b983;
-                    color: $colorfff;
-                }
-                .title {
-                    width:calc(100% - 40px);
-                    font-size: 16px;
-                    font-weight: bold;
-                    color: #2c3e50;
-                    @extend .flex1;
-                    @extend .break;
-                }
-                .head {
-                    display: inline-block;
-                    width: $gap*8;
-                    height: $gap*8;
-                    border-radius: 50%;
-                    margin-right: $gap*2;
-                    border: 1px solid #F3F3F3;
-                }
-                .content {
-                    display: inline-block;
-                    @extend .flex1;
-                    .cl {
-                        float: left;
-                        width: 70%;
-                        .name {
-                            display: block;
-                            color: #7f8c8d;
-                        }
-                    }
-                    .cr {
-                        float: right;
-                        width: 30%;
-                        text-align:right;
-                        .name {
-                            display: block;
-                            color: #7f8c8d;
-                            font-size:$gap*2.4;
-                        }
-                    }
-                }
-            }
+.posts-list {
+    background-color: $white;
+    li {
+        padding: 10px $padding;
+        border-bottom: $border;
+    }
+    h3 {
+        @extend .title;
+        &:before {
+            content: attr(title);
+            margin-right: 10px;
+            margin-top: -3px;
+            @extend .tag;
+            color: $white;
+        }
+        &.top:before {
+            background: #E74C3C;
+        }
+        &.ask:before {
+            background: #3498DB;
+        }
+        &.good:before {
+            background: #E67E22;
+        }
+        &.job:before {
+            background: #9B59B6;
+        }
+        &.share:before {
+            background: #1ABC9C;
+        }
+    }
+    .content {
+        padding-top: 10px;
+        @extend .display-flex; 
+    }
+    .avatar {
+       @extend .user-avatar;
+    }
+    .info {
+        @extend .flex;
+    }
+    p {
+        padding: 3px 0;
+        @extend .display-flex;
+        color: $text;
+        font-size: $font-info;
+
+        &:first-child {
+            font-size: $font-content; 
+        }
+        .name, time:first-child {
+           @extend .flex; 
+        }
+        b {
+            color: #42b983;
         }
     }
 }
