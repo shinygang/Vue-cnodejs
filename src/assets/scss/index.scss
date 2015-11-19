@@ -56,6 +56,7 @@
                     color: $colorfff;
                 }
                 .title {
+                    width:calc(100% - 40px);
                     font-size: 16px;
                     font-weight: bold;
                     color: #2c3e50;

@@ -29,7 +29,7 @@
                 话题：{{item.topic.title}}
             </div>
         </div>
-        <div class="no-data" v-show="currentData.length === 0">
+        <div class="no-data" v-show="noData">
             <i class="iconfont icon-empty">&#xe60a;</i>
             暂无数据!
         </div>
@@ -48,6 +48,7 @@
                 selectItem:2,
                 token:localStorage.token || '',
                 message:{},
+                noData:false,
                 currentData:[]
             }
         },
@@ -64,6 +65,10 @@
                             _self.currentData = d.data.has_read_messages;
                             _self.selectItem = 2;
                         }
+                        _self.noData = _self.currentData.length === 0 ? true : false;
+                    }
+                    else{
+                        _self.noData = true;
                     }
                 });
             }
@@ -73,6 +78,7 @@
             changeItem:function(idx){
                 this.selectItem = idx;
                 this.currentData = idx ===1?this.message.hasnot_read_messages:this.message.has_read_messages;
+                this.noData = this.currentData.length === 0 ? true : false;
             },
             //标记所有为已读
             markall:function(){

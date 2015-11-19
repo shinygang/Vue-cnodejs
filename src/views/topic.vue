@@ -3,7 +3,8 @@
             :show-menu.sync="showMenu" 
             :need-add="true" 
             fix-head="true"></nv-head>
-    <div id="page" class="page markdown-body" v-class="show-menu:showMenu">
+
+    <div id="page" class="page markdown-body" v-class="show-menu:showMenu" v-if="topic.title">
         <h2 class="title" v-text="topic.title"></h2>
         <section class="user">
             <img class="head" :src="topic.author.avatar_url" />
@@ -57,9 +58,15 @@
             </ul>
         </section>
         <nv-reply :topic.sync="topic" :topic-id="topicId" :reply-id="" v-if="userId"></nv-reply>
+    </div>
+    <div class='no-data' v-if="noData">
+        <i class="iconfont icon-empty">&#xe60a;</i>
+        该话题不存在!
+    </div>
 </template>
 <script>
     require('../assets/scss/detail.scss');
+    require('../assets/scss/iconfont/iconfont.css');
     require('../assets/scss/github-markdown.css');
     var $ = require('webpack-zepto');
 
@@ -69,6 +76,7 @@
             return {
                 showMenu: false,    //是否展开左侧菜单
                 topic:{},           //主题
+                noData:false,
                 topicId:'',
                 curReplyId:'',
                 userId:localStorage.userId || '',
@@ -100,6 +108,9 @@
                 $.get('https://cnodejs.org/api/v1/topic/'+_self.topicId,function(d){
                     if(d && d.data){
                         _self.topic = d.data;
+                    }
+                    else{
+                        _self.noData = true;
                     }
                 });
             }
