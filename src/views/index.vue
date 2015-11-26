@@ -48,7 +48,7 @@
 </template>
 
 <script>
-    require('../assets/scss/index.scss');
+    require('../assets/scss/CV.scss');
     var $ = require('webpack-zepto');
 
     module.exports = {
