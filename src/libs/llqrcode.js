@@ -81,7 +81,7 @@ _aa._af = function(b, d, a) {
                     l._dq(i >> 1, g)
                 }
             }
-        } catch(c) {
+        } catch (c) {
             throw "Error._ab"
         }
     }
@@ -91,18 +91,20 @@ _aa._ah = function(h, o, l, k, r, q, b, a, f, e, n, m, t, s, d, c, j, i) {
     var g = _ae._ag(l, k, r, q, b, a, f, e, n, m, t, s, d, c, j, i);
     return _aa._af(h, o, g)
 };
+
 function _a1(b, a) {
     this.count = b;
     this._fc = a;
     this.__defineGetter__("Count",
-    function() {
-        return this.count
-    });
+        function() {
+            return this.count
+        });
     this.__defineGetter__("_dm",
-    function() {
-        return this._fc
-    })
+        function() {
+            return this._fc
+        })
 }
+
 function _a2(a, c, b) {
     this._bm = a;
     if (b) {
@@ -111,25 +113,26 @@ function _a2(a, c, b) {
         this._do = new Array(c)
     }
     this.__defineGetter__("_bo",
-    function() {
-        return this._bm
-    });
+        function() {
+            return this._bm
+        });
     this.__defineGetter__("_dn",
-    function() {
-        return this._bm * this._fo
-    });
+        function() {
+            return this._bm * this._fo
+        });
     this.__defineGetter__("_fo",
-    function() {
-        var e = 0;
-        for (var d = 0; d < this._do.length; d++) {
-            e += this._do[d].length
-        }
-        return e
-    });
+        function() {
+            var e = 0;
+            for (var d = 0; d < this._do.length; d++) {
+                e += this._do[d].length
+            }
+            return e
+        });
     this._fb = function() {
         return this._do
     }
 }
+
 function _a3(k, l, h, g, f, e) {
     this._bs = k;
     this._ar = l;
@@ -143,21 +146,21 @@ function _a3(k, l, h, g, f, e) {
     }
     this._br = j;
     this.__defineGetter__("_fd",
-    function() {
-        return this._bs
-    });
+        function() {
+            return this._bs
+        });
     this.__defineGetter__("_as",
-    function() {
-        return this._ar
-    });
+        function() {
+            return this._ar
+        });
     this.__defineGetter__("_dp",
-    function() {
-        return this._br
-    });
+        function() {
+            return this._br
+        });
     this.__defineGetter__("_cr",
-    function() {
-        return 17 + 4 * this._bs
-    });
+        function() {
+            return 17 + 4 * this._bs
+        });
     this._aq = function() {
         var r = this._cr;
         var o = new _ac(r);
@@ -200,7 +203,7 @@ _a3._at = function(b) {
     }
     try {
         return _a3._av((b - 17) >> 2)
-    } catch(a) {
+    } catch (a) {
         throw "Error _av"
     }
 };
@@ -223,9 +226,11 @@ _a3._aw = function(d) {
     }
     return null
 };
+
 function _ay() {
     return new Array(new _a3(1, new Array(), new _a2(7, new _a1(1, 19)), new _a2(10, new _a1(1, 16)), new _a2(13, new _a1(1, 13)), new _a2(17, new _a1(1, 9))), new _a3(2, new Array(6, 18), new _a2(10, new _a1(1, 34)), new _a2(16, new _a1(1, 28)), new _a2(22, new _a1(1, 22)), new _a2(28, new _a1(1, 16))), new _a3(3, new Array(6, 22), new _a2(15, new _a1(1, 55)), new _a2(26, new _a1(1, 44)), new _a2(18, new _a1(2, 17)), new _a2(22, new _a1(2, 13))), new _a3(4, new Array(6, 26), new _a2(20, new _a1(1, 80)), new _a2(18, new _a1(2, 32)), new _a2(26, new _a1(2, 24)), new _a2(16, new _a1(4, 9))), new _a3(5, new Array(6, 30), new _a2(26, new _a1(1, 108)), new _a2(24, new _a1(2, 43)), new _a2(18, new _a1(2, 15), new _a1(2, 16)), new _a2(22, new _a1(2, 11), new _a1(2, 12))), new _a3(6, new Array(6, 34), new _a2(18, new _a1(2, 68)), new _a2(16, new _a1(4, 27)), new _a2(24, new _a1(4, 19)), new _a2(28, new _a1(4, 15))), new _a3(7, new Array(6, 22, 38), new _a2(20, new _a1(2, 78)), new _a2(18, new _a1(4, 31)), new _a2(18, new _a1(2, 14), new _a1(4, 15)), new _a2(26, new _a1(4, 13), new _a1(1, 14))), new _a3(8, new Array(6, 24, 42), new _a2(24, new _a1(2, 97)), new _a2(22, new _a1(2, 38), new _a1(2, 39)), new _a2(22, new _a1(4, 18), new _a1(2, 19)), new _a2(26, new _a1(4, 14), new _a1(2, 15))), new _a3(9, new Array(6, 26, 46), new _a2(30, new _a1(2, 116)), new _a2(22, new _a1(3, 36), new _a1(2, 37)), new _a2(20, new _a1(4, 16), new _a1(4, 17)), new _a2(24, new _a1(4, 12), new _a1(4, 13))), new _a3(10, new Array(6, 28, 50), new _a2(18, new _a1(2, 68), new _a1(2, 69)), new _a2(26, new _a1(4, 43), new _a1(1, 44)), new _a2(24, new _a1(6, 19), new _a1(2, 20)), new _a2(28, new _a1(6, 15), new _a1(2, 16))), new _a3(11, new Array(6, 30, 54), new _a2(20, new _a1(4, 81)), new _a2(30, new _a1(1, 50), new _a1(4, 51)), new _a2(28, new _a1(4, 22), new _a1(4, 23)), new _a2(24, new _a1(3, 12), new _a1(8, 13))), new _a3(12, new Array(6, 32, 58), new _a2(24, new _a1(2, 92), new _a1(2, 93)), new _a2(22, new _a1(6, 36), new _a1(2, 37)), new _a2(26, new _a1(4, 20), new _a1(6, 21)), new _a2(28, new _a1(7, 14), new _a1(4, 15))), new _a3(13, new Array(6, 34, 62), new _a2(26, new _a1(4, 107)), new _a2(22, new _a1(8, 37), new _a1(1, 38)), new _a2(24, new _a1(8, 20), new _a1(4, 21)), new _a2(22, new _a1(12, 11), new _a1(4, 12))), new _a3(14, new Array(6, 26, 46, 66), new _a2(30, new _a1(3, 115), new _a1(1, 116)), new _a2(24, new _a1(4, 40), new _a1(5, 41)), new _a2(20, new _a1(11, 16), new _a1(5, 17)), new _a2(24, new _a1(11, 12), new _a1(5, 13))), new _a3(15, new Array(6, 26, 48, 70), new _a2(22, new _a1(5, 87), new _a1(1, 88)), new _a2(24, new _a1(5, 41), new _a1(5, 42)), new _a2(30, new _a1(5, 24), new _a1(7, 25)), new _a2(24, new _a1(11, 12), new _a1(7, 13))), new _a3(16, new Array(6, 26, 50, 74), new _a2(24, new _a1(5, 98), new _a1(1, 99)), new _a2(28, new _a1(7, 45), new _a1(3, 46)), new _a2(24, new _a1(15, 19), new _a1(2, 20)), new _a2(30, new _a1(3, 15), new _a1(13, 16))), new _a3(17, new Array(6, 30, 54, 78), new _a2(28, new _a1(1, 107), new _a1(5, 108)), new _a2(28, new _a1(10, 46), new _a1(1, 47)), new _a2(28, new _a1(1, 22), new _a1(15, 23)), new _a2(28, new _a1(2, 14), new _a1(17, 15))), new _a3(18, new Array(6, 30, 56, 82), new _a2(30, new _a1(5, 120), new _a1(1, 121)), new _a2(26, new _a1(9, 43), new _a1(4, 44)), new _a2(28, new _a1(17, 22), new _a1(1, 23)), new _a2(28, new _a1(2, 14), new _a1(19, 15))), new _a3(19, new Array(6, 30, 58, 86), new _a2(28, new _a1(3, 113), new _a1(4, 114)), new _a2(26, new _a1(3, 44), new _a1(11, 45)), new _a2(26, new _a1(17, 21), new _a1(4, 22)), new _a2(26, new _a1(9, 13), new _a1(16, 14))), new _a3(20, new Array(6, 34, 62, 90), new _a2(28, new _a1(3, 107), new _a1(5, 108)), new _a2(26, new _a1(3, 41), new _a1(13, 42)), new _a2(30, new _a1(15, 24), new _a1(5, 25)), new _a2(28, new _a1(15, 15), new _a1(10, 16))), new _a3(21, new Array(6, 28, 50, 72, 94), new _a2(28, new _a1(4, 116), new _a1(4, 117)), new _a2(26, new _a1(17, 42)), new _a2(28, new _a1(17, 22), new _a1(6, 23)), new _a2(30, new _a1(19, 16), new _a1(6, 17))), new _a3(22, new Array(6, 26, 50, 74, 98), new _a2(28, new _a1(2, 111), new _a1(7, 112)), new _a2(28, new _a1(17, 46)), new _a2(30, new _a1(7, 24), new _a1(16, 25)), new _a2(24, new _a1(34, 13))), new _a3(23, new Array(6, 30, 54, 74, 102), new _a2(30, new _a1(4, 121), new _a1(5, 122)), new _a2(28, new _a1(4, 47), new _a1(14, 48)), new _a2(30, new _a1(11, 24), new _a1(14, 25)), new _a2(30, new _a1(16, 15), new _a1(14, 16))), new _a3(24, new Array(6, 28, 54, 80, 106), new _a2(30, new _a1(6, 117), new _a1(4, 118)), new _a2(28, new _a1(6, 45), new _a1(14, 46)), new _a2(30, new _a1(11, 24), new _a1(16, 25)), new _a2(30, new _a1(30, 16), new _a1(2, 17))), new _a3(25, new Array(6, 32, 58, 84, 110), new _a2(26, new _a1(8, 106), new _a1(4, 107)), new _a2(28, new _a1(8, 47), new _a1(13, 48)), new _a2(30, new _a1(7, 24), new _a1(22, 25)), new _a2(30, new _a1(22, 15), new _a1(13, 16))), new _a3(26, new Array(6, 30, 58, 86, 114), new _a2(28, new _a1(10, 114), new _a1(2, 115)), new _a2(28, new _a1(19, 46), new _a1(4, 47)), new _a2(28, new _a1(28, 22), new _a1(6, 23)), new _a2(30, new _a1(33, 16), new _a1(4, 17))), new _a3(27, new Array(6, 34, 62, 90, 118), new _a2(30, new _a1(8, 122), new _a1(4, 123)), new _a2(28, new _a1(22, 45), new _a1(3, 46)), new _a2(30, new _a1(8, 23), new _a1(26, 24)), new _a2(30, new _a1(12, 15), new _a1(28, 16))), new _a3(28, new Array(6, 26, 50, 74, 98, 122), new _a2(30, new _a1(3, 117), new _a1(10, 118)), new _a2(28, new _a1(3, 45), new _a1(23, 46)), new _a2(30, new _a1(4, 24), new _a1(31, 25)), new _a2(30, new _a1(11, 15), new _a1(31, 16))), new _a3(29, new Array(6, 30, 54, 78, 102, 126), new _a2(30, new _a1(7, 116), new _a1(7, 117)), new _a2(28, new _a1(21, 45), new _a1(7, 46)), new _a2(30, new _a1(1, 23), new _a1(37, 24)), new _a2(30, new _a1(19, 15), new _a1(26, 16))), new _a3(30, new Array(6, 26, 52, 78, 104, 130), new _a2(30, new _a1(5, 115), new _a1(10, 116)), new _a2(28, new _a1(19, 47), new _a1(10, 48)), new _a2(30, new _a1(15, 24), new _a1(25, 25)), new _a2(30, new _a1(23, 15), new _a1(25, 16))), new _a3(31, new Array(6, 30, 56, 82, 108, 134), new _a2(30, new _a1(13, 115), new _a1(3, 116)), new _a2(28, new _a1(2, 46), new _a1(29, 47)), new _a2(30, new _a1(42, 24), new _a1(1, 25)), new _a2(30, new _a1(23, 15), new _a1(28, 16))), new _a3(32, new Array(6, 34, 60, 86, 112, 138), new _a2(30, new _a1(17, 115)), new _a2(28, new _a1(10, 46), new _a1(23, 47)), new _a2(30, new _a1(10, 24), new _a1(35, 25)), new _a2(30, new _a1(19, 15), new _a1(35, 16))), new _a3(33, new Array(6, 30, 58, 86, 114, 142), new _a2(30, new _a1(17, 115), new _a1(1, 116)), new _a2(28, new _a1(14, 46), new _a1(21, 47)), new _a2(30, new _a1(29, 24), new _a1(19, 25)), new _a2(30, new _a1(11, 15), new _a1(46, 16))), new _a3(34, new Array(6, 34, 62, 90, 118, 146), new _a2(30, new _a1(13, 115), new _a1(6, 116)), new _a2(28, new _a1(14, 46), new _a1(23, 47)), new _a2(30, new _a1(44, 24), new _a1(7, 25)), new _a2(30, new _a1(59, 16), new _a1(1, 17))), new _a3(35, new Array(6, 30, 54, 78, 102, 126, 150), new _a2(30, new _a1(12, 121), new _a1(7, 122)), new _a2(28, new _a1(12, 47), new _a1(26, 48)), new _a2(30, new _a1(39, 24), new _a1(14, 25)), new _a2(30, new _a1(22, 15), new _a1(41, 16))), new _a3(36, new Array(6, 24, 50, 76, 102, 128, 154), new _a2(30, new _a1(6, 121), new _a1(14, 122)), new _a2(28, new _a1(6, 47), new _a1(34, 48)), new _a2(30, new _a1(46, 24), new _a1(10, 25)), new _a2(30, new _a1(2, 15), new _a1(64, 16))), new _a3(37, new Array(6, 28, 54, 80, 106, 132, 158), new _a2(30, new _a1(17, 122), new _a1(4, 123)), new _a2(28, new _a1(29, 46), new _a1(14, 47)), new _a2(30, new _a1(49, 24), new _a1(10, 25)), new _a2(30, new _a1(24, 15), new _a1(46, 16))), new _a3(38, new Array(6, 32, 58, 84, 110, 136, 162), new _a2(30, new _a1(4, 122), new _a1(18, 123)), new _a2(28, new _a1(13, 46), new _a1(32, 47)), new _a2(30, new _a1(48, 24), new _a1(14, 25)), new _a2(30, new _a1(42, 15), new _a1(32, 16))), new _a3(39, new Array(6, 26, 54, 82, 110, 138, 166), new _a2(30, new _a1(20, 117), new _a1(4, 118)), new _a2(28, new _a1(40, 47), new _a1(7, 48)), new _a2(30, new _a1(43, 24), new _a1(22, 25)), new _a2(30, new _a1(10, 15), new _a1(67, 16))), new _a3(40, new Array(6, 30, 58, 86, 114, 142, 170), new _a2(30, new _a1(19, 118), new _a1(6, 119)), new _a2(28, new _a1(18, 47), new _a1(31, 48)), new _a2(30, new _a1(34, 24), new _a1(34, 25)), new _a2(30, new _a1(20, 15), new _a1(61, 16))))
 }
+
 function _ae(i, f, c, h, e, b, g, d, a) {
     this.a11 = i;
     this.a12 = h;
@@ -296,10 +301,12 @@ _ae._bf = function(f, h, d, g, b, e, a, c) {
 _ae._be = function(f, h, d, g, b, e, a, c) {
     return this._bf(f, h, d, g, b, e, a, c)._fr()
 };
+
 function _bg(b, a) {
     this.bits = b;
     this.points = a
 }
+
 function Detector(a) {
     this.image = a;
     this._am = null;
@@ -320,9 +327,9 @@ function Detector(a) {
         var f = m < c ? 1 : -1;
         var e = 0;
         for (var h = m,
-        g = l; h != c; h += f) {
-            var u = d ? g: h;
-            var t = d ? h: g;
+                g = l; h != c; h += f) {
+            var u = d ? g : h;
+            var t = d ? h : g;
             if (e == 1) {
                 if (this.image[u + t * qrcode.width]) {
                     e++
@@ -402,14 +409,14 @@ function Detector(a) {
         var c = Math.round(this.distance(g, d) / e);
         var h = ((b + c) >> 1) + 7;
         switch (h & 3) {
-        case 0:
-            h++;
-            break;
-        case 2:
-            h--;
-            break;
-        case 3:
-            throw "Error"
+            case 0:
+                h++;
+                break;
+            case 2:
+                h--;
+                break;
+            case 3:
+                throw "Error"
         }
         return h
     };
@@ -488,17 +495,18 @@ function Detector(a) {
 var _ca = 21522;
 var _cb = new Array(new Array(21522, 0), new Array(20773, 1), new Array(24188, 2), new Array(23371, 3), new Array(17913, 4), new Array(16590, 5), new Array(20375, 6), new Array(19104, 7), new Array(30660, 8), new Array(29427, 9), new Array(32170, 10), new Array(30877, 11), new Array(26159, 12), new Array(25368, 13), new Array(27713, 14), new Array(26998, 15), new Array(5769, 16), new Array(5054, 17), new Array(7399, 18), new Array(6608, 19), new Array(1890, 20), new Array(597, 21), new Array(3340, 22), new Array(2107, 23), new Array(13663, 24), new Array(12392, 25), new Array(16177, 26), new Array(14854, 27), new Array(9396, 28), new Array(8579, 29), new Array(11994, 30), new Array(11245, 31));
 var _ch = new Array(0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4);
+
 function _ax(a) {
     this._cf = _cg.forBits((a >> 3) & 3);
     this._fe = (a & 7);
     this.__defineGetter__("_cg",
-    function() {
-        return this._cf
-    });
+        function() {
+            return this._cf
+        });
     this.__defineGetter__("_dx",
-    function() {
-        return this._fe
-    });
+        function() {
+            return this._fe
+        });
     this.GetHashCode = function() {
         return (this._cf.ordinal() << 3) | _fe
     };
@@ -538,18 +546,19 @@ _ax._cj = function(d) {
     }
     return null
 };
+
 function _cg(a, c, b) {
     this._ff = a;
     this.bits = c;
     this.name = b;
     this.__defineGetter__("Bits",
-    function() {
-        return this.bits
-    });
+        function() {
+            return this.bits
+        });
     this.__defineGetter__("Name",
-    function() {
-        return this.name
-    });
+        function() {
+            return this.name
+        });
     this.ordinal = function() {
         return this._ff
     }
@@ -565,6 +574,7 @@ var M = new _cg(1, 0, "M");
 var Q = new _cg(2, 3, "Q");
 var H = new _cg(3, 2, "H");
 var FOR_BITS = new Array(M, L, H, Q);
+
 function _ac(d, a) {
     if (!a) {
         a = d
@@ -584,20 +594,20 @@ function _ac(d, a) {
         this.bits[b] = 0
     }
     this.__defineGetter__("Width",
-    function() {
-        return this.width
-    });
+        function() {
+            return this.width
+        });
     this.__defineGetter__("Height",
-    function() {
-        return this.height
-    });
+        function() {
+            return this.height
+        });
     this.__defineGetter__("Dimension",
-    function() {
-        if (this.width != this.height) {
-            throw "Can't call getDimension() on a non-square matrix"
-        }
-        return this.width
-    });
+        function() {
+            if (this.width != this.height) {
+                throw "Can't call getDimension() on a non-square matrix"
+            }
+            return this.width
+        });
     this._ds = function(e, g) {
         var f = g * this.rowSize + (e >> 5);
         return ((_ew(this.bits[f], (e & 31))) & 1) != 0
@@ -636,17 +646,18 @@ function _ac(d, a) {
         }
     }
 }
+
 function _dl(a, b) {
     this._dv = a;
     this._dw = b;
     this.__defineGetter__("_du",
-    function() {
-        return this._dv
-    });
+        function() {
+            return this._dv
+        });
     this.__defineGetter__("Codewords",
-    function() {
-        return this._dw
-    })
+        function() {
+            return this._dw
+        })
 }
 _dl._gn = function(c, h, s) {
     if (c.length != h._dp) {
@@ -691,12 +702,13 @@ _dl._gn = function(c, h, s) {
     var q = l[0]._dw.length;
     for (var r = g; r < q; r++) {
         for (var o = 0; o < n; o++) {
-            var v = o < b ? r: r + 1;
+            var v = o < b ? r : r + 1;
             l[o]._dw[v] = c[a++]
         }
     }
     return l
 };
+
 function _cl(a) {
     var b = a.Dimension;
     if (b < 21 || (b & 3) != 1) {
@@ -790,7 +802,7 @@ function _cl(a) {
                 e--
             }
             for (var l = 0; l < f; l++) {
-                var g = n ? f - 1 - l: l;
+                var g = n ? f - 1 - l : l;
                 for (var d = 0; d < 2; d++) {
                     if (!k._ds(e - d, g)) {
                         h++;
@@ -821,6 +833,7 @@ _dx._gl = function(a) {
     }
     return _dx._dy[a]
 };
+
 function _fg() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -835,6 +848,7 @@ function _fg() {
         return ((b + a) & 1) == 0
     }
 }
+
 function _fh() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -849,6 +863,7 @@ function _fh() {
         return (b & 1) == 0
     }
 }
+
 function _fi() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -863,6 +878,7 @@ function _fi() {
         return a % 3 == 0
     }
 }
+
 function _fj() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -877,6 +893,7 @@ function _fj() {
         return (b + a) % 3 == 0
     }
 }
+
 function _fk() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -891,6 +908,7 @@ function _fk() {
         return (((_ew(b, 1)) + (a / 3)) & 1) == 0
     }
 }
+
 function _fl() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -906,6 +924,7 @@ function _fl() {
         return (a & 1) + (a % 3) == 0
     }
 }
+
 function _fm() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -921,6 +940,7 @@ function _fm() {
         return (((a & 1) + (a % 3)) & 1) == 0
     }
 }
+
 function _fn() {
     this._dj = function(c, d) {
         for (var b = 0; b < d; b++) {
@@ -936,6 +956,7 @@ function _fn() {
     }
 }
 _dx._dy = new Array(new _fg(), new _fh(), new _fi(), new _fj(), new _fk(), new _fl(), new _fm(), new _fn());
+
 function _db(_fa) {
     this._fa = _fa;
     this.decode = function(received, _fv) {
@@ -1051,6 +1072,7 @@ function _db(_fa) {
         return result
     }
 }
+
 function _bp(f, e) {
     if (e == null || e.length == 0) {
         throw "bad arguments"
@@ -1077,17 +1099,17 @@ function _bp(f, e) {
         this._dd = e
     }
     this.__defineGetter__("Zero",
-    function() {
-        return this._dd[0] == 0
-    });
+        function() {
+            return this._dd[0] == 0
+        });
     this.__defineGetter__("_ec",
-    function() {
-        return this._dd.length - 1
-    });
+        function() {
+            return this._dd.length - 1
+        });
     this.__defineGetter__("Coefficients",
-    function() {
-        return this._dd
-    });
+        function() {
+            return this._dd
+        });
     this._ex = function(g) {
         return this._dd[this._dd.length - 1 - g]
     };
@@ -1209,6 +1231,7 @@ function _bp(f, e) {
         return new Array(j, o)
     }
 }
+
 function _az(b) {
     this._gh = new Array(256);
     this._gi = new Array(256);
@@ -1230,13 +1253,13 @@ function _az(b) {
     c[0] = 1;
     this.one = new _bp(this, new Array(c));
     this.__defineGetter__("Zero",
-    function() {
-        return this.zero
-    });
+        function() {
+            return this.zero
+        });
     this.__defineGetter__("One",
-    function() {
-        return this.one
-    });
+        function() {
+            return this.one
+        });
     this._ba = function(j, f) {
         if (j < 0) {
             throw "bad arguments"
@@ -1295,7 +1318,7 @@ Decoder.correctErrors = function(g, b) {
     var a = g.length - b;
     try {
         Decoder.rsDecoder.decode(f, a)
-    } catch(c) {
+    } catch (c) {
         throw c
     }
     for (var e = 0; e < b; e++) {
@@ -1326,6 +1349,19 @@ Decoder.decode = function(r) {
     var l = new QRCodeDataBlockReader(e, o._fd, c.Bits);
     return l
 };
+var browser = {
+    versions: function() {
+        var u = navigator.userAgent,
+            app = navigator.appVersion;
+        return { //移动终端浏览器版本信息 
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
+            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器 
+            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器 
+            iPad: u.indexOf('iPad') > -1, //是否iPad 
+        };
+    }(),
+}
+
 qrcode = {};
 qrcode.imagedata = null;
 qrcode.width = 0;
@@ -1333,7 +1369,11 @@ qrcode.height = 0;
 qrcode.qrCodeSymbol = null;
 qrcode.debug = false;
 qrcode.maxImgSize = 1024 * 1024;
-qrcode._eo = [[10, 9, 8, 8], [12, 11, 16, 10], [14, 13, 16, 12]];
+qrcode._eo = [
+    [10, 9, 8, 8],
+    [12, 11, 16, 10],
+    [14, 13, 16, 12]
+];
 qrcode.callback = null;
 qrcode.decode = function(d) {
     if (arguments.length == 0) {
@@ -1354,7 +1394,12 @@ qrcode.decode = function(d) {
             if (g != null) {
                 var j = g.getContext("2d");
                 j.clearRect(0, 0, 320, 240);
-                j.drawImage(c, 0, 0, 320, 240)
+                if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+                    drawImageIOSFix(j, c, 0, 0, 320, 240);
+                }
+                else{
+                    j.drawImage(c, 0, 0, 320, 240);
+                }
             }
             var i = document.createElement("canvas");
             var h = i.getContext("2d");
@@ -1367,12 +1412,19 @@ qrcode.decode = function(d) {
             }
             i.width = l;
             i.height = f;
-            h.drawImage(c, 0, 0, i.width, i.height);
+            i.style.display ="none";
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+                drawImageIOSFix(h, c, 0, 0, i.width, i.height);
+            } else {
+                h.drawImage(c, 0, 0, i.width, i.height);
+            }
             qrcode.width = i.width;
             qrcode.height = i.height;
             try {
                 qrcode.imagedata = h.getImageData(0, 0, i.width, i.height)
-            } catch(m) {
+            } catch (m) {
                 qrcode.result = "Cross domain image reading not supported in your browser! Save it to your computer then drag and drop the file!";
                 if (qrcode.callback != null) {
                     qrcode.callback(qrcode.result)
@@ -1381,7 +1433,7 @@ qrcode.decode = function(d) {
             }
             try {
                 qrcode.result = qrcode.process(h)
-            } catch(m) {
+            } catch (m) {
                 console.log(m);
                 qrcode.result = "error decoding QR Code"
             }
@@ -1400,14 +1452,14 @@ qrcode.decode_url = function(b) {
     var d = "";
     try {
         d = escape(b)
-    } catch(c) {
+    } catch (c) {
         console.log(c);
         d = b
     }
     var a = "";
     try {
         a = decodeURIComponent(d)
-    } catch(c) {
+    } catch (c) {
         console.log(c);
         a = d
     }
@@ -1468,7 +1520,7 @@ qrcode.binarize = function(d) {
     for (var e = 0; e < qrcode.height; e++) {
         for (var b = 0; b < qrcode.width; b++) {
             var a = qrcode.getPixel(b, e);
-            c[b + e * qrcode.width] = a <= d ? true: false
+            c[b + e * qrcode.width] = a <= d ? true : false
         }
     }
     return c
@@ -1521,7 +1573,7 @@ qrcode.grayScaleToBitmap = function(f) {
         for (var a = 0; a < b; a++) {
             for (var g = 0; g < d; g++) {
                 for (var h = 0; h < e; h++) {
-                    c[e * a + h + (d * i + g) * qrcode.width] = (f[e * a + h + (d * i + g) * qrcode.width] < j[a][i]) ? true: false
+                    c[e * a + h + (d * i + g) * qrcode.width] = (f[e * a + h + (d * i + g) * qrcode.width] < j[a][i]) ? true : false
                 }
             }
         }
@@ -1538,6 +1590,7 @@ qrcode.grayscale = function() {
     }
     return c
 };
+
 function _ew(a, b) {
     if (a >= 0) {
         return a >> b
@@ -1547,7 +1600,7 @@ function _ew(a, b) {
 }
 Array.prototype.remove = function(c, b) {
     var a = this.slice((b || c) + 1 || this.length);
-    this.length = c < 0 ? this.length + c: c;
+    this.length = c < 0 ? this.length + c : c;
     return this.push.apply(this, a)
 };
 var _gf = 3;
@@ -1561,6 +1614,7 @@ qrcode._er = function(c) {
         yDiff = l.Y - k.Y;
         return Math.sqrt((xDiff * xDiff + yDiff * yDiff))
     }
+
     function d(k, o, n) {
         var m = o.x;
         var l = o.y;
@@ -1594,27 +1648,68 @@ qrcode._er = function(c) {
     c[1] = j;
     c[2] = h
 };
+
+function detectVerticalSquash(img) {
+    var iw = img.naturalWidth,
+        ih = img.naturalHeight;
+    var canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = ih;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    var data = ctx.getImageData(0, 0, 1, ih).data;
+    // search image edge pixel position in case it is squashed vertically.
+    var sy = 0;
+    var ey = ih;
+    var py = ih;
+    while (py > sy) {
+        var alpha = data[(py - 1) * 4 + 3];
+        if (alpha === 0) {
+            ey = py;
+        } else {
+            sy = py;
+        }
+        py = (ey + sy) >> 1;
+    }
+    var ratio = (py / ih);
+    return (ratio === 0) ? 1 : ratio;
+}
+
+/**
+ * A replacement for context.drawImage
+ * (args are for source and destination).
+ */
+function drawImageIOSFix(ctx, img, sx, sy, sw, sh, dx, dy, dw, dh) {
+    var vertSquashRatio = detectVerticalSquash(img);
+    // Works only if whole image is displayed:
+    // ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio);
+    // The following works correct also when only a part of the image is displayed:
+    ctx.drawImage(img, sx * vertSquashRatio, sy * vertSquashRatio,
+        sw * vertSquashRatio, sh * vertSquashRatio,
+        dx, dy, dw, dh);
+}
+
 function _cz(c, a, b) {
     this.x = c;
     this.y = a;
     this.count = 1;
     this._aj = b;
     this.__defineGetter__("_ei",
-    function() {
-        return this._aj
-    });
+        function() {
+            return this._aj
+        });
     this.__defineGetter__("Count",
-    function() {
-        return this.count
-    });
+        function() {
+            return this.count
+        });
     this.__defineGetter__("X",
-    function() {
-        return this.x
-    });
+        function() {
+            return this.x
+        });
     this.__defineGetter__("Y",
-    function() {
-        return this.y
-    });
+        function() {
+            return this.y
+        });
     this._ek = function() {
         this.count++
     };
@@ -1626,23 +1721,25 @@ function _cz(c, a, b) {
         return false
     }
 }
+
 function _es(a) {
     this._go = a[0];
     this._gu = a[1];
     this._gr = a[2];
     this.__defineGetter__("_gp",
-    function() {
-        return this._go
-    });
+        function() {
+            return this._go
+        });
     this.__defineGetter__("_gq",
-    function() {
-        return this._gu
-    });
+        function() {
+            return this._gu
+        });
     this.__defineGetter__("_gs",
-    function() {
-        return this._gr
-    })
+        function() {
+            return this._gr
+        })
 }
+
 function _cc() {
     this.image = null;
     this._cv = [];
@@ -1650,14 +1747,14 @@ function _cc() {
     this._al = new Array(0, 0, 0, 0, 0);
     this._am = null;
     this.__defineGetter__("_da",
-    function() {
-        this._al[0] = 0;
-        this._al[1] = 0;
-        this._al[2] = 0;
-        this._al[3] = 0;
-        this._al[4] = 0;
-        return this._al
-    });
+        function() {
+            this._al[0] = 0;
+            this._al[1] = 0;
+            this._al[2] = 0;
+            this._al[3] = 0;
+            this._al[4] = 0;
+            return this._al
+        });
     this._ao = function(f) {
         var b = 0;
         for (var d = 0; d < 5; d++) {
@@ -1833,7 +1930,7 @@ function _cc() {
                 var k = Math.abs(l._ei - a);
                 var i = Math.abs(m._ei - a);
                 if (k < i) {
-                    return ( - 1)
+                    return (-1)
                 } else {
                     if (k == i) {
                         return 0
@@ -1855,7 +1952,7 @@ function _cc() {
         if (this._cv.length > 3) {
             this._cv.sort(function(k, i) {
                 if (k.count > i.count) {
-                    return - 1
+                    return -1
                 }
                 if (k.count < i.count) {
                     return 1
@@ -1949,7 +2046,7 @@ function _cc() {
                                 } else {
                                     do {
                                         f++
-                                    } while ( f < k && ! e [ f + h * qrcode . width ]);
+                                    } while (f < k && !e[f + h * qrcode.width]);
                                     f--
                                 }
                                 b = 0;
@@ -1989,27 +2086,28 @@ function _cc() {
         return new _es(l)
     }
 }
+
 function _ai(c, a, b) {
     this.x = c;
     this.y = a;
     this.count = 1;
     this._aj = b;
     this.__defineGetter__("_ei",
-    function() {
-        return this._aj
-    });
+        function() {
+            return this._aj
+        });
     this.__defineGetter__("Count",
-    function() {
-        return this.count
-    });
+        function() {
+            return this.count
+        });
     this.__defineGetter__("X",
-    function() {
-        return Math.floor(this.x)
-    });
+        function() {
+            return Math.floor(this.x)
+        });
     this.__defineGetter__("Y",
-    function() {
-        return Math.floor(this.y)
-    });
+        function() {
+            return Math.floor(this.y)
+        });
     this._ek = function() {
         this.count++
     };
@@ -2021,6 +2119,7 @@ function _ai(c, a, b) {
         return false
     }
 }
+
 function _ak(g, c, b, f, a, e, d) {
     this.image = g;
     this._cv = new Array();
@@ -2159,12 +2258,13 @@ function _ak(g, c, b, f, a, e, d) {
                 }
             }
         }
-        if (! (this._cv.length == 0)) {
+        if (!(this._cv.length == 0)) {
             return this._cv[0]
         }
         throw "Couldn't find enough alignment patterns"
     }
 }
+
 function QRCodeDataBlockReader(c, a, b) {
     this._ed = 0;
     this._cw = 7;
@@ -2272,7 +2372,7 @@ function QRCodeDataBlockReader(c, a, b) {
                     f -= 1
                 }
             }
-        } while ( f > 0 );
+        } while (f > 0);
         return j
     };
     this.getFigureString = function(f) {
@@ -2304,7 +2404,7 @@ function QRCodeDataBlockReader(c, a, b) {
                 }
             }
             g += e
-        } while ( d > 0 );
+        } while (d > 0);
         return g
     };
     this.get8bitByteArray = function(g) {
@@ -2315,7 +2415,7 @@ function QRCodeDataBlockReader(c, a, b) {
             f = this._gd(8);
             d.push(f);
             e--
-        } while ( e > 0 );
+        } while (e > 0);
         return d
     };
     this.getKanjiString = function(j) {
@@ -2335,59 +2435,59 @@ function QRCodeDataBlockReader(c, a, b) {
             }
             h += String.fromCharCode(d);
             g--
-        } while ( g > 0 );
+        } while (g > 0);
         return h
     };
     this.__defineGetter__("DataByte",
-    function() {
-        var g = new Array();
-        var e = 1;
-        var f = 2;
-        var d = 4;
-        var n = 8;
-        do {
-            var k = this.NextMode();
-            if (k == 0) {
-                if (g.length > 0) {
-                    break
-                } else {
-                    throw "Empty data block"
+        function() {
+            var g = new Array();
+            var e = 1;
+            var f = 2;
+            var d = 4;
+            var n = 8;
+            do {
+                var k = this.NextMode();
+                if (k == 0) {
+                    if (g.length > 0) {
+                        break
+                    } else {
+                        throw "Empty data block"
+                    }
                 }
-            }
-            if (k != e && k != f && k != d && k != n) {
-                throw "Invalid mode: " + k + " in (block:" + this._ed + " bit:" + this._cw + ")"
-            }
-            dataLength = this.getDataLength(k);
-            if (dataLength < 1) {
-                throw "Invalid data length: " + dataLength
-            }
-            switch (k) {
-            case e:
-                var l = this.getFigureString(dataLength);
-                var i = new Array(l.length);
-                for (var h = 0; h < l.length; h++) {
-                    i[h] = l.charCodeAt(h)
+                if (k != e && k != f && k != d && k != n) {
+                    throw "Invalid mode: " + k + " in (block:" + this._ed + " bit:" + this._cw + ")"
                 }
-                g.push(i);
-                break;
-            case f:
-                var l = this.getRomanAndFigureString(dataLength);
-                var i = new Array(l.length);
-                for (var h = 0; h < l.length; h++) {
-                    i[h] = l.charCodeAt(h)
+                dataLength = this.getDataLength(k);
+                if (dataLength < 1) {
+                    throw "Invalid data length: " + dataLength
                 }
-                g.push(i);
-                break;
-            case d:
-                var m = this.get8bitByteArray(dataLength);
-                g.push(m);
-                break;
-            case n:
-                var l = this.getKanjiString(dataLength);
-                g.push(l);
-                break
-            }
-        } while ( true );
-        return g
-    })
+                switch (k) {
+                    case e:
+                        var l = this.getFigureString(dataLength);
+                        var i = new Array(l.length);
+                        for (var h = 0; h < l.length; h++) {
+                            i[h] = l.charCodeAt(h)
+                        }
+                        g.push(i);
+                        break;
+                    case f:
+                        var l = this.getRomanAndFigureString(dataLength);
+                        var i = new Array(l.length);
+                        for (var h = 0; h < l.length; h++) {
+                            i[h] = l.charCodeAt(h)
+                        }
+                        g.push(i);
+                        break;
+                    case d:
+                        var m = this.get8bitByteArray(dataLength);
+                        g.push(m);
+                        break;
+                    case n:
+                        var l = this.getKanjiString(dataLength);
+                        g.push(l);
+                        break
+                }
+            } while (true);
+            return g
+        })
 };

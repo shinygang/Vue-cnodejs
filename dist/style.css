@@ -97,11 +97,7 @@ body {
     display: table;
     clear: both; }
 
-.display-flex, .user, .module-enter ul li .til {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+.display-flex, .user, .posts-list .content, .posts-list p {
   /* Firefox */
   display: -ms-flexbox;
   /* IE10 */
@@ -112,7 +108,7 @@ body {
   display: flexbox;
   display: flex; }
 
-.flex1, .user .title, .user .info, .module-enter ul li .til .title, .module-enter ul li .til .content {
+.flex1, .user .title, .user .posts-list h3, .posts-list .user h3, .user .info {
   -webkit-flex: 1;
   -ms-flex: 1;
   -webkit-box-flex: 1;
@@ -139,7 +135,7 @@ body {
   -ms-flex-pack: justify-content;
   justify-content: justify-content; }
 
-.break, .user .title, .user .info .t-title, .module-enter ul li .til .title {
+.break, .user .title, .user .posts-list h3, .posts-list .user h3, .user .info .t-title {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -162,7 +158,7 @@ body {
   .user .good {
     background-color: #80bd01;
     color: #fff; }
-  .user .title {
+  .user .title, .user .posts-list h3, .posts-list .user h3 {
     font-size: 18px;
     font-weight: bold; }
   .user .head {
@@ -208,9 +204,64 @@ body {
   width: 100%;
   height: 100%;
   padding: 40% 0;
+  color: #d4d4d4;
   display: inline-block;
   font-size: 18px;
   text-align: center; }
+
+/*
+**   rework 分界线
+**   ------------
+*/
+/* 颜色 */
+/* 基础布局 */
+/* 综合布局 */
+.text-overflow, .title, .posts-list h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.title, .posts-list h3 {
+  color: #2c3e50;
+  font-size: 16px;
+  line-height: 1.5; }
+
+.display-flex, .user, .posts-list .content, .posts-list p {
+  /* Firefox */
+  display: -ms-flexbox;
+  /* IE10 */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* Chrome, WebKit */
+  display: flexbox;
+  display: flex; }
+
+.flex, .posts-list .info, .posts-list p .name, .posts-list p time:first-child {
+  display: block;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  flex: 1; }
+
+.tag, .posts-list h3:before {
+  padding: 5px 6px;
+  font-size: 10px;
+  font-weight: 400;
+  border-radius: 4px;
+  background-color: #e7e7e7;
+  text-align: center;
+  vertical-align: middle; }
+
+.user-avatar, .posts-list .avatar {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 1px solid #F3F3F3; }
 
 #brim-mask {
   pointer-events: none; }
@@ -236,58 +287,36 @@ body {
   z-index: 7; }
 
 /*模块入口样式*/
-.module-enter ul {
-  background-color: #fff;
-  overflow: hidden; }
-  .module-enter ul li {
-    width: 100%;
-    padding: 15px;
-    display: inline-block;
-    position: relative;
+.posts-list {
+  background-color: #ffffff; }
+  .posts-list li {
+    padding: 10px 15px;
     border-bottom: 1px solid #d5dbdb; }
-    .module-enter ul li .til {
-      width: 100%; }
-      .module-enter ul li .til .tab {
-        padding: 5px 6px;
-        font-size: 10px;
-        font-weight: 400;
-        color: #626262;
-        border-radius: 3px;
-        background-color: #e7e7e7;
-        margin-right: 10px;
-        margin-top: -3px;
-        text-align: center;
-        vertical-align: middle; }
-      .module-enter ul li .til .good {
-        background-color: #42b983;
-        color: #fff; }
-      .module-enter ul li .til .title {
-        font-size: 16px;
-        font-weight: bold;
-        color: #2c3e50; }
-      .module-enter ul li .til .head {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-        border: 1px solid #F3F3F3; }
-      .module-enter ul li .til .content {
-        display: inline-block; }
-        .module-enter ul li .til .content .cl {
-          float: left;
-          width: 70%; }
-          .module-enter ul li .til .content .cl .name {
-            display: block;
-            color: #7f8c8d; }
-        .module-enter ul li .til .content .cr {
-          float: right;
-          width: 30%;
-          text-align: right; }
-          .module-enter ul li .til .content .cr .name {
-            display: block;
-            color: #7f8c8d;
-            font-size: 12px; }
+  .posts-list h3:before {
+    content: attr(title);
+    margin-right: 10px;
+    margin-top: -3px;
+    color: #ffffff; }
+  .posts-list h3.top:before {
+    background: #E74C3C; }
+  .posts-list h3.ask:before {
+    background: #3498DB; }
+  .posts-list h3.good:before {
+    background: #E67E22; }
+  .posts-list h3.job:before {
+    background: #9B59B6; }
+  .posts-list h3.share:before {
+    background: #1ABC9C; }
+  .posts-list .content {
+    padding-top: 10px; }
+  .posts-list p {
+    padding: 3px 0;
+    color: #34495e;
+    font-size: 12px; }
+    .posts-list p:first-child {
+      font-size: 14px; }
+    .posts-list p b {
+      color: #42b983; }
 #hd {
   border-bottom: 1px solid #e8e8e8; }
   #hd.fix-header {
@@ -593,10 +622,6 @@ body {
     clear: both; }
 
 .display-flex, .user {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   /* Firefox */
   display: -ms-flexbox;
   /* IE10 */
@@ -703,9 +728,64 @@ body {
   width: 100%;
   height: 100%;
   padding: 40% 0;
+  color: #d4d4d4;
   display: inline-block;
   font-size: 18px;
   text-align: center; }
+
+/*
+**   rework 分界线
+**   ------------
+*/
+/* 颜色 */
+/* 基础布局 */
+/* 综合布局 */
+.text-overflow, .title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.title {
+  color: #2c3e50;
+  font-size: 16px;
+  line-height: 1.5; }
+
+.display-flex, .user {
+  /* Firefox */
+  display: -ms-flexbox;
+  /* IE10 */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* Chrome, WebKit */
+  display: flexbox;
+  display: flex; }
+
+.flex {
+  display: block;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  flex: 1; }
+
+.tag {
+  padding: 5px 6px;
+  font-size: 10px;
+  font-weight: 400;
+  border-radius: 4px;
+  background-color: #e7e7e7;
+  text-align: center;
+  vertical-align: middle; }
+
+.user-avatar {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 1px solid #F3F3F3; }
 
 #page {
   padding-top: 60px;
@@ -1681,10 +1761,6 @@ body {
     clear: both; }
 
 .display-flex, .user {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   /* Firefox */
   display: -ms-flexbox;
   /* IE10 */
@@ -1791,9 +1867,64 @@ body {
   width: 100%;
   height: 100%;
   padding: 40% 0;
+  color: #d4d4d4;
   display: inline-block;
   font-size: 18px;
   text-align: center; }
+
+/*
+**   rework 分界线
+**   ------------
+*/
+/* 颜色 */
+/* 基础布局 */
+/* 综合布局 */
+.text-overflow, .title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.title {
+  color: #2c3e50;
+  font-size: 16px;
+  line-height: 1.5; }
+
+.display-flex, .user {
+  /* Firefox */
+  display: -ms-flexbox;
+  /* IE10 */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* Chrome, WebKit */
+  display: flexbox;
+  display: flex; }
+
+.flex {
+  display: block;
+  width: 100%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  flex: 1; }
+
+.tag {
+  padding: 5px 6px;
+  font-size: 10px;
+  font-weight: 400;
+  border-radius: 4px;
+  background-color: #e7e7e7;
+  text-align: center;
+  vertical-align: middle; }
+
+.user-avatar {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 1px solid #F3F3F3; }
 
 #page {
   padding-top: 60px;
@@ -1861,6 +1992,7 @@ body {
 
 .icon-empty {
   font-size: 125px;
+  color: #d4d4d4;
   display: block; }
 
 /*# sourceMappingURL=style.css.map*/
