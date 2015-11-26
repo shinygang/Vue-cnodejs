@@ -110,8 +110,9 @@
             }
 
             .add-tab{
+                display: inline-block;
                 width: calc(100% - 140px);
-                padding: 5px;
+                min-width: 50%;
                 font-size: 16px;
                 background: transparent;
                 :after{

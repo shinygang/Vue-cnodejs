@@ -2,9 +2,9 @@
     <nv-head page-type="登录">
     </nv-head>
     <section class="page-body">
-        <label class="label">
+        <div class="label">
             <input class="txt" type="text" placeholder="Access Token" v-model="token" maxlength="36">
-        </label>
+        </div>
         <div class="label">
             <a class="button">选择二维码图片</a>
             <input class="file" type="file" id="file_upload" @change="readPic" 
@@ -75,7 +75,7 @@
                         localStorage.userId = res.id;
                         localStorage.token = self.token;
                         //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
-                        var redirect = decodeURIComponent(self.$route.query.redirect);
+                        var redirect = decodeURIComponent(self.$route.query.redirect || '/');
                         self.$route.router.go(redirect);
                     },
                     error:function(res){
@@ -98,8 +98,8 @@
                     var base64 = dataURL.split('base64,');
                     var param = { "img": base64[1] };
                     
+                    self.loading.show = true;
                     if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
-                        self.loading.show = true;
                         $.post('http://m.yueqingwang.com/common.ashx', param, function (d) {
                             self.loading.show = false;
                             if(d == "qrcode error"){
@@ -118,6 +118,7 @@
                     else{
                         qrcode.decode(dataURL);
                         qrcode.callback = function (data) {
+                            self.loading.show = false;
                             self.token = data;
                         }
                     }
@@ -138,18 +139,9 @@
     padding: 50px 15px;
    
     .label{
+        display: inline-block;
         width: 100%;
         margin-top: 15px;
-        display: -moz-box;
-        /* Firefox */
-        display: -ms-flexbox;
-        /* IE10 */
-        display: -webkit-box;
-        /* Safari */
-        display: -webkit-flex;
-        /* Chrome, WebKit */
-        display: flexbox;
-        display: flex;
         position: relative;
         left: 0;
         top: 0;
@@ -159,13 +151,7 @@
             border:none;
             border-bottom: 1px solid #4fc08d;
             background-color: transparent;
-            display: block;
-            -webkit-flex: 1;
-            -moz-box-flex: 1;
-            -ms-flex: 1;
-            -webkit-box-flex: 1;
-            box-flex: 1;
-            flex: 1;
+            width: 100%;
             font-size: 14px;
             color: #313131;
         }
@@ -184,7 +170,7 @@
             vertical-align: middle;
         }
         .button:first-child{
-            margin-right: 10px;
+            margin-right: 2%;
         }
         .file{
             position: absolute;
