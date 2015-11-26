@@ -6,14 +6,30 @@
             <input class="txt" type="text" placeholder="Access Token" v-model="token" maxlength="36">
         </label>
         <label>
-            <button type="button" @click="logon">登录</button>
+            <a class="button" type="button">选择二维码图片</a>
+            <input class="file" type="file" id="file_upload" @change="readPic" 
+                accept="image/*" capture="camera"/>
+            <a class="button" type="button" @click="logon">登录</a>
         </label>
     </section>
     <nv-alert :content="alert.txt" :show="alert.show"></nv-alert>
 </template>
 
 <script>
-    var $ = require('webpack-zepto');
+    var $ = require('webpack-zepto'),qrcode = require('../libs/llqrcode').qrcode;
+
+    var browser = {
+        versions: function() {
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+            return { //移动终端浏览器版本信息 
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器 
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器 
+                iPad: u.indexOf('iPad') > -1, //是否iPad 
+            };
+        }(),
+    }
     module.exports = {
         data: function () {
             var self = this;
@@ -65,7 +81,32 @@
                         return false;
                     }
                 })
-            }
+            },
+            readPic:function(e){
+                var self = this;
+                var file = e.currentTarget.files[0];//  this is my image
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var dataURL = reader.result;
+
+                    var base64 = dataURL.split('base64,');
+                    var param = { "img": base64[1] };
+                    
+                    if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+                        $.post('http://m.yueqingwang.com/common.ashx', param, function (d) {
+                            self.token = d;
+                        });
+                    }
+                    else{
+                        qrcode.decode(dataURL);
+                        qrcode.callback = function (data) {
+                            self.token = data;
+                        }
+                    }
+                }
+                reader.readAsDataURL(file);
+            },
         },
         components:{
             "nvHead":require('../components/header.vue'),
@@ -74,35 +115,6 @@
     }
 </script>
 <style>
-    .login-no a {
-        display: block;
-        color: #313131;
-    }
-    .login-thr {
-        margin: 68px 0 53px;
-        border-top: 1px solid #dcdcdc;
-        position: relative;
-        p {
-            padding: 0 8px;
-            background-color: #80bd01;
-            color: #fff;
-            font-size: 12px;
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            margin-left: -50px;
-        }
-    }
-    .txt{
-        padding: 12px 0;
-        border:none;
-        border-bottom: 1px solid #4fc08d;
-        background-color: transparent;
-        display: block;
-        -webkit-box-flex: 1;
-        font-size: 14px;
-        color: #313131;
-    }
 
 .page-body {
     padding: 50px 15px;
@@ -110,24 +122,65 @@
     label{
         width: 100%;
         margin-top: 15px;
+        display: -moz-box;
+        /* Firefox */
+        display: -ms-flexbox;
+        /* IE10 */
         display: -webkit-box;
+        /* Safari */
+        display: -webkit-flex;
+        /* Chrome, WebKit */
+        display: flexbox;
+        display: flex;
         position: relative;
-    }
-    button {
-        width: 100%;
-        height: 42px;
-        border-radius: 3px;
-        color: #fff;
-        font-size: 16px;
-        -webkit-box-flex: 1;
-        display: block;
-        background-color: #4fc08d;
-        border: none;
-        border-bottom: 2px solid #3aa373;
-        text-align: center;
-    }
-    .reg-email {
-        line-height: 42px;
+        left: 0;
+        top: 0;
+
+        .txt{
+            padding: 12px 0;
+            border:none;
+            border-bottom: 1px solid #4fc08d;
+            background-color: transparent;
+            display: block;
+            -webkit-flex: 1;
+            -moz-box-flex: 1;
+            -ms-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            flex: 1;
+            font-size: 14px;
+            color: #313131;
+        }
+        .button {
+            height: 42px;
+            line-height: 42px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 16px;
+            -webkit-flex: 1;
+            -moz-box-flex: 1;
+            -ms-flex: 1;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+            flex: 1;
+            display: inline-block;
+            background-color: #4fc08d;
+            border: none;
+            border-bottom: 2px solid #3aa373;
+            text-align: center;
+            vertical-align: middle;
+            z-index: 10;
+        }
+        .button:last-child{
+            margin-left: 10px;
+        }
+        .file{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 42px;
+            width: 49%;
+        }
     }
 }
 </style>

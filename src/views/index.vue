@@ -7,7 +7,7 @@
     </nv-head>
     
 
-    <section id="page" v-class="show-menu:showMenu">
+    <section id="page">
 
         <!-- 首页列表 -->
 		<ul class="posts-list">
@@ -35,7 +35,7 @@
                                 {{item.create_at | getLastTimeStr true}}
                             </time>
                             <time>
-                                {{tem.last_reply_at | getLastTimeStr true}}
+                                {{item.last_reply_at | getLastTimeStr true}}
                             </time>
                         </p>
                     </div>
@@ -44,6 +44,7 @@
 		</ul>
 
     </section>
+    <script src="../lib/llqrcode.js"></script>
 </template>
 
 <script>
