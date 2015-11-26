@@ -2,10 +2,15 @@
     <nv-head page-type="主题" 
             :show-menu.sync="showMenu" 
             :need-add="true" 
-            fix-head="true"></nv-head>
+            fix-head="true">
+    </nv-head>
 
-    <div id="page" class="page markdown-body" v-class="show-menu:showMenu" v-if="topic.title">
-        <h2 class="title" v-text="topic.title"></h2>
+    <div id="page" class="page " 
+            v-class="show-menu:showMenu" 
+            v-if="topic.title">
+        
+        <h2 class="topic-title" v-text="topic.title"></h2>
+
         <section class="user">
             <img class="head" :src="topic.author.avatar_url" />
             <div class="info">
@@ -21,7 +26,7 @@
                 </span>
             </div>
         </section>
-        <section class='topic_content' v-html="topic.content"></section>
+        <section class='topic_content markdown-body' v-html="topic.content"></section>
         <section class="reply_num">
             {{topic.reply_count}} 回复
         </section>
