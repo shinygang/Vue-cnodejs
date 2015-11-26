@@ -2,17 +2,18 @@
     <nv-head page-type="登录">
     </nv-head>
     <section class="page-body">
-        <label>
+        <label class="label">
             <input class="txt" type="text" placeholder="Access Token" v-model="token" maxlength="36">
         </label>
-        <label>
-            <a class="button" type="button">选择二维码图片</a>
+        <div class="label">
+            <a class="button">选择二维码图片</a>
             <input class="file" type="file" id="file_upload" @change="readPic" 
                 accept="image/*" capture="camera"/>
-            <a class="button" type="button" @click="logon">登录</a>
-        </label>
+            <a class="button" @click="logon">登录</a>
+        </div>
     </section>
     <nv-alert :content="alert.txt" :show="alert.show"></nv-alert>
+    <nv-loading :show="loading.show" :show-txt="loading.showTxt"></nv-loading>
 </template>
 
 <script>
@@ -46,6 +47,10 @@
                             self.alert.show = false;
                         }, 1000);
                     }
+                },
+                loading:{
+                    show:false,
+                    showTxt:'二维码识别中'
                 }
             }
         },
@@ -94,8 +99,20 @@
                     var param = { "img": base64[1] };
                     
                     if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+                        self.loading.show = true;
                         $.post('http://m.yueqingwang.com/common.ashx', param, function (d) {
-                            self.token = d;
+                            self.loading.show = false;
+                            if(d == "qrcode error"){
+                                self.token = "";
+                                var text = "二维码图片不清晰";
+                                self.alert.txt = text;
+                                self.alert.show = true;
+                                self.alert.hideFn();
+                                return false;
+                            }
+                            else{
+                                self.token = d;
+                            }
                         });
                     }
                     else{
@@ -110,7 +127,8 @@
         },
         components:{
             "nvHead":require('../components/header.vue'),
-            "nvAlert":require('../components/nvAlert.vue')
+            "nvAlert":require('../components/nvAlert.vue'),
+            "nvLoading":require('../components/loading.vue')
         }
     }
 </script>
@@ -119,7 +137,7 @@
 .page-body {
     padding: 50px 15px;
    
-    label{
+    .label{
         width: 100%;
         margin-top: 15px;
         display: -moz-box;
@@ -152,34 +170,32 @@
             color: #313131;
         }
         .button {
+            display: inline-block;
+            width: 48%;
             height: 42px;
             line-height: 42px;
             border-radius: 3px;
             color: #fff;
             font-size: 16px;
-            -webkit-flex: 1;
-            -moz-box-flex: 1;
-            -ms-flex: 1;
-            -webkit-box-flex: 1;
-            box-flex: 1;
-            flex: 1;
-            display: inline-block;
             background-color: #4fc08d;
             border: none;
             border-bottom: 2px solid #3aa373;
             text-align: center;
             vertical-align: middle;
-            z-index: 10;
         }
-        .button:last-child{
-            margin-left: 10px;
+        .button:first-child{
+            margin-right: 10px;
         }
         .file{
             position: absolute;
             top: 0;
             left: 0;
             height: 42px;
-            width: 49%;
+            width: 48%;
+            outline: medium none;
+            filter:alpha(opacity=0);
+            -moz-opacity:0;
+            opacity:0;
         }
     }
 }
