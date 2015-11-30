@@ -9,8 +9,7 @@
             v-class="show-menu:showMenu" 
             v-if="topic.title">
         
-        <h2 class="topic-title" v-text="topic.title"></h2>
-        
+        <h2 class="topic-title" v-text="topic.title"></h2>        
         <section class="author-info">
             <img class="avatar" :src="topic.author.avatar_url" />
             <div class="col">
@@ -45,7 +44,7 @@
                         <div class="info">
                             <span class="cl">
                                 <span class="name" v-text="item.author.loginname"></span>
-                                <span class="name">
+                                <span class="name mt10">
                                     <span></span>
                                     发布于:{{item.create_at | getLastTimeStr true}}</span>
                             </span>

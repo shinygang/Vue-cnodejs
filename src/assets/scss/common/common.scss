@@ -113,14 +113,19 @@ body {
     }
     .head {
         display: inline-block;
-        width: $gap*8;
-        height: $gap*8;
+        width: $gap*9;
+        height: $gap*9;
+        border: 2px solid #fff6e6;
         border-radius: 50%;
         margin-right: $gap*2;
     }
     .info {
-        display: inline-block;
+        display: block;
         @extend .flex1;
+
+        &:after{
+            clear:both;
+        }
 
         .t-title{
             font-size: $gap*3.6;
@@ -136,14 +141,17 @@ body {
                 display: block;
                 color: $color62;
             }
+            .mt10{
+                margin-top: $gap*2;
+            }
         }
         .cr {
-            float: right;
+            float: left;
             width: 30%;
             text-align: right;
             .name {
                 display: block;
-                margin-top: $gap;
+                margin-top: $gap*2;
                 color: $color80;
                 font-size: $gap*2.4;
             }
@@ -161,6 +169,9 @@ body {
         vertical-align: middle;
         border: 0;
         -ms-interpolation-mode: bicubic;
+    }
+    p{
+        line-height:1.3;
     }
 }
 
