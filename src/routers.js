@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports=function(router){
     router.map({
         '/':{				//首页

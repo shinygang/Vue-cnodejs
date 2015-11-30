@@ -1,4 +1,5 @@
-"use strict"
+'use strict'
+
 var moment = require('moment');
 moment.locale('zh-cn'); // 使用中文
 
