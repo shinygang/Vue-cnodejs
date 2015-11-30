@@ -5,31 +5,36 @@
             fix-head="true">
     </nv-head>
 
-    <div id="page" class="page " 
+    <div id="page" 
             v-class="show-menu:showMenu" 
             v-if="topic.title">
         
-        <h2 class="topic-title" v-text="topic.title"></h2>
-
-        <section class="user">
-            <img class="head" :src="topic.author.avatar_url" />
-            <div class="info">
-                <span class="cl">
-                    <span class="name">{{topic.author.loginname}}</span>
-                    <span class="name mt10">
-                        发布于:{{topic.create_at | getLastTimeStr true}}</span>
+        <h2 class="topic-title" v-text="topic.title"></h2>        
+        <section class="author-info">
+            <img class="avatar" :src="topic.author.avatar_url" />
+            <div class="col">
+                <span>{{topic.author.loginname}}</span>
+                <time>
+                    发布于:{{topic.create_at | getLastTimeStr true}}
+                </time>
+            </div>
+            <div class="right">
+                <span class="tag" 
+                        :class="topic.tab|getTabClassName item.good item.top">
+                        {{topic.tab|getTabStr topic.good topic.top}}
                 </span>
-                <span class="cr">
-                    <span class="tab" :class="{'good':topic.good || topic.top}"
-                            v-text="topic.tab | getTabStr topic.good topic.top"></span>
-                    <span class="name">{{topic.visit_count}}次浏览</span>
-                </span>
+                <span class="name">{{topic.visit_count}}次浏览</span>
             </div>
         </section>
-        <section class='topic_content markdown-body' v-html="topic.content"></section>
-        <section class="reply_num">
-            {{topic.reply_count}} 回复
+
+        <section class='markdown-body topic-content' v-html="topic.content">
+            
         </section>
+
+        <h3 class="topic-reply">
+            <strong>{{topic.reply_count}}</strong> 回复
+        </h3>
+
         <section class="reply-list">
             <ul>
                 <li v-for="item in topic.replies">
@@ -70,7 +75,6 @@
     </div>
 </template>
 <script>
-    require('../assets/scss/detail.scss');
     require('../assets/scss/iconfont/iconfont.css');
     require('../assets/scss/github-markdown.css');
     var $ = require('webpack-zepto');

@@ -1,0 +1,65 @@
+.topic-title {
+    padding: $padding;
+    font-size: 18px;
+    color: $title;
+    line-height: 1.5;
+}
+
+.author-info {
+    @extend .display-flex;
+    align-items: center;
+    padding: 0 $padding;
+    color: $text;
+    font-size: 12px;
+    .col {
+        @extend .flex;
+    }
+    .avatar {
+        display: block;
+        width: 40px;
+        height: 40px;
+        margin-right: $padding;
+        border-radius: 50%;
+    }
+    .right{
+        text-align: right;
+    }
+    span, time {
+        display: block;
+        padding: 5px 0;
+    }
+    .tag {
+        @extend .tag;
+        color: #ffffff;
+        &.top {
+            background: #E74C3C;
+        }
+        &.ask {
+            background: #3498DB;
+        }
+        &.good {
+            background: #E67E22;
+        }
+        &.job {
+            background: #9B59B6;
+        }
+        &.share {
+            background: #1ABC9C;
+        }
+    }
+}
+.topic-content {
+    padding: $padding;
+    margin-top: $padding;
+    background: #ffffff;
+}
+.topic-reply {
+    @extend .title;
+    padding: $padding;
+    strong {
+        color: #42b983;
+    }
+}
+
+
+

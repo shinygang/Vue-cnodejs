@@ -1,18 +1,11 @@
 @import 'common/reset.scss';
 @import 'common/common.scss';
-#page {
-    padding-top: 60px;
-    transition: all .3s ease;
-}
 
 .page {
     background-color: $colorfff;
     height: 100%;
     padding: $gap*3 0;
-    .title {
-        font-size: 20px;
-        margin: 0 $gap*2;
-    }
+
     .reply_num {
         margin-top: $gap*4;
         background-color: $colore7;
@@ -74,13 +67,6 @@
     .message {
         border-bottom: solid 1px $colord4;
         padding: $gap*2 0;
-    }
-    .topic-title {
-        margin: $gap $gap*2;
-        background-color: $colore7;
-        padding: $gap;
-        font-weight: bold;
-        border-radius: $gap;
     }
     .tabs {
         width: 100%;
