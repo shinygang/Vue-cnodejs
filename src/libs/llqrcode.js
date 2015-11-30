@@ -1,3 +1,5 @@
+'use strict'
+
 _aa = {};
 _aa._ab = function(f, e) {
     var d = qrcode.width;

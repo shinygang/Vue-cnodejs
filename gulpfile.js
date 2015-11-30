@@ -1,3 +1,5 @@
+'use strict'
+
 var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
