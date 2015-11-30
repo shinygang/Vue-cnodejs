@@ -67,12 +67,20 @@
                 </li>
             </ul>
         </section>
-        <nv-reply :topic.sync="topic" :topic-id="topicId" :reply-id="" v-if="userId"></nv-reply>
+        
+        <nv-reply v-if="userId" 
+                :topic.sync="topic" 
+                :topic-id="topicId" 
+                :reply-id="" >
+        </nv-reply>
+        
     </div>
+
     <div class='no-data' v-if="noData">
         <i class="iconfont icon-empty">&#xe60a;</i>
         该话题不存在!
     </div>
+
 </template>
 <script>
     require('../assets/scss/iconfont/iconfont.css');

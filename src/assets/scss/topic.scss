@@ -62,4 +62,35 @@
 }
 
 
+/* 回复框样式 */
+
+.reply {
+    margin: 0 $padding;
+    textarea {
+        display: block;
+        -webkit-box-flex: 1;
+        width: 100%;
+        border: $border;
+        background-color: #fff;
+        font-size: 14px;
+        padding: $padding;
+        color: #313131;
+    }
+    .button {
+        display: inline-block;
+        width: 100%;
+        height: 42px;
+        margin: $padding 0;
+        line-height: 42px;
+        color: #fff;
+        font-size: 16px;
+        background-color: #4fc08d;
+        border: none;
+        border-bottom: 2px solid #3aa373;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+
+
 

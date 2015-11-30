@@ -1,15 +1,15 @@
 <template>
+
     <section class="reply">
         <textarea id="content" rows="8" class="text" 
             :class="{'err':hasErr}"
             v-model="content" 
             placeholder='回复支持Markdown语法,请注意标记代码'>
         </textarea>
-        <a class="btn" @click="addReply()">确定</a>
+        <a class="button" @click="addReply">确定</a>
     </section>
+
 </template>
-<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-<script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script> -->
 <script>
 
     var $ = require('webpack-zepto'),
