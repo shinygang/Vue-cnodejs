@@ -5,7 +5,7 @@
             fix-head="true">
     </nv-head>
 
-    <div id="page" 
+    <div id="page"
             v-class="show-menu:showMenu" 
             v-if="topic.title">
         

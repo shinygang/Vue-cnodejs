@@ -93,12 +93,13 @@
                 $.get('https://cnodejs.org/api/v1/topics?'+params,function(d){
                     _self.scroll = true;
                     if(d && d.data){
-                        if(_self.searchKey.page == 0){
-                            _self.topics = d.data;
-                        }
-                        else{
-                            _self.topics = _self.topics.concat(d.data);
-                        }
+                        _self.topics = d.data;
+                        // if(_self.searchKey.page == 0){
+                        //     _self.topics = d.data;
+                        // }
+                        // else{
+                        //     _self.topics = _self.topics.concat(d.data);
+                        // }
                     }
                 })
             },
@@ -109,7 +110,7 @@
                     var totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
                     if ($(document).height() <= totalheight + 100) {
                         _self.scroll = false;
-                        _self.searchKey.page += 1;
+                        _self.searchKey.limit += 20;
                         _self.getTopics();
                     }
                 }

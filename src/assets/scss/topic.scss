@@ -52,15 +52,46 @@
     padding: $padding;
     margin-top: $padding;
     background: #ffffff;
+    border-bottom: solid 1px $colord4;
 }
 .topic-reply {
     @extend .title;
     padding: $padding;
+    border-bottom: solid 1px $colord4;
     strong {
         color: #42b983;
     }
 }
-
+.reply_num {
+    margin-top: $gap*4;
+    background-color: $colore7;
+    padding: $gap*2 0 $gap*2 $gap*2;
+    border-top: solid 1px $colord4;
+    border-bottom: solid 1px $colord4;
+}
+.reply-list {
+    width: 100%;
+    margin-top: $gap*3;
+    ul {
+        width: 100%;
+        list-style: none;
+        padding-left: 0;
+        li {
+            width: 100%;
+            list-style: none;
+            border-bottom: solid 1px $colord4;
+            &:last-child {
+                border-bottom: none;
+            }
+            .uped {
+                color: $color80;
+            }
+            .icon {
+                font-size: 26px;
+            }
+        }
+    }
+}
 
 /* 回复框样式 */
 
