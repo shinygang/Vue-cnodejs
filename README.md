@@ -1,4 +1,4 @@
-#用Vue.js重写了cnode.js前端
+#基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.github.io/cnodevue/)
 
 ###安装
 
@@ -42,9 +42,3 @@ npm run dist
 └── webpack.config.js  // Webpack 配置文件
 </pre>
 
-
-##Todo List
-1. localStorage 隐私模式
-2. 文本编辑器
-3. 扫描登录
-4. 浏览器兼容(特别是安卓老版本的)

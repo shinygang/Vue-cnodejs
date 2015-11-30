@@ -39,7 +39,7 @@
                     accesstoken:localStorage.token
                 },
                 err:'',
-                authorTxt:'<br/><a href="https://github.com/shinygang/Vue-cnodejs">From CNodeJS-VueJS</a>',
+                authorTxt:'<br/><a href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
                 alert: {
                     txt: '',
                     show: false,
