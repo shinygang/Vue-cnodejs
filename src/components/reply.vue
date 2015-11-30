@@ -24,7 +24,7 @@
                 hasErr:false,
                 content:'',
                 userId:localStorage.userId || '',
-                authorTxt:'<br/><a href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
+                authorTxt:'<br/><br/><a class="form" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
             }
         },
         ready: function(){

@@ -53,6 +53,9 @@
     margin-top: $padding;
     background: #ffffff;
     border-bottom: solid 1px $colord4;
+    .from{
+        color:$red;
+    }
 }
 .topic-reply {
     @extend .title;
@@ -88,6 +91,13 @@
             }
             .icon {
                 font-size: 26px;
+            }
+            .from{
+                color:$red;
+            }
+            .language-javascript{
+                background-color:$colorf0;
+                overflow-x:auto;
             }
         }
     }

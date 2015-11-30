@@ -39,7 +39,7 @@
                     accesstoken:localStorage.token
                 },
                 err:'',
-                authorTxt:'<br/><a href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
+                authorTxt:'<br/><br/><a class="from" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
                 alert: {
                     txt: '',
                     show: false,
@@ -97,6 +97,7 @@
 <style>
     .add-container{
         margin-top: 50px;
+        background-color: #fff;
 
         .line{
             padding: 10px 15px;

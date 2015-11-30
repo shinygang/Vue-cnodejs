@@ -69,7 +69,8 @@
         	data:function(transition){
                 var _self = this;
 
-                _self.searchKey.page = 1;
+                //_self.searchKey.page = 1;
+                _self.searchKey.limit = 20;
         		if(transition.to.query.tab){
                     _self.searchKey.tab = transition.to.query.tab;
                 }
@@ -77,14 +78,18 @@
                 _self.showMenu = false;
 
                 //页面初次加载获取的数据
-                _self.getTopics(self.searchData);
+                _self.getTopics();
 
                 //滚动加载
                 $(window).on('scroll', function() {
                     _self.getScrollData();
                 });
                
-        	}
+        	},
+            deactivate:function(transition){
+                $(window).off('scroll');
+                transition.next();
+            }
         },
         methods:{
             getTopics:function(){
