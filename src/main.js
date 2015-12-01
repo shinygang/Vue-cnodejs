@@ -25,8 +25,6 @@ var router = new VueRouter({
     saveScrollPosition: true,
     transitionOnLoad: true
 });
-var $ = require('webpack-zepto');
-
 
 //登录中间验证，页面需要登录而没有登录的情况直接跳转登录
 router.beforeEach(function(transition) {
