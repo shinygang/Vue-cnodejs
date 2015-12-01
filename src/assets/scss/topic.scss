@@ -1,8 +1,11 @@
 .topic-title {
-    padding: $padding;
+    padding: $gap;
+    margin:$padding;
     font-size: 18px;
     color: $title;
     line-height: 1.5;
+    background-color:$colorf0;
+    border-radius:$gap;
 }
 
 .author-info {

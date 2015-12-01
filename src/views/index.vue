@@ -1,17 +1,17 @@
 <template>
     <!-- 全局header -->
-    <nv-head :page-type="searchKey.tab | getTitleStr" 
-            fix-head="true" 
-            :need-add="true" 
+    <nv-head :page-type="searchKey.tab | getTitleStr"
+            fix-head="true"
+            :need-add="true"
             :show-menu.sync="showMenu">
     </nv-head>
-    
+
 
     <section id="page">
 
         <!-- 首页列表 -->
 		<ul class="posts-list">
-			<li v-for="item in topics" 
+			<li v-for="item in topics"
                     v-link="{name:'topic',params:{id:item.id}}">
 
 				<h3 v-text="item.title"
@@ -49,7 +49,6 @@
 
 <script>
     require('../assets/scss/CV.scss');
-    var $ = require('webpack-zepto');
 
     module.exports = {
         data: function(){
@@ -84,7 +83,7 @@
                 $(window).on('scroll', function() {
                     _self.getScrollData();
                 });
-               
+
         	},
             deactivate:function(transition){
                 $(window).off('scroll');

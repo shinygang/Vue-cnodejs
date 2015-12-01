@@ -1,31 +1,30 @@
 <template>
-    <div class="page-cover" 
-            v-if="showMenu&&fixHead" 
+    <div class="page-cover"
+            v-if="showMenu&&fixHead"
             @click="showMenus">
     </div>
     <header :class="{'show':showMenu&&fixHead,'fix-header':fixHead,'no-fix':!fixHead}" id="hd">
         <div class="nv-toolbar">
-            <div class="toolbar-nav" 
+            <div class="toolbar-nav"
                     @click="openMenu"
                     v-if="fixHead">
             </div>
             <span v-text="pageType"></span>
             <i class="num" v-if="messageCount > 0"> {{messageCount}}</i>
-            <i v-if="needAdd" v-show="!messageCount || messageCount <= 0" 
+            <i v-if="needAdd" v-show="!messageCount || messageCount <= 0"
                 class="iconfont add-icon" v-link="{name:'add'}">&#xe60f;</i>
         </div>
     </header>
-    <nv-menu :show-menu="showMenu" 
-            :page-type="pageType" 
-            :nick-name="nickname" 
+    <nv-menu :show-menu="showMenu"
+            :page-type="pageType"
+            :nick-name="nickname"
             :profile-url="profileimgurl"
             v-if="fixHead" ></nv-menu>
 </template>
 
 <script>
     require('../assets/scss/iconfont/iconfont.css');
-    var utils = require('../libs/utils'),       //加载公用函数
-        $ = require('webpack-zepto');
+    var utils = require('../libs/utils');       //加载公用函数
 
     module.exports={
         replace:true,
@@ -79,7 +78,7 @@
     display:-webkit-box;
     -webkit-box-align:center;
 
-    
+
     .toolbar-nav {
         width: 49px;
         height: 44px;
@@ -91,7 +90,7 @@
         top: 0;
         left: 0;
     }
-    
+
     &>span {
         display: block;
         text-align: center;
@@ -99,7 +98,7 @@
         line-height: 44px;
         font-size: 16px;
         width: 100%;
-        position: relative;  
+        position: relative;
         z-index: 0;
     }
     .num {

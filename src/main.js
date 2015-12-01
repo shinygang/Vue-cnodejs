@@ -9,8 +9,6 @@ Vue.use(VueRouter);
 var validator = require('vue-validator');
 Vue.use(validator);
 
-
-var $ = require('webpack-zepto');
 $.ajaxSettings.crossDomain = true;
 
 //实例化Vue的filter
