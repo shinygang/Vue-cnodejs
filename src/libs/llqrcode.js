@@ -1,4 +1,6 @@
-_aa = {};
+'use strict'
+
+var _aa = {};
 _aa._ab = function(f, e) {
     var d = qrcode.width;
     var b = qrcode.height;
@@ -826,7 +828,7 @@ function _cl(a) {
         return s
     }
 }
-_dx = {};
+var _dx = {};
 _dx._gl = function(a) {
     if (a < 0 || a > 7) {
         throw "bad arguments"
@@ -968,9 +970,9 @@ function _db(_fa) {
         var _fq = false;
         var noError = true;
         for (var i = 0; i < _fv; i++) {
-            var eval = poly.evaluateAt(this._fa.exp(_fq ? i + 1 : i));
-            _dh[_dh.length - 1 - i] = eval;
-            if (eval != 0) {
+            var evs = poly.evaluateAt(this._fa.exp(_fq ? i + 1 : i));
+            _dh[_dh.length - 1 - i] = evs;
+            if (evs != 0) {
                 noError = false
             }
         }
@@ -1307,7 +1309,7 @@ _az._bc = new _az(301);
 _az._bd = function(d, c) {
     return d ^ c
 };
-Decoder = {};
+var Decoder = {};
 Decoder.rsDecoder = new _db(_az._bb);
 Decoder.correctErrors = function(g, b) {
     var d = g.length;
@@ -1362,7 +1364,7 @@ var browser = {
     }(),
 }
 
-qrcode = {};
+var qrcode = {};
 qrcode.imagedata = null;
 qrcode.width = 0;
 qrcode.height = 0;

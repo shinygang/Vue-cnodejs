@@ -1,3 +1,5 @@
+'use strict'
+
 var Vue = require('vue');
 var app = Vue.extend({});
 var VueResource = require('vue-resource');
