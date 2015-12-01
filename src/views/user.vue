@@ -15,7 +15,7 @@
         </ul>
         <div class="message markdown-body" v-for="item in currentData">
             <section class="user">
-                <img class="head" :src="item.author.avatar_url" 
+                <img class="head" :src="item.author.avatar_url"
                     v-link="{name:'user',params:{loginname:item.author.loginname}}" />
                 <div class="info" v-link="{name:'topic',params:{id:item.id}}">
                     <div class="t-title">{{item.title}}</div>
@@ -37,8 +37,6 @@
 <script>
     require('../assets/scss/user.scss');
     require('../assets/scss/iconfont/iconfont.css');
-
-    var $ = require('webpack-zepto');
 
     module.exports = {
         data: function(){

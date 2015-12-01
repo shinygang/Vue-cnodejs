@@ -7,7 +7,7 @@
         </div>
         <div class="label">
             <a class="button">选择二维码图片</a>
-            <input class="file" type="file" id="file_upload" @change="readPic" 
+            <input class="file" type="file" id="file_upload" @change="readPic"
                 accept="image/*" capture="camera"/>
             <a class="button" @click="logon">登录</a>
         </div>
@@ -17,17 +17,17 @@
 </template>
 
 <script>
-    var $ = require('webpack-zepto'),qrcode = require('../libs/llqrcode').qrcode;
+    var qrcode = require('../libs/llqrcode').qrcode;
 
     var browser = {
         versions: function() {
             var u = navigator.userAgent,
                 app = navigator.appVersion;
-            return { //移动终端浏览器版本信息 
-                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端 
-                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器 
-                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器 
-                iPad: u.indexOf('iPad') > -1, //是否iPad 
+            return { //移动终端浏览器版本信息
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: u.indexOf('iPad') > -1, //是否iPad
             };
         }(),
     }
@@ -97,7 +97,7 @@
 
                     var base64 = dataURL.split('base64,');
                     var param = { "img": base64[1] };
-                    
+
                     self.loading.show = true;
                     if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
                         $.post('http://m.yueqingwang.com/common.ashx', param, function (d) {
@@ -137,7 +137,7 @@
 
 .page-body {
     padding: 50px 15px;
-   
+
     .label{
         display: inline-block;
         width: 100%;

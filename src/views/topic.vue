@@ -1,15 +1,15 @@
 <template>
-    <nv-head page-type="主题" 
-            :show-menu.sync="showMenu" 
-            :need-add="true" 
+    <nv-head page-type="主题"
+            :show-menu.sync="showMenu"
+            :need-add="true"
             fix-head="true">
     </nv-head>
 
     <div id="page"
-            v-class="show-menu:showMenu" 
+            v-class="show-menu:showMenu"
             v-if="topic.title">
-        
-        <h2 class="topic-title" v-text="topic.title"></h2>        
+
+        <h2 class="topic-title" v-text="topic.title"></h2>
         <section class="author-info">
             <img class="avatar" :src="topic.author.avatar_url" />
             <div class="col">
@@ -19,7 +19,7 @@
                 </time>
             </div>
             <div class="right">
-                <span class="tag" 
+                <span class="tag"
                         :class="topic.tab|getTabClassName item.good item.top">
                         {{topic.tab|getTabStr topic.good topic.top}}
                 </span>
@@ -28,7 +28,7 @@
         </section>
 
         <section class='markdown-body topic-content' v-html="topic.content">
-            
+
         </section>
 
         <h3 class="topic-reply">
@@ -39,7 +39,7 @@
             <ul>
                 <li v-for="item in topic.replies">
                     <section class="user">
-                        <img class="head" :src="item.author.avatar_url" 
+                        <img class="head" :src="item.author.avatar_url"
                             v-link="{name:'user',params:{loginname:item.author.loginname}}"/>
                         <div class="info">
                             <span class="cl">
@@ -49,8 +49,8 @@
                                     发布于:{{item.create_at | getLastTimeStr true}}</span>
                             </span>
                             <span class="cr">
-                                <span class="iconfont icon" 
-                                    :class="{'uped':isUps(item.ups)}" 
+                                <span class="iconfont icon"
+                                    :class="{'uped':isUps(item.ups)}"
                                     @click="upReply(item)">&#xe608;</span>
                                 {{item.ups.length}}
                                 <span class="iconfont icon" @click="addReply(item.id)">&#xe609;</span>
@@ -58,22 +58,22 @@
                         </div>
                     </section>
                     <div class="reply_content" v-html="item.content"></div>
-                    <nv-reply :topic.sync="topic" 
-                            :topic-id="topicId" 
-                            :reply-id="item.id" 
+                    <nv-reply :topic.sync="topic"
+                            :topic-id="topicId"
+                            :reply-id="item.id"
                             :reply-to="item.author.loginname"
                             :show.sync="curReplyId"
                             v-if="userId && curReplyId === item.id"></nv-reply>
                 </li>
             </ul>
         </section>
-        
-        <nv-reply v-if="userId" 
-                :topic.sync="topic" 
-                :topic-id="topicId" 
+
+        <nv-reply v-if="userId"
+                :topic.sync="topic"
+                :topic-id="topicId"
                 :reply-id="" >
         </nv-reply>
-        
+
     </div>
 
     <div class='no-data' v-if="noData">
@@ -85,7 +85,6 @@
 <script>
     require('../assets/scss/iconfont/iconfont.css');
     require('../assets/scss/github-markdown.css');
-    var $ = require('webpack-zepto');
 
     module.exports = {
         data: function(){
@@ -121,7 +120,6 @@
                 _self.topicId=transition.to.params.id;
 
                 //加载主题数据
-                var _self = this;
                 $.get('https://cnodejs.org/api/v1/topic/'+_self.topicId,function(d){
                     if(d && d.data){
                         _self.topic = d.data;
