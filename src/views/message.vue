@@ -1,12 +1,12 @@
 <template>
-    <nv-head page-type="消息" fix-head="true" :show-menu.sync="showMenu" 
+    <nv-head page-type="消息" fix-head="true" :show-menu.sync="showMenu"
             :message-count="message.hasnot_read_messages.length" :need-add="true" ></nv-head>
     <div class="page" >
         <ul class="tabs">
             <li class="item br" :class='{"selected":selectItem === 2}' @click="changeItem(2)">已读消息</li>
             <li class="item" :class='{"selected":selectItem === 1}' @click="changeItem(1)">
                 未读消息
-                <i class="iconfont read" v-show="message.hasnot_read_messages.length > 0" 
+                <i class="iconfont read" v-show="message.hasnot_read_messages.length > 0"
                     @click="markall">&#xe60c;</i>
             </li>
         </ul>
@@ -39,7 +39,6 @@
     require('../assets/scss/detail.scss');
     require('../assets/scss/iconfont/iconfont.css');
     require('../assets/scss/github-markdown.css');
-    var $ = require('webpack-zepto');
 
     module.exports = {
         data: function(){

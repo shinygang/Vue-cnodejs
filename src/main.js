@@ -9,8 +9,6 @@ Vue.use(VueRouter);
 var validator = require('vue-validator');
 Vue.use(validator);
 
-
-var $ = require('webpack-zepto');
 $.ajaxSettings.crossDomain = true;
 
 //实例化Vue的filter
@@ -25,7 +23,6 @@ var router = new VueRouter({
     saveScrollPosition: true,
     transitionOnLoad: true
 });
-var $ = require('webpack-zepto');
 
 
 //登录中间验证，页面需要登录而没有登录的情况直接跳转登录

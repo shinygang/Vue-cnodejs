@@ -1,6 +1,6 @@
 <template>
-    <nv-head page-type="主题" 
-        :show-menu="false" 
+    <nv-head page-type="主题"
+        :show-menu="false"
         fix-head="true"></nv-head>
     <div class="add-container">
         <div class="line">选择分类：
@@ -12,13 +12,13 @@
             <a class="add-btn" @click="addTopic">发布</a>
         </div>
         <div class="line">
-            <input class="add-title" v-model="topic.title" 
-                    type="text" :class="{'err':err=='title'}" 
+            <input class="add-title" v-model="topic.title"
+                    type="text" :class="{'err':err=='title'}"
                     placeholder="标题，字数10字以上" max-length="100"/>
         </div>
-        <textarea v-model="topic.content" rows="35" class="add-content" 
-            :class="{'err':err=='content'}" 
-            v-model="content" 
+        <textarea v-model="topic.content" rows="35" class="add-content"
+            :class="{'err':err=='content'}"
+            v-model="content"
             placeholder='回复支持Markdown语法,请注意标记代码'>
         </textarea>
     </div>
@@ -26,7 +26,6 @@
 
 <script>
     require('../assets/scss/iconfont/iconfont.css');
-    var $ = require('webpack-zepto');
 
     module.exports = {
         data: function () {
@@ -142,5 +141,5 @@
             border: solid 1px red;
         }
     }
-    
+
 </style>
