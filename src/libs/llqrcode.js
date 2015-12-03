@@ -285,18 +285,18 @@ _ae._ag = function(q, e, o, d, n, c, m, b, h, r, l, f, a, j, i, s) {
     return k.times(g)
 };
 _ae._bf = function(f, h, d, g, b, e, a, c) {
-    dy2 = c - e;
-    dy3 = h - g + e - c;
+    var dy2 = c - e;
+    var dy3 = h - g + e - c;
     if (dy2 == 0 && dy3 == 0) {
         return new _ae(d - f, b - d, f, g - h, e - g, h, 0, 0, 1)
     } else {
-        dx1 = d - b;
-        dx2 = a - b;
-        dx3 = f - d + b - a;
-        dy1 = g - e;
-        _dr = dx1 * dy2 - dx2 * dy1;
-        a13 = (dx3 * dy2 - dx2 * dy3) / _dr;
-        a23 = (dx1 * dy3 - dx3 * dy1) / _dr;
+        var dx1 = d - b;
+        var dx2 = a - b;
+        var dx3 = f - d + b - a;
+        var dy1 = g - e;
+        var _dr = dx1 * dy2 - dx2 * dy1;
+        var a13 = (dx3 * dy2 - dx2 * dy3) / _dr;
+        var a23 = (dx1 * dy3 - dx3 * dy1) / _dr;
         return new _ae(d - f + a13 * d, a - f + a23 * a, f, g - h + a13 * g, c - h + a23 * c, h, a13, a23, 1)
     }
 };
@@ -308,7 +308,8 @@ function _bg(b, a) {
     this.bits = b;
     this.points = a
 }
-
+var xDiff = 0;
+var yDiff = 0;
 function Detector(a) {
     this.image = a;
     this._am = null;
@@ -1513,8 +1514,8 @@ qrcode.getPixel = function(a, b) {
     if (qrcode.height < b) {
         throw "point error"
     }
-    point = (a * 4) + (b * qrcode.width * 4);
-    p = (qrcode.imagedata.data[point] * 33 + qrcode.imagedata.data[point + 1] * 34 + qrcode.imagedata.data[point + 2] * 33) / 100;
+    var point = (a * 4) + (b * qrcode.width * 4);
+    var p = (qrcode.imagedata.data[point] * 33 + qrcode.imagedata.data[point + 1] * 34 + qrcode.imagedata.data[point + 2] * 33) / 100;
     return p
 };
 qrcode.binarize = function(d) {
@@ -2459,7 +2460,7 @@ function QRCodeDataBlockReader(c, a, b) {
                 if (k != e && k != f && k != d && k != n) {
                     throw "Invalid mode: " + k + " in (block:" + this._ed + " bit:" + this._cw + ")"
                 }
-                dataLength = this.getDataLength(k);
+                var dataLength = this.getDataLength(k);
                 if (dataLength < 1) {
                     throw "Invalid data length: " + dataLength
                 }

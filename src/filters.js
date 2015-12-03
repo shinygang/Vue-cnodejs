@@ -1,19 +1,17 @@
 "use strict"
 
-var moment = require('moment');
-moment.locale('zh-cn'); // 使用中文
+var utils = require('./libs/utils')
+
 
 /**格式化时间
  *  @param {string} time 需要格式化的时间
  *  @param {bool} friendly 是否是fromNow
  */
 exports.getLastTimeStr = function(time, friendly) {
-    time = moment(time);
-
     if (friendly) {
-        return time.fromNow();
+        return utils.MillisecondToDate(new Date() - new Date(time));
     } else {
-        return time.format('YYYY-MM-DD HH:mm');
+        return utils.fmtDate(new Date(time),'yyyy-MM-dd hh:mm');
     }
 }
 

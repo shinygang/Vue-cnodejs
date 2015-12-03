@@ -61,23 +61,41 @@
                 	limit:20,
                 	tab:'all',
                 	mdrender:true
-                }
+                },
+                searchDataStr:''
             }
         },
         route:{
         	data:function(transition){
-                var _self = this;
+                var _self = this,query = transition.to.query,tab = query.tab || 'all';
 
-                //_self.searchKey.page = 1;
-                _self.searchKey.limit = 20;
-        		if(transition.to.query.tab){
-                    _self.searchKey.tab = transition.to.query.tab;
+                //记录首次加载的查询条件
+                if(_self.searchDataStr == ""){
+                    _self.searchDataStr = JSON.stringify(_self.searchKey);
+                }
+                //如果从左侧切换分类，则清空查询条件
+                if(transition.from.name === "house-list"){
+                    //_self.searchKey.page = 1;
+                    _self.searchKey.limit = 20;
+                    _self.searchKey = JSON.parse(_self.searchDataStr);
                 }
 
-                _self.showMenu = false;
 
-                //页面初次加载获取的数据
-                _self.getTopics();
+                //如果从详情返回并且typeid一样才去sessionStorge
+                if(sessionStorage.searchKey && transition.from.name === "topic"  
+                    && sessionStorage.tab == tab){
+                    _self.searchKey = JSON.parse(sessionStorage.searchKey);
+                    _self.topics = JSON.parse(sessionStorage.topics);
+                    setTimeout(function(){
+                        $(window).scrollTop(sessionStorage.scrollTop);
+                    },100);
+                }
+                else{
+                    //页面初次加载获取的数据
+                    _self.searchKey.tab = query.tab;
+                    _self.getTopics();
+                }
+                _self.showMenu = false;
 
                 //滚动加载
                 $(window).on('scroll', function() {
@@ -87,11 +105,22 @@
         	},
             deactivate:function(transition){
                 $(window).off('scroll');
+                if(transition.to.name === "topic"){
+                    sessionStorage.scrollTop = $(window).scrollTop();
+                    sessionStorage.topics = JSON.stringify(this.topics);
+                    sessionStorage.searchKey = JSON.stringify(this.searchKey);
+                    sessionStorage.tab = transition.from.query.tab || 'all';
+                }
+                else{
+                    sessionStorage.removeItem("topics");
+                    sessionStorage.removeItem("searchKey");
+                    sessionStorage.removeItem("tab");
+                }
                 transition.next();
             }
         },
         methods:{
-            getTopics:function(){
+            getTopics:function(searchKey){
                 var _self = this
                     , params = $.param(_self.searchKey);
                 $.get('https://cnodejs.org/api/v1/topics?'+params,function(d){
@@ -112,7 +141,7 @@
                 var _self = this;
                 if(_self.scroll){
                     var totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
-                    if ($(document).height() <= totalheight + 100) {
+                    if ($(document).height() <= totalheight + 200) {
                         _self.scroll = false;
                         _self.searchKey.limit += 20;
                         _self.getTopics();
