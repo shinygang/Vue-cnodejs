@@ -5,7 +5,7 @@
             fix-head="true">
     </nv-head>
 
-    <div id="page"
+    <div id="page" 
             v-class="show-menu:showMenu"
             v-if="topic.title">
 
@@ -67,7 +67,7 @@
                 </li>
             </ul>
         </section>
-
+        <nv-top></nv-top>
         <nv-reply v-if="userId"
                 :topic.sync="topic"
                 :topic-id="topicId"
@@ -83,8 +83,6 @@
 
 </template>
 <script>
-    require('../assets/scss/iconfont/iconfont.css');
-    require('../assets/scss/github-markdown.css');
 
     module.exports = {
         data: function(){
@@ -178,7 +176,8 @@
         components:{
             "nvHead":require('../components/header.vue'),
             "nvAlert":require('../components/nvAlert.vue'),
-            "nvReply":require('../components/reply.vue')
+            "nvReply":require('../components/reply.vue'),
+            "nvTop":require('../components/backtotop.vue')
         }
     }
 </script>

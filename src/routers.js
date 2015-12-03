@@ -10,6 +10,10 @@ module.exports=function(router){
             name:'home',
             component:require('./views/index.vue')
         },
+        '/list':{               //首页
+            name:'list',
+            component:require('./views/list.vue')
+        },
         '/topic/:id':{               //专题
             name:'topic',
             component:require('./views/topic.vue')
