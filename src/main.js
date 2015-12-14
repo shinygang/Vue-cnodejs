@@ -1,23 +1,23 @@
 'use strict'
 
-var Vue = require('vue');
-var app = Vue.extend({});
-var VueResource = require('vue-resource');
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+import validator from 'vue-validator'
+import filters from './filters'
+
 Vue.use(VueResource);
-var VueRouter = require('vue-router');
 Vue.use(VueRouter);
-var validator = require('vue-validator');
 Vue.use(validator);
 
 $.ajaxSettings.crossDomain = true;
 
 //实例化Vue的filter
-var filters = require('./filters');
 Object.keys(filters).forEach(function(k) {
         Vue.filter(k, filters[k]);
     })
     //实例化VueRouter
-var router = new VueRouter({
+let router = new VueRouter({
     hashbang: true,
     history: false,
     saveScrollPosition: true,
@@ -39,6 +39,8 @@ router.beforeEach(function(transition) {
         transition.next();
     }
 })
+
+let app = Vue.extend({});
 
 require('./routers')(router);
 
