@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports=function(router){
+export default function(router){
     router.map({
         '/':{				//首页
             name:'home',

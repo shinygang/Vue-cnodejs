@@ -38,8 +38,8 @@
     require('../assets/scss/user.scss');
     require('../assets/scss/iconfont/iconfont.css');
 
-    module.exports = {
-        data: function(){
+    export default  {
+        data (){
             return {
                 user:{},
                 currentData:[],
@@ -47,13 +47,13 @@
             }
         },
         route:{
-            data:function(transition){
-                var _self = this;
-                var loginname = transition.to.params.loginname;
+            data (transition){
+                let _self = this;
+                let loginname = transition.to.params.loginname;
 
                 $.get('https://cnodejs.org/api/v1/user/'+loginname,function(d){
                     if(d && d.data){
-                        var data = d.data;
+                        let data = d.data;
                         _self.user = data;
                         if(data.recent_replies.length > 0){
                             _self.currentData = data.recent_replies;
@@ -68,7 +68,7 @@
         },
         methods:{
             //切换tab
-            changeItem:function(idx){
+            changeItem (idx){
                 this.selectItem = idx;
                 this.currentData = idx ===1 ? this.user.recent_replies:this.user.recent_topics;
             }

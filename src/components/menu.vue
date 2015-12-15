@@ -15,7 +15,7 @@
 <script>
     require('../assets/scss/iconfont/iconfont.css');
 
-    module.exports={
+    export default {
         replace:true,
         props: ['showMenu','pageType','nickName','profileUrl'],
         components:{

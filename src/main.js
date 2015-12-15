@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import validator from 'vue-validator'
 import filters from './filters'
+import routerMap from './routers'
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -42,6 +43,6 @@ router.beforeEach(function(transition) {
 
 let app = Vue.extend({});
 
-require('./routers')(router);
+routerMap(router);
 
 router.start(app, "#app");

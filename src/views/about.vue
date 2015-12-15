@@ -27,7 +27,7 @@
 
 </template>
 <script>
-    module.exports = {
+    export default {
         components:{
             "nvHead":require('../components/header.vue')
         }

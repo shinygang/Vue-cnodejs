@@ -2,26 +2,26 @@
 <div class="iconfont icon-top" v-show="show" @click="goTop">&#xe611;</div>
 </template>
 <script>
-    module.exports={
+    export default {
         replace:true,
-        data: function(){
+        data (){
             return {
                 show: false,
             }
         },
-        ready: function(){
-            var _self = this;
+        ready (){
+            let _self = this;
             $(window).on('scroll', function() {
                 if($(window).scrollTop() > 100){
                     _self.show = true;
                 }
             });
         },
-        beforeDestory:function(){
+        beforeDestory (){
             $(window).off('scroll');
         },
         methods:{
-            goTop:function(){
+            goTop (){
                 $(window).scrollTop(0);
                 this.show = false;
             }

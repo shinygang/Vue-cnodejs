@@ -6,7 +6,7 @@
     </div>
 </template>
 <script>
-    module.exports={
+    export default {
         replace:true,
         props: ['showTxt',"show"]
     }
