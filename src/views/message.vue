@@ -40,8 +40,8 @@
     require('../assets/scss/iconfont/iconfont.css');
     require('../assets/scss/github-markdown.css');
 
-    module.exports = {
-        data: function(){
+    export default {
+        data (){
             return {
                 showMenu: false,
                 selectItem:2,
@@ -52,8 +52,8 @@
             }
         },
         route:{
-            data:function(transition){
-                var _self = this;
+            data (transition){
+                let _self = this;
                 $.get('https://cnodejs.org/api/v1/messages?accesstoken='+_self.token,function(d){
                     if(d && d.data){
                         _self.message = d.data;
@@ -74,13 +74,13 @@
         },
         methods:{
             //切换tab
-            changeItem:function(idx){
+            changeItem (idx){
                 this.selectItem = idx;
                 this.currentData = idx ===1?this.message.hasnot_read_messages:this.message.has_read_messages;
                 this.noData = this.currentData.length === 0 ? true : false;
             },
             //标记所有为已读
-            markall:function(){
+            markall (){
                 $.post('https://cnodejs.org/api/v1/message/mark_all',{accesstoken:localStorage.token},
                     function(d){
                     if(d && d.success){

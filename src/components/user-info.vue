@@ -14,20 +14,20 @@
     </div>
 </template>
 <script>
-    module.exports={
+    export default {
         replace:true,
-        data: function() {
+        data () {
             return {
                 loginname: localStorage.loginname || "",
                 avatar_url: localStorage.avatar_url || ""
             }
         },
         methods:{
-            goEnter: function(){
+            goEnter (){
                 var link = '/login?redirect='+ encodeURIComponent(this.$route.path);
                 this.$route.router.go(link);
             },
-            goUser:function(){
+            goUser (){
                 this.$route.router.go({name:'user',params:{loginname:localStorage.loginname}});
             }
         }

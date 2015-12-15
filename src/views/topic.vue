@@ -84,9 +84,9 @@
 </template>
 <script>
 
-    module.exports = {
-        data: function(){
-            var _self = this;
+    export default {
+        data (){
+            let _self = this;
             return {
                 showMenu: false,    //是否展开左侧菜单
                 topic:{},           //主题
@@ -99,7 +99,7 @@
                     txt: '',
                     show: false,
                     hideFn:function(){
-                        var timer;
+                        let timer;
                         clearTimeout(timer);
                         timer = setTimeout(function () {
                             _self.alert.show = false;
@@ -109,8 +109,8 @@
             }
         },
         route:{
-            data:function(transition){
-                var _self = this;
+            data (transition){
+                let _self = this;
                 //隐藏左侧展开菜单
                 _self.showMenu = false;
 
@@ -129,19 +129,19 @@
             }
         },
         methods:{
-            isUps:function(ups){
-                var _self = this;
+            isUps (ups){
+                let _self = this;
                 return $.inArray(_self.userId,ups) >= 0;
             },
-            addReply:function(id){
+            addReply (id){
                 this.curReplyId = id;
-                var _self = this;
+                let _self = this;
                 if(!_self.userId){
                     _self.$route.router.go('/login?redirect='+encodeURIComponent(this.$route.path));
                 }
             },
-            upReply:function(item){
-                var _self = this;
+            upReply (item){
+                let _self = this;
                 if(!_self.userId){
                     _self.$route.router.go('/login?redirect='+encodeURIComponent(this.$route.path));
                 }
@@ -154,7 +154,7 @@
                         success:function(res){
                             if(res.success){
                                 if(res.action == "down"){
-                                    var index = $.inArray(_self.userId, item.ups);
+                                    let index = $.inArray(_self.userId, item.ups);
                                     item.ups.splice(index,1);
                                 }
                                 else{
@@ -163,7 +163,7 @@
                             }
                         },
                         error:function(res){
-                            var error = JSON.parse(res.responseText);
+                            let error = JSON.parse(res.responseText);
                             _self.alert.txt = error.error_msg;
                             _self.alert.show = true;
                             _self.alert.hideFn();
