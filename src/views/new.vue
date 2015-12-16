@@ -93,7 +93,7 @@
     }
 </script>
 
-<style>
+<style lang="sass">
     .add-container{
         margin-top: 50px;
         background-color: #fff;

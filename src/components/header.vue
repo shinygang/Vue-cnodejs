@@ -50,7 +50,7 @@
         }
     }
 </script>
-<style>
+<style lang="sass">
 #hd {
     border-bottom: 1px solid #e8e8e8;
     &.fix-header {

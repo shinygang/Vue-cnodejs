@@ -11,7 +11,7 @@
         props: ['showTxt',"show"]
     }
 </script>
-<style>
+<style lang="sass">
     .wx_loading {
         position: fixed;
         top: 0;

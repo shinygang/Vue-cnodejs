@@ -34,7 +34,7 @@
     }
 </script>
 
-<style>
+<style lang="sass">
     /*侧边栏用户信息区域*/
     .user-info {
         padding: 15px;

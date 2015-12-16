@@ -133,7 +133,7 @@
         }
     }
 </script>
-<style>
+<style lang="sass">
 
 .page-body {
     padding: 50px 15px;
