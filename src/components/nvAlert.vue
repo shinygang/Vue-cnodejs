@@ -9,7 +9,7 @@
         props: ['content','show']
     }
 </script>
-<style>
+<style lang="sass">
 /**弱提示样式*/
 .wx_loading {
     position: fixed;

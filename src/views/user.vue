@@ -1,3 +1,7 @@
+<style lang="sass">
+    @import '../assets/scss/user.scss';
+    @import '../assets/scss/iconfont/iconfont.css';
+</style>
 <template>
     <nv-head page-type="用户信息" fix-head="true" :show-menu="false" :need-add="true" ></nv-head>
     <section class="userinfo">
@@ -35,9 +39,6 @@
     </section>
 </template>
 <script>
-    require('../assets/scss/user.scss');
-    require('../assets/scss/iconfont/iconfont.css');
-
     export default  {
         data (){
             return {

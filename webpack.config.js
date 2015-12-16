@@ -76,7 +76,7 @@ module.exports = {
     },
     vue: {
         css: ExtractTextPlugin.extract("css"),
-        scss: ExtractTextPlugin.extract("css!sass")
+        sass: ExtractTextPlugin.extract("css!sass-loader")
     },
     babel: {
         presets: ['es2015', 'stage-0'],

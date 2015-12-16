@@ -24,7 +24,7 @@
     }
 </script>
 
-<style>
+<style lang="sass">
 /*侧边栏*/
 .nav-list {
     position: fixed;
