@@ -7,9 +7,8 @@
 <script>
     export default {
         ready (){
-            let _self = this;
-            setTimeout(function(){
-                _self.$route.router.go({ name: 'list'});
+            setTimeout(() => {
+                this.$route.router.go({ name: 'list'});
             },2000);
         }
     }

@@ -95,8 +95,8 @@
                 _self.showMenu = false;
 
                 //滚动加载
-                $(window).on('scroll', function() {
-                    _self.getScrollData();
+                $(window).on('scroll', () => {
+                    this.getScrollData();
                 });
 
             },

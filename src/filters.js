@@ -7,7 +7,7 @@ import utils from  './libs/utils'
  *  @param {string} time 需要格式化的时间
  *  @param {bool} friendly 是否是fromNow
  */
-exports.getLastTimeStr = function(time, friendly) {
+exports.getLastTimeStr = (time, friendly) => {
     if (friendly) {
         return utils.MillisecondToDate(new Date() - new Date(time));
     } else {
@@ -20,7 +20,7 @@ exports.getLastTimeStr = function(time, friendly) {
  *  @param {bool} good 是否是精华帖
  *  @param {bool} top 是否是置顶帖
  */
-exports.getTabStr = function(tab, good, top) {
+exports.getTabStr = (tab, good, top) => {
     let str = "";
     if (top) {
         str = "置顶";
@@ -50,7 +50,7 @@ exports.getTabStr = function(tab, good, top) {
  *  @param {bool} good 是否是精华帖
  *  @param {bool} top 是否是置顶帖
  */
-exports.getTabClassName = function(tab, good, top) {
+exports.getTabClassName = (tab, good, top) => {
     let className = '';
 
     if (top) {
@@ -79,7 +79,7 @@ exports.getTabClassName = function(tab, good, top) {
 /** 获取title文字
  *  @param {string} tab Tab分类
  */
-exports.getTitleStr = function(tab) {
+exports.getTitleStr = tab => {
     let str = "";
     switch (tab) {
         case "share":
