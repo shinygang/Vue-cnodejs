@@ -10,10 +10,9 @@
             }
         },
         ready (){
-            let _self = this;
-            $(window).on('scroll', function() {
+            $(window).on('scroll', () => {
                 if($(window).scrollTop() > 100){
-                    _self.show = true;
+                    this.show = true;
                 }
             });
         },
