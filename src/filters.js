@@ -1,13 +1,13 @@
 "use strict"
 
-var utils = require('./libs/utils')
+import utils from  './libs/utils'
 
 
 /**格式化时间
  *  @param {string} time 需要格式化的时间
  *  @param {bool} friendly 是否是fromNow
  */
-exports.getLastTimeStr = function(time, friendly) {
+exports.getLastTimeStr = (time, friendly) => {
     if (friendly) {
         return utils.MillisecondToDate(new Date() - new Date(time));
     } else {
@@ -20,8 +20,8 @@ exports.getLastTimeStr = function(time, friendly) {
  *  @param {bool} good 是否是精华帖
  *  @param {bool} top 是否是置顶帖
  */
-exports.getTabStr = function(tab, good, top) {
-    var str = "";
+exports.getTabStr = (tab, good, top) => {
+    let str = "";
     if (top) {
         str = "置顶";
     } else if (good) {
@@ -50,8 +50,8 @@ exports.getTabStr = function(tab, good, top) {
  *  @param {bool} good 是否是精华帖
  *  @param {bool} top 是否是置顶帖
  */
-exports.getTabClassName = function(tab, good, top) {
-    var className = '';
+exports.getTabClassName = (tab, good, top) => {
+    let className = '';
 
     if (top) {
         className = "top";
@@ -79,8 +79,8 @@ exports.getTabClassName = function(tab, good, top) {
 /** 获取title文字
  *  @param {string} tab Tab分类
  */
-exports.getTitleStr = function(tab) {
-    var str = "";
+exports.getTitleStr = tab => {
+    let str = "";
     switch (tab) {
         case "share":
             str = "分享";

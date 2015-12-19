@@ -24,23 +24,23 @@
 
 <script>
     require('../assets/scss/iconfont/iconfont.css');
-    var utils = require('../libs/utils');       //加载公用函数
+    import utils from '../libs/utils'       //加载公用函数
 
-    module.exports={
+    export default {
         replace:true,
         props: ['pageType','fixHead','showMenu','messageCount','needAdd'],
-        data: function(){
+        data (){
             return {
                 nickname: '',
                 profileimgurl: ''
             }
         },
         methods: {
-            openMenu: function(){
+            openMenu (){
                 $("html, body, #page").addClass("scroll-hide");
                 this.showMenu=!this.showMenu;
             },
-            showMenus:function(){
+            showMenus (){
                 this.showMenu=!this.showMenu;
                 $("html, body, #page").removeClass("scroll-hide");
             }
@@ -50,7 +50,7 @@
         }
     }
 </script>
-<style>
+<style lang="sass">
 #hd {
     border-bottom: 1px solid #e8e8e8;
     &.fix-header {

@@ -15,10 +15,10 @@
     var utils = require('../libs/utils'),
         markdown = require("markdown").markdown;
 
-    module.exports={
+    export default {
         replace:true,
         props: ['topic','replyId','topicId','replyTo','show'],
-        data:function(){
+        data (){
             return {
                 hasErr:false,
                 content:'',
@@ -26,21 +26,21 @@
                 authorTxt:'<br/><br/><a class="form" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
             }
         },
-        ready: function(){
+        ready (){
             var _self = this;
             if(_self.replyTo){
                 _self.content = '@'+_self.replyTo+' ';
             }
         },
         methods:{
-            addReply:function(){
+            addReply (){
 
-                var _self = this;
+                let _self = this;
                 if(!_self.content){
                     _self.hasErr = true;
                 }
                 else{
-                    var time=new Date()
+                    let time=new Date()
                         , linkUsers = utils.linkUsers(_self.content)
                         , htmlText = markdown.toHTML(linkUsers) + _self.authorTxt
                         , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML

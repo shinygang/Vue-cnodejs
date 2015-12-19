@@ -27,9 +27,9 @@
 <script>
     require('../assets/scss/iconfont/iconfont.css');
 
-    module.exports = {
-        data: function () {
-            var self = this;
+    export default {
+        data () {
+            let self = this;
             return {
                 topic: {
                     tab:'share',
@@ -43,7 +43,7 @@
                     txt: '',
                     show: false,
                     hideFn:function(){
-                        var timer;
+                        let timer;
                         clearTimeout(timer);
                         timer = setTimeout(function () {
                             self.alert.show = false;
@@ -53,8 +53,8 @@
             }
         },
         methods: {
-            addTopic:function(){
-                var self = this
+            addTopic (){
+                let self = this
                     , title = $.trim(self.topic.title)
                     , contents = $.trim(self.topic.content);
                 if(!title || title.length < 10){
@@ -77,7 +77,7 @@
                         }
                     },
                     error:function(res){
-                        var error = JSON.parse(res.responseText);
+                        let error = JSON.parse(res.responseText);
                         self.alert.txt = error.error_msg;
                         self.alert.show = true;
                         self.alert.hideFn();
@@ -93,7 +93,7 @@
     }
 </script>
 
-<style>
+<style lang="sass">
     .add-container{
         margin-top: 50px;
         background-color: #fff;

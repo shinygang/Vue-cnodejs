@@ -1,23 +1,22 @@
 'use strict'
 
-var Vue = require('vue');
-var app = Vue.extend({});
-var VueResource = require('vue-resource');
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
+import validator from 'vue-validator'
+import filters from './filters'
+import routerMap from './routers'
+
 Vue.use(VueResource);
-var VueRouter = require('vue-router');
 Vue.use(VueRouter);
-var validator = require('vue-validator');
 Vue.use(validator);
 
 $.ajaxSettings.crossDomain = true;
 
 //实例化Vue的filter
-var filters = require('./filters');
-Object.keys(filters).forEach(function(k) {
-        Vue.filter(k, filters[k]);
-    })
+Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
     //实例化VueRouter
-var router = new VueRouter({
+let router = new VueRouter({
     hashbang: true,
     history: false,
     saveScrollPosition: true,
@@ -25,7 +24,7 @@ var router = new VueRouter({
 });
 
 //登录中间验证，页面需要登录而没有登录的情况直接跳转登录
-router.beforeEach(function(transition) {
+router.beforeEach(transition => {
     //处理左侧滚动不影响右边
     $("html, body, #page").removeClass("scroll-hide");
     if (transition.to.auth) {
@@ -40,6 +39,8 @@ router.beforeEach(function(transition) {
     }
 })
 
-require('./routers')(router);
+let app = Vue.extend({});
+
+routerMap(router);
 
 router.start(app, "#app");

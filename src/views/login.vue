@@ -17,11 +17,11 @@
 </template>
 
 <script>
-    var qrcode = require('../libs/llqrcode').qrcode;
+    import {qrcode}  from '../libs/llqrcode'
 
-    var browser = {
+    let browser = {
         versions: function() {
-            var u = navigator.userAgent,
+            let u = navigator.userAgent,
                 app = navigator.appVersion;
             return { //移动终端浏览器版本信息
                 ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
@@ -31,9 +31,9 @@
             };
         }(),
     }
-    module.exports = {
-        data: function () {
-            var self = this;
+    export default {
+        data () {
+            let self = this;
             return {
                 token: '',
                 /*弱提示*/
@@ -41,7 +41,7 @@
                     txt: '',
                     show: false,
                     hideFn:function(){
-                        var timer;
+                        let timer;
                         clearTimeout(timer);
                         timer = setTimeout(function () {
                             self.alert.show = false;
@@ -55,10 +55,10 @@
             }
         },
         methods: {
-            logon: function(){
-                var self = this;
+            logon (){
+                let self = this;
                 if(self.token == ''){
-                    var text = "令牌格式错误,应为36位UUID字符串";
+                    let text = "令牌格式错误,应为36位UUID字符串";
                     self.alert.txt = text;
                     self.alert.show = true;
                     self.alert.hideFn();
@@ -75,7 +75,7 @@
                         localStorage.userId = res.id;
                         localStorage.token = self.token;
                         //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
-                        var redirect = decodeURIComponent(self.$route.query.redirect || '/');
+                        let redirect = decodeURIComponent(self.$route.query.redirect || '/');
                         self.$route.router.go(redirect);
                     },
                     error:function(res){
@@ -87,16 +87,16 @@
                     }
                 })
             },
-            readPic:function(e){
-                var self = this;
-                var file = e.currentTarget.files[0];//  this is my image
-                var reader = new FileReader();
+            readPic (e){
+                let self = this;
+                let file = e.currentTarget.files[0];//  this is my image
+                let reader = new FileReader();
 
                 reader.onload = function (e) {
-                    var dataURL = reader.result;
+                    let dataURL = reader.result;
 
-                    var base64 = dataURL.split('base64,');
-                    var param = { "img": base64[1] };
+                    let base64 = dataURL.split('base64,');
+                    let param = { "img": base64[1] };
 
                     self.loading.show = true;
                     if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
@@ -104,7 +104,7 @@
                             self.loading.show = false;
                             if(d == "qrcode error"){
                                 self.token = "";
-                                var text = "二维码图片不清晰";
+                                let text = "二维码图片不清晰";
                                 self.alert.txt = text;
                                 self.alert.show = true;
                                 self.alert.hideFn();
@@ -133,7 +133,7 @@
         }
     }
 </script>
-<style>
+<style lang="sass">
 
 .page-body {
     padding: 50px 15px;

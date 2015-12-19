@@ -5,19 +5,18 @@
     </div>
 </template>
 <script>
-    require('../assets/scss/iconfont/iconfont.css');
-    require('../assets/scss/CV.scss');
-    require('../assets/scss/github-markdown.css');
-    module.exports = {
-        ready:function(){
-            var _self = this;
-            setTimeout(function(){
-                _self.$route.router.go({ name: 'list'});
+    export default {
+        ready (){
+            setTimeout(() => {
+                this.$route.router.go({ name: 'list'});
             },2000);
         }
     }
 </script>
-<style>
+<style lang="sass">
+    @import '../assets/scss/iconfont/iconfont.css';
+    @import '../assets/scss/CV.scss';
+    @import '../assets/scss/github-markdown.css';
     .index{
         width: 100%;
         background-color: #fff;

@@ -47,8 +47,8 @@
 </template>
 
 <script>
-    module.exports = {
-        data: function(){
+    export default {
+        data (){
             return {
                 showMenu: false,
                 scroll:true,
@@ -63,8 +63,8 @@
             }
         },
         route:{
-            data:function(transition){
-                var _self = this,query = transition.to.query,tab = query.tab || 'all';
+            data (transition){
+                let _self = this,query = transition.to.query,tab = query.tab || 'all';
 
                 //记录首次加载的查询条件
                 if(_self.searchDataStr == ""){
@@ -95,12 +95,12 @@
                 _self.showMenu = false;
 
                 //滚动加载
-                $(window).on('scroll', function() {
-                    _self.getScrollData();
+                $(window).on('scroll', () => {
+                    this.getScrollData();
                 });
 
             },
-            deactivate:function(transition){
+            deactivate (transition){
                 $(window).off('scroll');
                 if(transition.to.name === "topic"){
                     sessionStorage.scrollTop = $(window).scrollTop();
@@ -117,8 +117,8 @@
             }
         },
         methods:{
-            getTopics:function(searchKey){
-                var _self = this
+            getTopics (searchKey){
+                let _self = this
                     , params = $.param(_self.searchKey);
                 $.get('https://cnodejs.org/api/v1/topics?'+params,function(d){
                     _self.scroll = true;
@@ -134,10 +134,10 @@
                 })
             },
             //滚动加载数据
-            getScrollData:function(){
-                var _self = this;
+            getScrollData (){
+                let _self = this;
                 if(_self.scroll){
-                    var totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+                    let totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
                     if ($(document).height() <= totalheight + 200) {
                         _self.scroll = false;
                         _self.searchKey.limit += 20;

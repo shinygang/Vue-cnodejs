@@ -1,9 +1,9 @@
 'use strict'
 
-var _ = require('lodash');
+let _ = require('lodash');
 
 
-var getCheck = {
+let getCheck = {
     checkEmail: function(val) {
         var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (filter.test(val)) {
@@ -28,7 +28,7 @@ var getCheck = {
  * @param {String} text 文本内容
  * @return {Array} 用户名数组
  */
-var fetchUsers = function(text) {
+const fetchUsers = function(text) {
     if (!text) {
         return [];
     }
@@ -65,7 +65,7 @@ var fetchUsers = function(text) {
  * @param {String} text 文本内容
  * @param {Function} callback 回调函数
  */
-var linkUsers = function(text) {
+const linkUsers = function(text) {
     var users = fetchUsers(text);
     for (var i = 0, l = users.length; i < l; i++) {
         var name = users[i];
@@ -83,7 +83,7 @@ var linkUsers = function(text) {
  *   (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
  *   (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18 
  */
-var fmtDate = function(date, fmt) { //author: meizz 
+const fmtDate = function(date, fmt) { //author: meizz 
     var o = {
         "M+": date.getMonth() + 1, //月份 
         "d+": date.getDate(), //日 
@@ -105,7 +105,7 @@ var fmtDate = function(date, fmt) { //author: meizz
 /**
  * 由于moment库加进来太大了，自定义了formnow函数，待完善阶段
  */
-var MillisecondToDate = function(msd) {
+const MillisecondToDate = function(msd) {
     var time = parseFloat(msd) / 1000;
     var str ="";
     if (null != time && "" != time) {

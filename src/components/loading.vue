@@ -6,12 +6,12 @@
     </div>
 </template>
 <script>
-    module.exports={
+    export default {
         replace:true,
         props: ['showTxt',"show"]
     }
 </script>
-<style>
+<style lang="sass">
     .wx_loading {
         position: fixed;
         top: 0;

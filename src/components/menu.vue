@@ -15,7 +15,7 @@
 <script>
     require('../assets/scss/iconfont/iconfont.css');
 
-    module.exports={
+    export default {
         replace:true,
         props: ['showMenu','pageType','nickName','profileUrl'],
         components:{
@@ -24,7 +24,7 @@
     }
 </script>
 
-<style>
+<style lang="sass">
 /*侧边栏*/
 .nav-list {
     position: fixed;
