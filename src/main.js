@@ -6,6 +6,7 @@ import VueResource from 'vue-resource'
 import validator from 'vue-validator'
 import filters from './filters'
 import routerMap from './routers'
+import FastClick from 'fastclick'
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -27,6 +28,8 @@ let router = new VueRouter({
 router.beforeEach(transition => {
     //处理左侧滚动不影响右边
     $("html, body, #page").removeClass("scroll-hide");
+    FastClick.attach(document.body);
+
     if (transition.to.auth) {
         if (localStorage.userId) {
             transition.next();

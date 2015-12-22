@@ -38,6 +38,7 @@
     "del": "^2.0.2",
     "exports-loader": "^0.6.2",
     "extract-text-webpack-plugin": "^0.8.2",
+    "fastclick": "^1.0.6",
     "file-loader": "^0.8.4",
     "gulp": "^3.9.0",
     "gulp-minify-css": "^1.2.1",
