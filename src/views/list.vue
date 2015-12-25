@@ -64,35 +64,33 @@
         },
         route:{
             data (transition){
-                let _self = this,query = transition.to.query,tab = query.tab || 'all';
+                let query = transition.to.query,tab = query.tab || 'all';
 
                 //记录首次加载的查询条件
-                if(_self.searchDataStr == ""){
-                    _self.searchDataStr = JSON.stringify(_self.searchKey);
+                if(this.searchDataStr == ""){
+                    this.searchDataStr = JSON.stringify(this.searchKey);
                 }
                 //如果从左侧切换分类，则清空查询条件
                 if(transition.from.name === "house-list"){
-                    //_self.searchKey.page = 1;
-                    _self.searchKey.limit = 20;
-                    _self.searchKey = JSON.parse(_self.searchDataStr);
+                    //this.searchKey.page = 1;
+                    this.searchKey.limit = 20;
+                    this.searchKey = JSON.parse(this.searchDataStr);
                 }
 
 
                 //如果从详情返回并且typeid一样才去sessionStorge
-                if(sessionStorage.searchKey && transition.from.name === "topic"  
+                if(sessionStorage.searchKey && transition.from.name === "topic"
                     && sessionStorage.tab == tab){
-                    _self.topics = JSON.parse(sessionStorage.topics);
-                    _self.searchKey = JSON.parse(sessionStorage.searchKey);
-                    setTimeout(function(){
-                        $(window).scrollTop(sessionStorage.scrollTop);
-                    },100);
+                    this.topics = JSON.parse(sessionStorage.topics);
+                    this.searchKey = JSON.parse(sessionStorage.searchKey);
+                    this.$nextTick(()=> $(window).scrollTop(sessionStorage.scrollTop));
                 }
                 else{
                     //页面初次加载获取的数据
-                    _self.searchKey.tab = query.tab;
-                    _self.getTopics();
+                    this.searchKey.tab = query.tab;
+                    this.getTopics();
                 }
-                _self.showMenu = false;
+                this.showMenu = false;
 
                 //滚动加载
                 $(window).on('scroll', () => {
@@ -118,30 +116,28 @@
         },
         methods:{
             getTopics (searchKey){
-                let _self = this
-                    , params = $.param(_self.searchKey);
-                $.get('https://cnodejs.org/api/v1/topics?'+params,function(d){
-                    _self.scroll = true;
+                let params = $.param(this.searchKey);
+                $.get('https://cnodejs.org/api/v1/topics?'+params,(d)=> {
+                    this.scroll = true;
                     if(d && d.data){
-                        _self.topics = d.data;
-                        // if(_self.searchKey.page == 0){
-                        //     _self.topics = d.data;
+                        this.topics = d.data;
+                        // if(this.searchKey.page == 0){
+                        //     this.topics = d.data;
                         // }
                         // else{
-                        //     _self.topics = _self.topics.concat(d.data);
+                        //     this.topics = this.topics.concat(d.data);
                         // }
                     }
                 })
             },
             //滚动加载数据
             getScrollData (){
-                let _self = this;
-                if(_self.scroll){
+                if(this.scroll){
                     let totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
                     if ($(document).height() <= totalheight + 200) {
-                        _self.scroll = false;
-                        _self.searchKey.limit += 20;
-                        _self.getTopics();
+                        this.scroll = false;
+                        this.searchKey.limit += 20;
+                        this.getTopics();
                     }
                 }
             }
@@ -152,4 +148,3 @@
         }
     }
 </script>
-
