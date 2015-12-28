@@ -6,7 +6,6 @@
             :show-menu.sync="showMenu">
     </nv-head>
 
-
     <section id="page">
 
         <!-- 首页列表 -->
@@ -46,7 +45,7 @@
     <nv-top></nv-top>
 </template>
 
-<script>
+<script type="text/babel">
     export default {
         data (){
             return {
@@ -98,7 +97,6 @@
                 $(window).on('scroll', () => {
                     this.getScrollData();
                 });
-
             },
             deactivate (transition){
                 $(window).off('scroll');

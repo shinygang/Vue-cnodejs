@@ -4,9 +4,10 @@
         <img class="index" src="../assets/images/index.png">
     </div>
 </template>
-<script>
+<script type="text/babel">
     export default {
         ready (){
+            //console.log("will redireact")
             setTimeout(() => {
                 this.$route.router.go({ name: 'list'});
             },2000);
