@@ -6,6 +6,10 @@ export default function(router){
             name:'home',
             component:require('./views/index.vue')
         },
+        /* 404路由 */
+        '*': {
+            component: require('./views/index.vue')
+        },
         '/cnodevue':{               //首页
             name:'home',
             component:require('./views/index.vue')
