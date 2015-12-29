@@ -74,7 +74,6 @@
                         localStorage.avatar_url = res.avatar_url;
                         localStorage.userId = res.id;
                         localStorage.token = self.token;
-                        //e44d5f6d-6648-4eb8-96e3-e1bfb34f3635
                         let redirect = decodeURIComponent(self.$route.query.redirect || '/');
                         self.$route.router.go(redirect);
                     },

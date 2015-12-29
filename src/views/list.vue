@@ -5,10 +5,8 @@
             :need-add="true"
             :show-menu.sync="showMenu">
     </nv-head>
-
-
+    
     <section id="page">
-
         <!-- 首页列表 -->
         <ul class="posts-list">
             <li v-for="item in topics"
