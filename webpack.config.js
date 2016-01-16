@@ -8,7 +8,7 @@ var isProduction = function() {
     return process.env.NODE_ENV === 'production';
 }
 
-//webpck插件
+//webpack插件
 var plugins = [
     //提公用js到common.js文件中
     new webpack.optimize.CommonsChunkPlugin('common.js'),
