@@ -21,7 +21,7 @@
         </dd>
         
         <dt>当前版本</dt>
-        <dd>V1.0 beta</dd>
+        <dd>V1.0</dd>
 
     </dl>
 

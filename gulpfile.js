@@ -41,7 +41,7 @@ gulp.task('style',function() {
  *  压缩js文件
  */
 gulp.task('script',function(){
-    gulp.src('./dist/*.js')
+    gulp.src(['./dist/build.js','./dist/common.js'])
     .pipe(rename({suffix:'.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));

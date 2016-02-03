@@ -4,45 +4,65 @@ export default function(router){
     router.map({
         '/':{				//首页
             name:'home',
-            component:require('./views/index.vue')
+            component: function(resolve){
+                require(['./views/index.vue'],resolve);
+            }
         },
         /* 404路由 */
         '*': {
-            component: require('./views/index.vue')
+            component: function(resolve){
+                require(['./views/index.vue'],resolve);
+            }
         },
         '/cnodevue':{               //首页
             name:'home',
-            component:require('./views/index.vue')
+            component: function(resolve){
+                require(['./views/index.vue'],resolve);
+            }
         },
         '/list':{               //首页
             name:'list',
-            component:require('./views/list.vue')
+            component: function(resolve){
+                require(['./views/list.vue'],resolve);
+            }
         },
         '/topic/:id':{               //专题
             name:'topic',
-            component:require('./views/topic.vue')
+            component: function(resolve){
+                require(['./views/topic.vue'],resolve);
+            }
         },
         '/add':{               //首页
             name:'add',
-            component:require('./views/new.vue'),
+            component: function(resolve){
+                require(['./views/new.vue'],resolve);
+            },
             auth: true
         },
         '/message':{               //消息
             name:'message',
-            component:require('./views/message.vue'),
+            component: function(resolve){
+                require(['./views/message.vue'],resolve);
+            },
             auth: true
         },
         '/about':{               //关于
             name:'about',
-            component:require('./views/about.vue')
+            component: function(resolve){
+                require(['./views/about.vue'],resolve);
+            }
         },
         '/login':{               //登录
             name:'login',
-            component:require('./views/login.vue')
+            component: function(resolve){
+                require(['./views/login.vue'],resolve);
+            }
         },
         '/user/:loginname':{               //用户信息
             name:'user',
-            component:require('./views/user.vue')
+            component: function(resolve){
+                require(['./views/user.vue'],resolve);
+            }
         }
     })
 }

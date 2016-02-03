@@ -39,7 +39,8 @@ module.exports = {
     output: {
         path: __dirname + buildPath,
         filename: 'build.js',
-        publicPath: publishPath
+        publicPath: publishPath,
+        chunkFilename:"[id].build.js?[chunkhash]"
     },
     module: {
         loaders: [{
