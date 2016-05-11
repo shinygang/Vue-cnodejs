@@ -69,7 +69,7 @@
                     this.searchDataStr = JSON.stringify(this.searchKey);
                 }
                 //如果从左侧切换分类，则清空查询条件
-                if(transition.from.name === "house-list"){
+                if(transition.from.name === "list"){
                     //this.searchKey.page = 1;
                     this.searchKey.limit = 20;
                     this.searchKey = JSON.parse(this.searchDataStr);
