@@ -75,14 +75,6 @@ module.exports = {
             loader: 'html-loader'
         }]
     },
-    vue: {
-        css: ExtractTextPlugin.extract("css"),
-        sass: ExtractTextPlugin.extract("css!sass-loader")
-    },
-    babel: {
-        presets: ['es2015', 'stage-0'],
-        plugins: ['transform-runtime']
-    },
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extension: ['', '.js'],
