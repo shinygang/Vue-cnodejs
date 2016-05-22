@@ -3,7 +3,6 @@
 var path = require('path');
 var webpack = require("webpack");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var vue = require("vue-loader");
 var isProduction = function() {
     return process.env.NODE_ENV === 'production';
 }
@@ -45,7 +44,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.vue$/,
-            loader: 'vue',
+            loader: 'vue-loader',
         }, {
             test: /\.scss$/,
             loader: ExtractTextPlugin.extract(
@@ -74,6 +73,10 @@ module.exports = {
             test: /\.(html|tpl)$/,
             loader: 'html-loader'
         }]
+    },
+    babel: {
+        presets: ['es2015', 'stage-0'],
+        plugins: ['transform-runtime']
     },
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js

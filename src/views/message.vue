@@ -1,9 +1,3 @@
-<style lang="sass">
-    @import '../assets/scss/detail.scss';
-    @import '../assets/scss/iconfont/iconfont.css';
-    @import '../assets/scss/github-markdown.css';
-</style>
-
 <template>
     <nv-head page-type="消息" fix-head="true" :show-menu.sync="showMenu"
             :message-count="message.hasnot_read_messages.length" :need-add="true" ></nv-head>

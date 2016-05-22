@@ -25,8 +25,6 @@
 </template>
 
 <script>
-    require('../assets/scss/iconfont/iconfont.css');
-
     export default {
         data () {
             let self = this;

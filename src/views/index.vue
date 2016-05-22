@@ -5,6 +5,11 @@
     </div>
 </template>
 <script>
+    require('../assets/scss/iconfont/iconfont.css');
+    require('../assets/scss/CV.scss');
+    require('../assets/scss/github-markdown.css');
+
+
     export default {
         ready (){
             setTimeout(() => {
@@ -14,9 +19,6 @@
     }
 </script>
 <style lang="sass">
-    @import '../assets/scss/iconfont/iconfont.css';
-    @import '../assets/scss/CV.scss';
-    @import '../assets/scss/github-markdown.css';
     .index{
         width: 100%;
         background-color: #fff;

@@ -13,8 +13,6 @@
     </section>
 </template>
 <script>
-    require('../assets/scss/iconfont/iconfont.css');
-
     export default {
         replace:true,
         props: ['showMenu','pageType','nickName','profileUrl'],

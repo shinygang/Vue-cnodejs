@@ -1,7 +1,3 @@
-<style lang="sass">
-    @import '../assets/scss/user.scss';
-    @import '../assets/scss/iconfont/iconfont.css';
-</style>
 <template>
     <nv-head page-type="用户信息" fix-head="true" :show-menu="false" :need-add="true" ></nv-head>
     <section class="userinfo">

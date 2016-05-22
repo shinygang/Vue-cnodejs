@@ -18,7 +18,7 @@ body {
     color: #313131;
     overflow-x: hidden;
     line-height: 1;
-    background:url('../assets/images/loading.gif') no-repeat center 250px;
+    background:url('../../images/loading.gif') no-repeat center 250px;
 }
 
 .mt5 {
@@ -40,6 +40,10 @@ body {
         display: table;
         clear: both;
     }
+}
+
+#app{
+    height: 100%;
 }
 
 .display-flex {
