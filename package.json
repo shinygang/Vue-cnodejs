@@ -20,7 +20,8 @@
     "cnode",
     "WebApp",
     "Vue",
-    "Webpack"
+    "Webpack",
+    "vue.js"
   ],
   "author": "",
   "license": "ISC",
