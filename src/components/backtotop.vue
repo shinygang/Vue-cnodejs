@@ -13,6 +13,8 @@
             $(window).on('scroll', () => {
                 if($(window).scrollTop() > 100){
                     this.show = true;
+                }else{
+                    this.show = false;
                 }
             });
         },
