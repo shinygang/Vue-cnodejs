@@ -20,12 +20,12 @@ let router = new VueRouter({
     saveScrollPosition: true,
     transitionOnLoad: true
 });
+FastClick.attach(document.body);
 
 //登录中间验证，页面需要登录而没有登录的情况直接跳转登录
 router.beforeEach((transition) => {
     //处理左侧滚动不影响右边
     $("html, body, #page").removeClass("scroll-hide");
-    FastClick.attach(document.body);
 
     if (transition.to.auth) {
         if (localStorage.userId) {
