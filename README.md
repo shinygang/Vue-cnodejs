@@ -21,7 +21,7 @@ npm install
 启动服务(http://localhost:8090)
 
 ```
-node start
+npm start
 ```
 
 发布代码
