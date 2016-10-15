@@ -1,5 +1,9 @@
 #基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.github.io/cnodevue/)
 
+## 注意：当前项目代码已经升级到2.0，采用vue最新版本。1.x代码请看1.x分支。 
+
+
+
 ###安装
 
 项目地址：（`git clone`）
@@ -13,14 +17,16 @@ git clone https://github.com/shinygang/Vue-cnodejs.git
 ```
 npm install
 ```
+
 启动服务(http://localhost:8090)
 
 ```
-node server.js
+node start
 ```
+
 发布代码
 ```
-npm run dist
+npm run build
 ```
 
 ###开发
@@ -36,6 +42,7 @@ npm run dist
 │   ├── assets         // css js 和图片资源
 │   ├── components     // 各种组件
 │   ├── views          // 各种页面
+│   ├── vuex           // vuex状态管理器
 │   ├── filters.js     // 各种过滤器
 │   └── main.js        // Webpack 预编译入口
 ├── server.js          // webpack-dev-server服务配置

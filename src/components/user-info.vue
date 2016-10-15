@@ -15,23 +15,32 @@
 </template>
 <script>
     export default {
-        replace:true,
-        data () {
+        replace: true,
+        data() {
             return {
-                loginname: localStorage.loginname || "",
-                avatar_url: localStorage.avatar_url || ""
-            }
+                loginname: localStorage.loginname || '',
+                avatar_url: localStorage.avatar_url || ''
+            };
         },
-        methods:{
-            goEnter (){
-                var link = '/login?redirect='+ encodeURIComponent(this.$route.path);
-                this.$route.router.go(link);
+        methods: {
+            goEnter() {
+                this.$router.push({
+                    name: 'login',
+                    query: {
+                        redirect: encodeURIComponent(this.$route.path)
+                    }
+                });
             },
-            goUser (){
-                this.$route.router.go({name:'user',params:{loginname:localStorage.loginname}});
+            goUser() {
+                this.$router.push({
+                    name: 'user',
+                    params: {
+                        loginname: localStorage.loginname
+                    }
+                });
             }
         }
-    }
+    };
 </script>
 
 <style lang="sass">

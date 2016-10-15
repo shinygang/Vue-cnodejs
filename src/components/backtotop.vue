@@ -2,30 +2,31 @@
 <div class="iconfont icon-top" v-show="show" @click="goTop">&#xe611;</div>
 </template>
 <script>
+    import $ from 'webpack-zepto';
     export default {
-        replace:true,
-        data (){
+        replace: true,
+        data() {
             return {
-                show: false,
-            }
+                show: false
+            };
         },
-        ready (){
+        mounted() {
             $(window).on('scroll', () => {
-                if($(window).scrollTop() > 100){
+                if ($(window).scrollTop() > 100) {
                     this.show = true;
                 }
             });
         },
-        beforeDestory (){
+        beforeDestory() {
             $(window).off('scroll');
         },
-        methods:{
-            goTop (){
+        methods: {
+            goTop() {
                 $(window).scrollTop(0);
                 this.show = false;
             }
         }
-    }
+    };
 </script>
 <style>
     .icon-top {

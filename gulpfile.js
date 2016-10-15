@@ -9,7 +9,7 @@ var gulp = require('gulp'),
 
 var config = require('./webpack.config');
 
-/** 
+/**
  *  清理生产目录文件
  */
 gulp.task('clean', function(cb) {
@@ -20,14 +20,14 @@ gulp.task('clean', function(cb) {
 });
 
 
-/** 
+/**
  *  执行webpack打包
  */
 gulp.task('webpack',['clean'], function(cb) {
     webpack(config, cb)
 });
 
-/** 
+/**
  *  压缩css文件
  */
 gulp.task('style',function() {
@@ -37,7 +37,7 @@ gulp.task('style',function() {
     .pipe(gulp.dest('dist'));
 });
 
-/** 
+/**
  *  压缩js文件
  */
 gulp.task('script',function(){

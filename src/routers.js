@@ -1,68 +1,81 @@
-'use strict'
+// require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
+const Home = resolve => {
+    require.ensure(['./views/index.vue'], () => {
+        resolve(require('./views/index.vue'));
+    });
+};
 
-export default function(router){
-    router.map({
-        '/':{				//首页
-            name:'home',
-            component: function(resolve){
-                require(['./views/index.vue'],resolve);
-            }
-        },
-        /* 404路由 */
-        '*': {
-            component: function(resolve){
-                require(['./views/index.vue'],resolve);
-            }
-        },
-        '/cnodevue':{               //首页
-            name:'home',
-            component: function(resolve){
-                require(['./views/index.vue'],resolve);
-            }
-        },
-        '/list':{               //首页
-            name:'list',
-            component: function(resolve){
-                require(['./views/list.vue'],resolve);
-            }
-        },
-        '/topic/:id':{               //专题
-            name:'topic',
-            component: function(resolve){
-                require(['./views/topic.vue'],resolve);
-            }
-        },
-        '/add':{               //首页
-            name:'add',
-            component: function(resolve){
-                require(['./views/new.vue'],resolve);
-            },
-            auth: true
-        },
-        '/message':{               //消息
-            name:'message',
-            component: function(resolve){
-                require(['./views/message.vue'],resolve);
-            },
-            auth: true
-        },
-        '/about':{               //关于
-            name:'about',
-            component: function(resolve){
-                require(['./views/about.vue'],resolve);
-            }
-        },
-        '/login':{               //登录
-            name:'login',
-            component: function(resolve){
-                require(['./views/login.vue'],resolve);
-            }
-        },
-        '/user/:loginname':{               //用户信息
-            name:'user',
-            component: function(resolve){
-                require(['./views/user.vue'],resolve);
-            }
-        }
-    })
-}
+const List = resolve => {
+    require.ensure(['./views/list.vue'], () => {
+        resolve(require('./views/list.vue'));
+    });
+};
+
+const routers = [{
+    path: '/',
+    name: 'home',
+    component: Home
+}, {
+    path: '/cnodevue',
+    name: 'cnodevue',
+    component: Home
+}, {
+    path: '/list',
+    name: 'list',
+    component: List
+}, {
+    path: '/topic/:id',
+    name: 'topic',
+    component(resolve) {
+        require.ensure(['./views/topic.vue'], () => {
+            resolve(require('./views/topic.vue'));
+        });
+    }
+}, {
+    path: '/add',
+    name: 'add',
+    component(resolve) {
+        require.ensure(['./views/new.vue'], () => {
+            resolve(require('./views/new.vue'));
+        });
+    },
+    requiresAuth: true
+}, {
+    path: '/message',
+    name: 'message',
+    component(resolve) {
+        require.ensure(['./views/message.vue'], () => {
+            resolve(require('./views/message.vue'));
+        });
+    },
+    requiresAuth: true
+}, {
+    path: '/user/:loginname',
+    name: 'user',
+    component(resolve) {
+        require.ensure(['./views/user.vue'], () => {
+            resolve(require('./views/user.vue'));
+        });
+    }
+}, {
+    path: '/about',
+    name: 'about',
+    component(resolve) {
+        require.ensure(['./views/about.vue'], () => {
+            resolve(require('./views/about.vue'));
+        });
+    }
+}, {
+    path: '/login',
+    name: 'login',
+    component(resolve) {
+        require.ensure(['./views/login.vue'], () => {
+            resolve(require('./views/login.vue'));
+        });
+    }
+}, {
+    path: '*',
+    component: Home
+}];
+
+export default routers;

@@ -7,9 +7,9 @@
 </template>
 <script>
     export default {
-        replace:true,
-        props: ['showTxt',"show"]
-    }
+        replace: true,
+        props: ['showTxt', 'show']
+    };
 </script>
 <style lang="sass">
     .wx_loading {

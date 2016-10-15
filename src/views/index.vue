@@ -1,5 +1,4 @@
 <template>
-    <!-- 全局header -->
     <div>
         <img class="index" src="../assets/images/index.png">
     </div>
@@ -9,20 +8,20 @@
     require('../assets/scss/CV.scss');
     require('../assets/scss/github-markdown.css');
 
-
     export default {
-        ready (){
+        mounted() {
             setTimeout(() => {
-                this.$route.router.go({ name: 'list'});
-            },2000);
+                this.$router.push({
+                    name: 'list'
+                });
+            }, 2000);
         }
-    }
+    };
 </script>
 <style lang="sass">
-    .index{
+    .index {
         width: 100%;
         background-color: #fff;
         margin-top: 40%;
     }
 </style>
-

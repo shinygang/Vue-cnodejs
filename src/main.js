@@ -1,45 +1,46 @@
-'use strict'
-
 import Vue from 'vue';
+import $ from 'webpack-zepto';
 import VueRouter from 'vue-router';
 import filters from './filters';
-import routerMap from './routers';
+import routes from './routers';
+import Alert from './libs/alert';
 import FastClick from 'fastclick';
-
 Vue.use(VueRouter);
+Vue.use(Alert);
 
 $.ajaxSettings.crossDomain = true;
 
-//实例化Vue的filter
+// 实例化Vue的filter
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
 
-//实例化VueRouter
-let router = new VueRouter({
-    hashbang: true,
-    history: false,
-    saveScrollPosition: true,
-    transitionOnLoad: true
+// 实例化VueRouter
+const router = new VueRouter({
+    mode: 'history',
+    routes
 });
+FastClick.attach(document.body);
 
-//登录中间验证，页面需要登录而没有登录的情况直接跳转登录
-router.beforeEach((transition) => {
-    //处理左侧滚动不影响右边
-    $("html, body, #page").removeClass("scroll-hide");
-    FastClick.attach(document.body);
+// 登录中间验证，页面需要登录而没有登录的情况直接跳转登录
+router.beforeEach((to, from, next) => {
+    // 处理左侧滚动不影响右边
+    $('html, body, #page').removeClass('scroll-hide');
 
-    if (transition.to.auth) {
+    if (to.matched.some(record => record.requiresAuth)) {
         if (localStorage.userId) {
-            transition.next();
+            next();
         } else {
-            var redirect = encodeURIComponent(transition.to.path);
-            transition.redirect('/login?redirect=' + redirect);
+            console.log(to.fullPath);
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            });
         }
     } else {
-        transition.next();
+        console.log(to.fullPath);
+        next();
     }
 });
 
-let app = Vue.extend({});
-routerMap(router);
-
-router.start(app, "#app");
+new Vue({
+    router
+}).$mount('#app');

@@ -1,0 +1,22 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "root": true,
+    "extends": "standard",
+    "parser": "babel-eslint",
+    "plugins": [
+        "html",
+        "vue"
+    ],
+    "rules": {
+        "arrow-parens": 0,
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "eol-last": 0,
+        "semi": ["error", "always"],
+        "space-before-function-paren": 0,
+        "no-useless-escape": 0
+    }
+}

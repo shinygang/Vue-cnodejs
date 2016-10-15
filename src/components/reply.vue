@@ -11,77 +11,74 @@
 
 </template>
 <script>
-
-    var utils = require('../libs/utils'),
-        markdown = require("markdown").markdown;
+    import $ from 'webpack-zepto';
+    const utils = require('../libs/utils');
+    const markdown = require('markdown').markdown;
 
     export default {
-        replace:true,
-        props: ['topic','replyId','topicId','replyTo','show'],
-        data (){
+        replace: true,
+        props: ['topic', 'replyId', 'topicId', 'replyTo', 'show'],
+        data() {
             return {
-                hasErr:false,
-                content:'',
-                userId:localStorage.userId || '',
-                authorTxt:'<br/><br/><a class="form" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>',
+                hasErr: false,
+                content: '',
+                loginname: localStorage.loginname || '',
+                author_txt: '<br/><br/><a class="form" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>'
+            };
+        },
+        mounted() {
+            if (this.replyTo) {
+                this.content = `@${this.replyTo} `;
             }
         },
-        ready (){
-            var _self = this;
-            if(_self.replyTo){
-                _self.content = '@'+_self.replyTo+' ';
-            }
-        },
-        methods:{
-            addReply (){
+        methods: {
+            addReply() {
+                if (!this.content) {
+                    this.hasErr = true;
+                } else {
+                    let time = new Date();
+                    let linkUsers = utils.linkUsers(this.content);
+                    let htmlText = markdown.toHTML(linkUsers) + this.author_txt;
+                    let replyContent = $('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML;
+                    let postData = {
+                        accesstoken: localStorage.token,
+                        content: this.content + this.author_txt
+                    };
 
-                let _self = this;
-                if(!_self.content){
-                    _self.hasErr = true;
-                }
-                else{
-                    let time=new Date()
-                        , linkUsers = utils.linkUsers(_self.content)
-                        , htmlText = markdown.toHTML(linkUsers) + _self.authorTxt
-                        , reply_content =$('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML
-                        , postData={accesstoken:localStorage.token,content: _self.content+ _self.authorTxt}
-
-                    if(_self.replyId){
-                        postData.reply_id = _self.replyId;
+                    if (this.replyId) {
+                        postData.reply_id = this.replyId;
                     }
                     $.ajax({
-                        type:'POST',
-                        url:'https://cnodejs.org/api/v1/topic/'+_self.topicId+'/replies',
+                        type: 'POST',
+                        url: `https://cnodejs.org/api/v1/topic/${this.topicId}/replies`,
                         data: postData,
                         dataType: 'json',
-                        success:function(res){
-                            if(res.success){
-                                _self.topic.replies.push({
-                                    id:res.reply_id,
-                                    author:{
-                                        loginname:_self.userId,
-                                        avatar_url:localStorage.avatar_url
+                        success: (res) => {
+                            if (res.success) {
+                                this.topic.replies.push({
+                                    id: res.reply_id,
+                                    author: {
+                                        loginname: this.loginname,
+                                        avatar_url: localStorage.avatar_url
                                     },
-                                    content:reply_content,
-                                    ups:[],
-                                    create_at:time
+                                    content: replyContent,
+                                    ups: [],
+                                    create_at: time
                                 });
                             }
-                            _self.content = '';
-                            if(_self.show){
-                                _self.show = '';
+                            this.content = '';
+                            if (this.show) {
+                                this.show = '';
                             }
                         },
-                        error:function(res){
+                        error: (res) => {
                             var error = JSON.parse(res.responseText);
-                            _self.alert.txt = error.error_msg;
-                            _self.alert.show = true;
-                            _self.alert.hideFn();
+                            this.$alert(error.error_msg);
                             return false;
                         }
                     });
                 }
             }
         }
-    }
+    };
 </script>
