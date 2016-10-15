@@ -1,4 +1,6 @@
+import Vue from 'vue';
 import Vuex from 'vuex';
+Vue.use(Vuex);
 
 const userStore = new Vuex.Store({
     state: {
@@ -15,7 +17,9 @@ const userStore = new Vuex.Store({
         }
     },
     actions: {
-        
+        setUserInfo({ commit }, user) {
+            commit('setUserInfo', user);
+        }
     }
 });
 

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import filters from './filters';
 import routes from './routers';
 import Alert from './libs/alert';
+import store from './vuex/user';
 import FastClick from 'fastclick';
 Vue.use(VueRouter);
 Vue.use(Alert);
@@ -20,27 +21,30 @@ const router = new VueRouter({
 });
 FastClick.attach(document.body);
 
+// 处理刷新的时候vuex被清空但是用户已经登录的情况
+if (sessionStorage.user) {
+    store.dispatch('setUserInfo', JSON.parse(sessionStorage.user));
+}
+
 // 登录中间验证，页面需要登录而没有登录的情况直接跳转登录
 router.beforeEach((to, from, next) => {
     // 处理左侧滚动不影响右边
     $('html, body, #page').removeClass('scroll-hide');
-
-    if (to.matched.some(record => record.requiresAuth)) {
-        if (localStorage.userId) {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (store.state.userInfo.userId) {
             next();
         } else {
-            console.log(to.fullPath);
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }
             });
         }
     } else {
-        console.log(to.fullPath);
         next();
     }
 });
 
 new Vue({
-    router
+    router,
+    store
 }).$mount('#app');

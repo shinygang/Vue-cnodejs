@@ -25,8 +25,7 @@
         },
         methods: {
             logon() {
-                let self = this;
-                if (self.token === '') {
+                if (this.token === '') {
                     this.$alert('令牌格式错误,应为36位UUID字符串');
                     return false;
                 }
@@ -34,15 +33,19 @@
                     type: 'POST',
                     url: 'https://cnodejs.org/api/v1/accesstoken',
                     data: {
-                        accesstoken: self.token
+                        accesstoken: this.token
                     },
                     dataType: 'json',
                     success: (res) => {
-                        localStorage.loginname = res.loginname;
-                        localStorage.avatar_url = res.avatar_url;
-                        localStorage.userId = res.id;
-                        localStorage.token = self.token;
-                        let redirect = decodeURIComponent(self.$route.query.redirect || '/');
+                        let user = {
+                            loginname: res.loginname,
+                            avatar_url: res.avatar_url,
+                            userId: res.id,
+                            token: this.token
+                        };
+                        sessionStorage.user = JSON.stringify(user);
+                        this.$store.dispatch('setUserInfo', user);
+                        let redirect = decodeURIComponent(this.$route.query.redirect || '/');
                         this.$router.push({
                             path: redirect
                         });

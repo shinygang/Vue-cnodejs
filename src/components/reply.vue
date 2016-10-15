@@ -14,6 +14,9 @@
     import $ from 'webpack-zepto';
     const utils = require('../libs/utils');
     const markdown = require('markdown').markdown;
+    import {
+        mapGetters
+    } from 'vuex';
 
     export default {
         replace: true,
@@ -22,9 +25,13 @@
             return {
                 hasErr: false,
                 content: '',
-                loginname: localStorage.loginname || '',
                 author_txt: '<br/><br/><a class="form" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>'
             };
+        },
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
         },
         mounted() {
             if (this.replyTo) {
@@ -41,7 +48,7 @@
                     let htmlText = markdown.toHTML(linkUsers) + this.author_txt;
                     let replyContent = $('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML;
                     let postData = {
-                        accesstoken: localStorage.token,
+                        accesstoken: this.userInfo.token,
                         content: this.content + this.author_txt
                     };
 
@@ -58,8 +65,8 @@
                                 this.topic.replies.push({
                                     id: res.reply_id,
                                     author: {
-                                        loginname: this.loginname,
-                                        avatar_url: localStorage.avatar_url
+                                        loginname: this.userInfo.loginname,
+                                        avatar_url: this.userInfo.avatar_url
                                     },
                                     content: replyContent,
                                     ups: [],

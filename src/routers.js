@@ -39,7 +39,7 @@ const routers = [{
             resolve(require('./views/new.vue'));
         });
     },
-    requiresAuth: true
+    meta: { requiresAuth: true }
 }, {
     path: '/message',
     name: 'message',
@@ -48,7 +48,7 @@ const routers = [{
             resolve(require('./views/message.vue'));
         });
     },
-    requiresAuth: true
+    meta: { requiresAuth: true }
 }, {
     path: '/user/:loginname',
     name: 'user',

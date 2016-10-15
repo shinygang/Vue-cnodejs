@@ -1,26 +1,29 @@
 <template>
     <div class="user-info">
         <!-- 未登录 -->
-        <ul class="login-no" v-if="!loginname">
+        <ul class="login-no" v-if="!userInfo.loginname">
             <li class="login" @click="goEnter"><a >登录</a></li>
         </ul>
         <!-- 已登录 -->
-        <div class="login-yes" v-if="loginname" @click="goUser">
-            <div class="avertar"><img v-if="avatar_url" :src="avatar_url"></div>
+        <div class="login-yes" v-if="userInfo.loginname" @click="goUser">
+            <div class="avertar"><img v-if="userInfo.avatar_url" :src="userInfo.avatar_url"></div>
             <div class="info">
-                <p v-if="loginname" v-text="loginname"></p>
+                <p v-if="userInfo.loginname" v-text="userInfo.loginname"></p>
             </div>
         </div>
     </div>
 </template>
 <script>
+    import {
+        mapGetters
+    } from 'vuex';
+    // import userStore from '../vuex/user';
     export default {
         replace: true,
-        data() {
-            return {
-                loginname: localStorage.loginname || '',
-                avatar_url: localStorage.avatar_url || ''
-            };
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
         },
         methods: {
             goEnter() {
@@ -35,7 +38,7 @@
                 this.$router.push({
                     name: 'user',
                     params: {
-                        loginname: localStorage.loginname
+                        loginname: this.userInfo.loginname
                     }
                 });
             }

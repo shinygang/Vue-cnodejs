@@ -28,6 +28,9 @@
 <script>
     import $ from 'webpack-zepto';
     import nvHead from '../components/header.vue';
+    import {
+        mapGetters
+    } from 'vuex';
 
     export default {
         data() {
@@ -35,15 +38,20 @@
                 topic: {
                     tab: 'share',
                     title: '',
-                    content: '',
-                    accesstoken: localStorage.token
+                    content: ''
                 },
                 err: '',
                 authorTxt: '<br/><br/><a class="from" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>'
             };
         },
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
+        },
         methods: {
             addTopic() {
+                console.log(this.userInfo);
                 let title = $.trim(this.topic.title);
                 let contents = $.trim(this.topic.content);
 
@@ -55,16 +63,21 @@
                     this.err = 'content';
                     return false;
                 }
-                this.topic.content = this.topic.content + this.authorTxt;
+
+                let postData = {
+                    ...this.topic,
+                    content: this.topic.content + this.authorTxt,
+                    accesstoken: this.userInfo.token
+                };
                 $.ajax({
                     type: 'POST',
                     url: 'https://cnodejs.org/api/v1/topics',
-                    data: this.topic,
+                    data: postData,
                     dataType: 'json',
                     success: (res) => {
                         if (res.success) {
                             this.$router.push({
-                                name: 'home'
+                                name: 'list'
                             });
                         }
                     },

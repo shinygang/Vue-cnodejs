@@ -68,16 +68,48 @@
             };
         },
         mounted() {
-            console.log('mounted-topic');
             if (this.$route.query && this.$route.query.tab) {
                 this.searchKey.tab = this.$route.query.tab;
             }
-            this.getTopics();
 
+            // 如果从详情返回并且之前存有对应的查询条件和参数
+            // 则直接渲染之前的数据
+            if (sessionStorage.searchKey && sessionStorage.tab === this.searchKey.tab) {
+                this.topics = JSON.parse(sessionStorage.topics);
+                this.searchKey = JSON.parse(sessionStorage.searchKey);
+                this.$nextTick(() => $(window).scrollTop(sessionStorage.scrollTop));
+            } else {
+                this.getTopics();
+            }
             // 滚动加载
-            $(window).on('scroll', () => {
-                utils.throttle(this.getScrollData, 300);
-            });
+            $(window).on('scroll', utils.throttle(this.getScrollData, 300, 1000));
+        },
+        beforeRouteLeave(to, from, next) {
+            // 如果跳转到详情页面，则记录关键数据
+            // 方便从详情页面返回到该页面的时候继续加载之前位置的数据
+            if (to.name === 'topic') {
+                // 当前滚动条位置
+                sessionStorage.scrollTop = $(window).scrollTop();
+                // 当前页面主题数据
+                sessionStorage.topics = JSON.stringify(this.topics);
+                // 查询参数
+                sessionStorage.searchKey = JSON.stringify(this.searchKey);
+                // 当前tab
+                sessionStorage.tab = from.query.tab || 'all';
+            }
+            $(window).off('scroll');
+            next();
+        },
+        beforeRouteEnter(to, from, next) {
+            if (from.name !== 'topic') {
+                // 页面切换移除之前记录的数据集
+                if (sessionStorage.tab) {
+                    sessionStorage.removeItem('topics');
+                    sessionStorage.removeItem('searchKey');
+                    sessionStorage.removeItem('tab');
+                }
+            }
+            next();
         },
         methods: {
             // 获取title文字
@@ -119,7 +151,7 @@
             // 滚动加载数据
             getScrollData() {
                 if (this.scroll) {
-                    let totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+                    let totalheight = parseInt($(window).height(), 20) + parseInt($(window).scrollTop(), 20);
                     if ($(document).height() <= totalheight + 200) {
                         this.scroll = false;
                         this.searchKey.limit += 20;
@@ -131,51 +163,12 @@
         watch: {
             // 切换页面
             '$route' (to, from) {
-                // 页面切换移除之前记录的数据集
-                if (sessionStorage.tab) {
-                    sessionStorage.removeItem('topics');
-                    sessionStorage.removeItem('searchKey');
-                    sessionStorage.removeItem('tab');
-                }
-
-                const toName = to.name;
-                const fromName = from.name;
-                // 如果跳转非列表页面则关闭滚动加载事件
-                if (toName !== 'list') {
-                    $(window).off('scroll');
-
-                    // 如果跳转到详情页面，则记录关键数据
-                    // 方便从详情页面返回到该页面的时候继续加载之前位置的数据
-                    if (toName === 'topic') {
-                        // 当前滚动条位置
-                        sessionStorage.scrollTop = $(window).scrollTop();
-                        // 当前页面主题数据
-                        sessionStorage.topics = JSON.stringify(this.topics);
-                        // 查询参数
-                        sessionStorage.searchKey = JSON.stringify(this.searchKey);
-                        // 当前tab
-                        sessionStorage.tab = to.query.tab || 'all';
-                    }
-                }
-
                 // 如果是当前页面切换分类的情况
-                if (fromName === 'list') {
-                    if (to.query && to.query.tab) {
-                        this.searchKey.tab = to.query.tab;
-                    }
-                    this.searchKey.limit = 20;
-                    this.getTopics();
-                } else if (fromName === 'topic') {
-                    console.log('router-topic');
-                    // 如果从详情返回并且之前存有对应的查询条件和参数
-                    // 则直接渲染之前的数据
-                    if (sessionStorage.searchKey && sessionStorage.tab === this.searchKey.tab) {
-                        this.topics = JSON.parse(sessionStorage.topics);
-                        this.searchKey = JSON.parse(sessionStorage.searchKey);
-                        this.$nextTick(() => $(window).scrollTop(sessionStorage.scrollTop));
-                    }
+                if (to.query && to.query.tab) {
+                    this.searchKey.tab = to.query.tab;
                 }
-
+                this.searchKey.limit = 20;
+                this.getTopics();
                 // 隐藏导航栏
                 this.$refs.head.show = false;
             }

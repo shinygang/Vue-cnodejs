@@ -65,12 +65,12 @@
                                 :reply-id="item.id"
                                 :reply-to="item.author.loginname"
                                 :show.sync="curReplyId"
-                                v-if="userId && curReplyId === item.id"></nv-reply>
+                                v-if="userInfo.userId && curReplyId === item.id"></nv-reply>
                     </li>
                 </ul>
             </section>
             <nv-top></nv-top>
-            <nv-reply v-if="userId"
+            <nv-reply v-if="userInfo.userId"
                     :topic="topic"
                     :topic-id="topicId">
             </nv-reply>
@@ -88,6 +88,9 @@
     import nvHead from '../components/header.vue';
     import nvReply from '../components/reply.vue';
     import nvTop from '../components/backtotop.vue';
+    import {
+        mapGetters
+    } from 'vuex';
 
     export default {
         data() {
@@ -96,9 +99,13 @@
                 topic: {}, // 主题
                 noData: false,
                 topicId: '',
-                curReplyId: '',
-                userId: localStorage.userId || ''
+                curReplyId: ''
             };
+        },
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
         },
         mounted() {
             // 隐藏左侧展开菜单
@@ -124,11 +131,11 @@
                 return utils.getLastTimeStr(time, ago);
             },
             isUps(ups) {
-                return $.inArray(this.userId, ups) >= 0;
+                return $.inArray(this.userInfo.userId, ups) >= 0;
             },
             addReply(id) {
                 this.curReplyId = id;
-                if (!this.userId) {
+                if (!this.userInfo.userId) {
                     this.$router.push({
                         name: 'login',
                         params: {
@@ -138,23 +145,23 @@
                 }
             },
             upReply(item) {
-                if (!this.userId) {
+                if (!this.userInfo.userId) {
                     this.$route.router.go('/login?redirect=' + encodeURIComponent(this.$route.path));
                 } else {
                     $.ajax({
                         type: 'POST',
                         url: 'https://cnodejs.org/api/v1/reply/' + item.id + '/ups',
                         data: {
-                            accesstoken: localStorage.token
+                            accesstoken: this.userInfo.token
                         },
                         dataType: 'json',
                         success: (res) => {
                             if (res.success) {
                                 if (res.action === 'down') {
-                                    let index = $.inArray(this.userId, item.ups);
+                                    let index = $.inArray(this.userInfo.userId, item.ups);
                                     item.ups.splice(index, 1);
                                 } else {
-                                    item.ups.push(this.userId);
+                                    item.ups.push(this.userInfo.userId);
                                 }
                             }
                         },

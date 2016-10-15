@@ -46,21 +46,28 @@
     import $ from 'webpack-zepto';
     import utils from '../libs/utils.js';
     import nvHead from '../components/header.vue';
+    import {
+        mapGetters
+    } from 'vuex';
 
     export default {
         data() {
             return {
                 showMenu: false,
                 selectItem: 2,
-                token: localStorage.token || '',
                 message: {},
                 noData: false,
                 currentData: [],
                 no_read_len: 0
             };
         },
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
+        },
         mounted() {
-            $.get('https://cnodejs.org/api/v1/messages?accesstoken=' + this.token, (d) => {
+            $.get('https://cnodejs.org/api/v1/messages?accesstoken=' + this.userInfo.token, (d) => {
                 if (d && d.data) {
                     this.message = d.data;
                     this.no_read_len = d.data.hasnot_read_messages.length;
@@ -86,7 +93,7 @@
             // 标记所有为已读
             markall() {
                 $.post('https://cnodejs.org/api/v1/message/mark_all', {
-                    accesstoken: localStorage.token
+                    accesstoken: this.userInfo.token
                 }, (d) => {
                     if (d && d.success) {
                         window.location.reload();
