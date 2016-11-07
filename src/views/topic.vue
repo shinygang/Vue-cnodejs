@@ -5,7 +5,7 @@
                 :need-add="true"
                 :fix-head="true">
         </nv-head>
-        
+
         <div id="page"
                 :class="{'show-menu':showMenu}"
                 v-if="topic.title">
@@ -146,7 +146,12 @@
             },
             upReply(item) {
                 if (!this.userInfo.userId) {
-                    this.$route.router.go('/login?redirect=' + encodeURIComponent(this.$route.path));
+                  this.$router.push({
+                      name: 'login',
+                      params: {
+                          redirect: encodeURIComponent(this.$route.path)
+                      }
+                  });
                 } else {
                     $.ajax({
                         type: 'POST',
