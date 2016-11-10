@@ -104,8 +104,6 @@
                 height: 42px;
                 width: 48%;
                 outline: medium none;
-                filter: alpha(opacity=0);
-                -moz-opacity: 0;
                 opacity: 0;
             }
         }

@@ -65,16 +65,16 @@ a img {
     outline: 0;
 }
 *{
-    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 textarea{
     resize: none;
-    -webkit-appearance: none;
+    appearance: none;
 }
 input{
-    -webkit-appearance: none;
+    appearance: none;
 }
 select {
-    -webkit-appearance: none;
+    appearance: none;
     background-color: #fff;
 }

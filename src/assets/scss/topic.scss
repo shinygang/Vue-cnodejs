@@ -9,13 +9,15 @@
 }
 
 .author-info {
-    @extend .display-flex;
+    display: flex;
     align-items: center;
     padding: 0 $padding;
     color: $text;
     font-size: 12px;
     .col {
-        @extend .flex;
+        display: block;
+        width: 100%;
+        flex: 1;
     }
     .avatar {
         display: block;
@@ -112,8 +114,8 @@
     margin: 0 $padding;
     textarea {
         display: block;
-        -webkit-box-flex: 1;
         width: 100%;
+        flex: 1;
         border: $border;
         background-color: #fff;
         font-size: 14px;

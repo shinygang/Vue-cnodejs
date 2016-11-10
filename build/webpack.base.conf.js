@@ -26,7 +26,8 @@ module.exports = {
       'vue$': 'vue/dist/vue',
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'filter': path.resolve(__dirname, '../src/filters.js')
     }
   },
   resolveLoader: {
@@ -87,7 +88,7 @@ module.exports = {
     loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
     postcss: [
       require('autoprefixer')({
-        browsers: ['last 2 versions']
+        browsers: ['last 3 versions', 'Android >= 4.4', 'iOS >= 6']
       })
     ]
   }
