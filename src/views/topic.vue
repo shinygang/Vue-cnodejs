@@ -146,12 +146,12 @@
             },
             upReply(item) {
                 if (!this.userInfo.userId) {
-                  this.$router.push({
-                      name: 'login',
-                      params: {
-                          redirect: encodeURIComponent(this.$route.path)
-                      }
-                  });
+                    this.$router.push({
+                        name: 'login',
+                        params: {
+                            redirect: encodeURIComponent(this.$route.path)
+                        }
+                    });
                 } else {
                     $.ajax({
                         type: 'POST',

@@ -18,7 +18,7 @@
         }
     };
 </script>
-<style lang="sass">
+<style lang="scss">
     .index {
         width: 100%;
         background-color: #fff;

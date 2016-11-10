@@ -22,7 +22,7 @@
     };
 </script>
 
-<style lang="sass">
+<style lang="scss">
     /*侧边栏*/
     
     .nav-list {

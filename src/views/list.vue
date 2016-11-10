@@ -74,10 +74,10 @@
 
             // 如果从详情返回并且之前存有对应的查询条件和参数
             // 则直接渲染之前的数据
-            if (sessionStorage.searchKey && sessionStorage.tab === this.searchKey.tab) {
-                this.topics = JSON.parse(sessionStorage.topics);
-                this.searchKey = JSON.parse(sessionStorage.searchKey);
-                this.$nextTick(() => $(window).scrollTop(sessionStorage.scrollTop));
+            if (window.window.sessionStorage.searchKey && window.window.sessionStorage.tab === this.searchKey.tab) {
+                this.topics = JSON.parse(window.window.sessionStorage.topics);
+                this.searchKey = JSON.parse(window.window.sessionStorage.searchKey);
+                this.$nextTick(() => $(window).scrollTop(window.window.sessionStorage.scrollTop));
             } else {
                 this.getTopics();
             }
@@ -89,13 +89,13 @@
             // 方便从详情页面返回到该页面的时候继续加载之前位置的数据
             if (to.name === 'topic') {
                 // 当前滚动条位置
-                sessionStorage.scrollTop = $(window).scrollTop();
+                window.window.sessionStorage.scrollTop = $(window).scrollTop();
                 // 当前页面主题数据
-                sessionStorage.topics = JSON.stringify(this.topics);
+                window.window.sessionStorage.topics = JSON.stringify(this.topics);
                 // 查询参数
-                sessionStorage.searchKey = JSON.stringify(this.searchKey);
+                window.window.sessionStorage.searchKey = JSON.stringify(this.searchKey);
                 // 当前tab
-                sessionStorage.tab = from.query.tab || 'all';
+                window.window.sessionStorage.tab = from.query.tab || 'all';
             }
             $(window).off('scroll');
             next();
@@ -103,10 +103,10 @@
         beforeRouteEnter(to, from, next) {
             if (from.name !== 'topic') {
                 // 页面切换移除之前记录的数据集
-                if (sessionStorage.tab) {
-                    sessionStorage.removeItem('topics');
-                    sessionStorage.removeItem('searchKey');
-                    sessionStorage.removeItem('tab');
+                if (window.window.sessionStorage.tab) {
+                    window.window.sessionStorage.removeItem('topics');
+                    window.window.sessionStorage.removeItem('searchKey');
+                    window.window.sessionStorage.removeItem('tab');
                 }
             }
             next();

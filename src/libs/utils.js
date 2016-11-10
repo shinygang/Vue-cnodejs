@@ -5,7 +5,7 @@ import Timeago from 'timeago.js';
 
 let getCheck = {
     checkEmail(val) {
-        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        var filter = /^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (filter.test(val)) {
             return true;
         } else {
@@ -39,7 +39,7 @@ const fetchUsers = (text) => {
         /`[\s\S]+?`/g, // 同一行中，`some code` 中内容也不该被解析
         /^.*/gm, // 4个空格也是 pre 标签，在这里 . 不会匹配换行
         /\b\S*?@[^\s]*?\..+?\b/g, // somebody@gmail.com 会被去除
-        /\[@.+?\]\(\/.+?\)/g // 已经被 link 的 username
+        /\[@.+?\\]\(\/.+?\)/g // 已经被 link 的 username
     ];
 
     ignoreRegexs.forEach((ignoreRegex) => {
