@@ -20,7 +20,8 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    // require 时省略的扩展名，如：require('module') 不需要 module.js
+    extensions: ['', '.js', '.vue', '.scss', '.css'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue',
@@ -34,8 +35,7 @@ module.exports = {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
-    preLoaders: [
-      {
+    preLoaders: [{
         test: /\.vue$/,
         loader: 'eslint',
         include: projectRoot,
@@ -48,8 +48,7 @@ module.exports = {
         exclude: /node_modules/
       }
     ],
-    loaders: [
-      {
+    loaders: [{
         test: /\.vue$/,
         loader: 'vue'
       },
