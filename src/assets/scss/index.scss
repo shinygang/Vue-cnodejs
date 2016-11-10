@@ -59,25 +59,29 @@
     }
     .content {
         padding-top: 10px;
-        @extend .display-flex; 
+        display: flex;
     }
     .avatar {
        @extend .user-avatar;
     }
     .info {
-        @extend .flex;
+        display: block;
+        width: 100%;
+        flex: 1;
     }
     p {
         padding: 3px 0;
-        @extend .display-flex;
+        display: flex;
         color: $text;
         font-size: $font-info;
 
         &:first-child {
-            font-size: $font-content; 
+            font-size: $font-content;
         }
         .name, time:first-child {
-           @extend .flex; 
+           display: block;
+           width: 100%;
+           flex: 1;
         }
         b {
             color: #42b983;

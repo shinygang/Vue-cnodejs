@@ -42,25 +42,15 @@
                 height: 24px;
                 border: 2px solid #fff;
                 border-radius: 24px;
-                -webkit-animation: gif 1s infinite linear;
                 animation: gif 1s infinite linear;
                 clip: rect(0 auto 12px 0);
+
                 @keyframes gif {
                     0% {
-                        -webkit-transform: rotate(0deg);
                         transform: rotate(0deg);
                     }
                     100% {
-                        -webkit-transform: rotate(360deg);
                         transform: rotate(360deg);
-                    }
-                }
-                @-webkit-keyframes gif {
-                    0% {
-                        -webkit-transform: rotate(0deg);
-                    }
-                    100% {
-                        -webkit-transform: rotate(360deg);
                     }
                 }
             }

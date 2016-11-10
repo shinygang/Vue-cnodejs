@@ -10,6 +10,7 @@ $red:#ff5a5f;
 $yellow:#feb501;
 $color80:#80bd01;
 $gap:5px;
+
 body {
     height: 100%;
     width: 100%;
@@ -58,28 +59,6 @@ body {
     display: flex;
 }
 
-.flex1 {
-    -webkit-flex: 1;
-    -moz-box-flex: 1;
-    -ms-flex: 1;
-    -webkit-box-flex: 1;
-    box-flex: 1;
-    flex: 1;
-}
-
-.align-justify {
-    -moz-box-align: justify-content;
-    -ms-flex-align: align-content;
-    -ms-flex-item-align: justify-content;
-    -webkit-box-align: justify-content;
-    /*老语法*/
-    -webkit-align-items: justify-content;
-    /*新语法*/
-    align-content: justify-content;
-    align-items: justify-content;
-    justify-content: justify-content;
-}
-
 .break {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -90,7 +69,7 @@ body {
     width: 100%;
     margin: $gap*2 0;
     padding: 0 $gap*2;
-    @extend .display-flex;
+    display: flex;
     .tab {
         display: inline-block;
         width: $gap*8;
@@ -110,7 +89,9 @@ body {
     .title {
         font-size: $gap*3.6;
         font-weight: bold;
-        @extend .flex1;
+        display: block;
+        width: 100%;
+        flex: 1;
         @extend .break;
     }
     .head {
@@ -125,9 +106,10 @@ body {
         }
     }
     .info {
-        display: block;
         overflow: hidden;
-        @extend .flex1;
+        display: block;
+        width: 100%;
+        flex: 1;
         &:after {
             clear: both;
         }
@@ -227,30 +209,6 @@ $font-tag: 10px;
     font-size: $font-title;
     line-height: 1.5;
     @extend .text-overflow;
-}
-
-.display-flex {
-    display: -moz-box;
-    /* Firefox */
-    display: -ms-flexbox;
-    /* IE10 */
-    display: -webkit-box;
-    /* Safari */
-    display: -webkit-flex;
-    /* Chrome, WebKit */
-    display: flexbox;
-    display: flex;
-}
-
-.flex {
-    display: block;
-    width: 100%;
-    -webkit-flex: 1;
-    -moz-box-flex: 1;
-    -ms-flex: 1;
-    -webkit-box-flex: 1;
-    box-flex: 1;
-    flex: 1;
 }
 
 .tag {

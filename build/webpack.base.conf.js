@@ -20,21 +20,22 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    // require 时省略的扩展名，如：require('module') 不需要 module.js
+    extensions: ['', '.js', '.vue', '.scss', '.css'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue$': 'vue/dist/vue',
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'filter': path.resolve(__dirname, '../src/filters.js')
     }
   },
   resolveLoader: {
     fallback: [path.join(__dirname, '../node_modules')]
   },
   module: {
-    preLoaders: [
-      {
+    preLoaders: [{
         test: /\.vue$/,
         loader: 'eslint',
         include: projectRoot,
@@ -47,8 +48,7 @@ module.exports = {
         exclude: /node_modules/
       }
     ],
-    loaders: [
-      {
+    loaders: [{
         test: /\.vue$/,
         loader: 'vue'
       },
@@ -87,7 +87,7 @@ module.exports = {
     loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
     postcss: [
       require('autoprefixer')({
-        browsers: ['last 2 versions']
+        browsers: ['last 3 versions', 'Android >= 4.4', 'iOS >= 6']
       })
     ]
   }
