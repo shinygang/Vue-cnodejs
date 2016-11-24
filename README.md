@@ -20,7 +20,7 @@ git clone https://github.com/shinygang/Vue-cnodejs.git
 npm install
 ```
 
-启动服务(http://localhost:8080)
+启动服务(http://localhost:8020)
 
 ```
 npm run dev

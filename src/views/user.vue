@@ -51,26 +51,7 @@
             };
         },
         mounted() {
-            let loginname = this.$route.params.loginname;
-            if (!loginname) {
-                this.$alert('缺少用户名参数');
-                this.$router.push({
-                    path: '/'
-                });
-                return false;
-            }
-            $.get('https://cnodejs.org/api/v1/user/' + loginname, (d) => {
-                if (d && d.data) {
-                    let data = d.data;
-                    this.user = data;
-                    if (data.recent_replies.length > 0) {
-                        this.currentData = data.recent_replies;
-                    } else {
-                        this.currentData = data.recent_topics;
-                        this.selectItem = 2;
-                    }
-                }
-            });
+            this.getUser();
         },
         methods: {
             // 切换tab
@@ -80,6 +61,34 @@
             },
             getLastTimeStr(date, friendly) {
                 return utils.getLastTimeStr(date, friendly);
+            },
+            getUser() {
+                let loginname = this.$route.params.loginname;
+                if (!loginname) {
+                    this.$alert('缺少用户名参数');
+                    this.$router.push({
+                        path: '/'
+                    });
+                    return false;
+                }
+                $.get('https://cnodejs.org/api/v1/user/' + loginname, (d) => {
+                    if (d && d.data) {
+                        let data = d.data;
+                        this.user = data;
+                        if (data.recent_replies.length > 0) {
+                            this.currentData = data.recent_replies;
+                        } else {
+                            this.currentData = data.recent_topics;
+                            this.selectItem = 2;
+                        }
+                    }
+                });
+            }
+        },
+        watch: {
+            // 切换页面
+            '$route' (to, from) {
+                this.getUser();
             }
         },
         components: {

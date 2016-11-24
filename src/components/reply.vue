@@ -75,7 +75,7 @@
                             }
                             this.content = '';
                             if (this.show) {
-                                this.show = '';
+                                this.$emit('close');
                             }
                         },
                         error: (res) => {

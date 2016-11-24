@@ -65,6 +65,7 @@
                                 :reply-id="item.id"
                                 :reply-to="item.author.loginname"
                                 :show.sync="curReplyId"
+                                @close="hideItemReply"
                                 v-if="userInfo.userId && curReplyId === item.id"></nv-reply>
                     </li>
                 </ul>
@@ -143,6 +144,9 @@
                         }
                     });
                 }
+            },
+            hideItemReply() {
+                this.curReplyId = '';
             },
             upReply(item) {
                 if (!this.userInfo.userId) {
