@@ -1,4 +1,4 @@
-#基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.github.io/cnodevue/)
+#基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.coding.me/)
 
 ## 注意：当前项目代码已经升级到2.0，采用vue-cli构建的2.0版本。1.x代码请看1.x分支。
 
