@@ -1,6 +1,6 @@
 require('./check-versions')()
 var config = require('../config')
-if (!process.env.NODE_ENV) process.env.NODE_ENV = config.dev.env
+if (!process.env.NODE_ENV) process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
@@ -38,11 +38,10 @@ compiler.plugin('compilation', function (compilation) {
 Object.keys(proxyTable).forEach(function (context) {
   var options = proxyTable[context]
   if (typeof options === 'string') {
-    options = { target: options }
+    options = { target: options, changeOrigin: true }
   }
   app.use(proxyMiddleware(context, options))
 })
-
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 
@@ -54,8 +53,8 @@ app.use(devMiddleware)
 app.use(hotMiddleware)
 
 // serve pure static assets
-var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+var staticPath = path.posix.join(config.build.assetsPublicPath, config.build.assetsSubDirectory)
+app.use(staticPath, express.static('./public'))
 
 module.exports = app.listen(port, function (err) {
   if (err) {
