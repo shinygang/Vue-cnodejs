@@ -2,5 +2,6 @@ server.js
 gulpfile.js
 webpack.config.js
 src/libs/llqrcode.js
+src/libs/zepto.js
 build/
 config/
