@@ -1,4 +1,4 @@
-#基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.github.io/cnodevue/)
+#基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.coding.me/)
 
 ###安装
 
