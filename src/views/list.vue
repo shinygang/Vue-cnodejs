@@ -144,7 +144,7 @@
                 $.get('https://cnodejs.org/api/v1/topics?' + params, (d) => {
                     this.scroll = true;
                     if (d && d.data) {
-                        this.topics = d.data;
+                        this.topics = this.topics.concat(d.data);
                     }
                 });
             },
@@ -154,7 +154,7 @@
                     let totalheight = parseInt($(window).height(), 20) + parseInt($(window).scrollTop(), 20);
                     if ($(document).height() <= totalheight + 200) {
                         this.scroll = false;
-                        this.searchKey.limit += 20;
+                        this.searchKey.page += 1;
                         this.getTopics();
                     }
                 }
