@@ -58,7 +58,6 @@
             return {
                 scroll: true,
                 topics: [],
-                temp: {},
                 searchKey: {
                     page: 1,
                     limit: 20,
@@ -145,16 +144,20 @@
                 $.get('https://cnodejs.org/api/v1/topics?' + params, (d) => {
                     this.scroll = true;
                     if (d && d.data) {
-                        d.data.forEach((topic, index) => {
-                            if (!this.temp[topic.id]) {
-                                this.topics.push(topic);
-                                this.temp[topic.id] = (this.searchKey.page - 1) * this.searchKey.limit + index + 1;
-                            } else {
-                                this.topics[this.temp[topic.id] - 1] = topic;
-                            }
-                        });
+                        d.data.forEach(newTopic => this.mergeTopics(newTopic));
                     }
                 });
+            },
+            mergeTopics(topic) {
+                const isOld = this.topics.some((oldTopic, index) => {
+                    if (topic.id === oldTopic.id) {
+                        this.topics[index] = topic;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+                if (!isOld) this.topics.push(topic);
             },
             // 滚动加载数据
             getScrollData() {
@@ -175,7 +178,6 @@
                 if (to.query && to.query.tab) {
                     this.searchKey.tab = to.query.tab;
                     this.topics = [];
-                    this.temp = {};
                 }
                 this.searchKey.page = 1;
                 this.getTopics();
