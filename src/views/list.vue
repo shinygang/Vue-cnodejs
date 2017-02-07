@@ -10,7 +10,7 @@
         <section id="page">
             <!-- 首页列表 -->
             <ul class="posts-list">
-                <li v-for="item in topics">
+                <li v-for="item in topics" :key="item.id">
                     <router-link :to="{name:'topic',params:{id:item.id}}">
                     <h3 v-text="item.title"
                             :class="getTabInfo(item.tab, item.good, item.top, true)"
@@ -58,6 +58,7 @@
             return {
                 scroll: true,
                 topics: [],
+                temp: {},
                 searchKey: {
                     page: 1,
                     limit: 20,
@@ -144,7 +145,14 @@
                 $.get('https://cnodejs.org/api/v1/topics?' + params, (d) => {
                     this.scroll = true;
                     if (d && d.data) {
-                        this.topics = this.topics.concat(d.data);
+                        d.data.forEach((topic, index) => {
+                            if (!this.temp[topic.id]) {
+                                this.topics.push(topic);
+                                this.temp[topic.id] = (this.searchKey.page - 1) * this.searchKey.limit + index + 1;
+                            } else {
+                                this.topics[this.temp[topic.id] - 1] = topic;
+                            }
+                        });
                     }
                 });
             },
@@ -166,8 +174,10 @@
                 // 如果是当前页面切换分类的情况
                 if (to.query && to.query.tab) {
                     this.searchKey.tab = to.query.tab;
+                    this.topics = [];
+                    this.temp = {};
                 }
-                this.searchKey.limit = 20;
+                this.searchKey.page = 1;
                 this.getTopics();
                 // 隐藏导航栏
                 this.$refs.head.show = false;
