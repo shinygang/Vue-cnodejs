@@ -10,7 +10,7 @@
         <section id="page">
             <!-- 首页列表 -->
             <ul class="posts-list">
-                <li v-for="item in topics">
+                <li v-for="item in topics" :key="item.id">
                     <router-link :to="{name:'topic',params:{id:item.id}}">
                     <h3 v-text="item.title"
                             :class="getTabInfo(item.tab, item.good, item.top, true)"
@@ -58,6 +58,7 @@
             return {
                 scroll: true,
                 topics: [],
+                index: {},
                 searchKey: {
                     page: 1,
                     limit: 20,
@@ -144,9 +145,18 @@
                 $.get('https://cnodejs.org/api/v1/topics?' + params, (d) => {
                     this.scroll = true;
                     if (d && d.data) {
-                        this.topics = d.data;
+                        d.data.forEach(this.mergeTopics);
                     }
                 });
+            },
+            mergeTopics(topic) {
+                if (typeof this.index[topic.id] === 'number') {
+                    const topicsIndex = this.index[topic.id];
+                    this.topics[topicsIndex] = topic;
+                } else {
+                    this.index[topic.id] = this.topics.length;
+                    this.topics.push(topic);
+                }
             },
             // 滚动加载数据
             getScrollData() {
@@ -154,7 +164,7 @@
                     let totalheight = parseInt($(window).height(), 20) + parseInt($(window).scrollTop(), 20);
                     if ($(document).height() <= totalheight + 200) {
                         this.scroll = false;
-                        this.searchKey.limit += 20;
+                        this.searchKey.page += 1;
                         this.getTopics();
                     }
                 }
@@ -166,8 +176,10 @@
                 // 如果是当前页面切换分类的情况
                 if (to.query && to.query.tab) {
                     this.searchKey.tab = to.query.tab;
+                    this.topics = [];
+                    this.index = {};
                 }
-                this.searchKey.limit = 20;
+                this.searchKey.page = 1;
                 this.getTopics();
                 // 隐藏导航栏
                 this.$refs.head.show = false;
