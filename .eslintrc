@@ -1,22 +1,29 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "root": true,
-    "extends": "standard",
-    "parser": "babel-eslint",
-    "plugins": [
-        "html",
-        "vue"
-    ],
-    "rules": {
-        "arrow-parens": 0,
-        "indent": ["error", 4, { "SwitchCase": 1 }],
-        "eol-last": 0,
-        "semi": ["error", "always"],
-        "space-before-function-paren": 0,
-        "no-useless-escape": 0
-    }
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"root": true,
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	// https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
+	"extends": "standard",
+	// required to lint *.vue files
+	"plugins": [
+		"html", "vue"
+	],
+	// add your custom rules here
+	"rules": {
+		"indent": ["warn", 2],
+		"semi": 0,  // off semi
+		"eol-last": 0,
+		"no-unused-vars": 0,
+		// allow paren-less arrow functions
+		"arrow-parens": 0,
+		// allow async-await
+		"generator-star-spacing": 0
+	}
 }

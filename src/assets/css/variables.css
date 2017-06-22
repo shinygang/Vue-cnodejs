@@ -1,0 +1,30 @@
+$color31: #313131;
+$colorf0: #f0f0f0;
+$colorfff: #fff;
+$colore7: #e7e7e7;
+$colorfa: #fafafa;
+$color62: #626262;
+$colord4: #d4d4d4;
+$colora0: #a0a0a0;
+$red: #ff5a5f;
+$yellow: #feb501;
+$color80: #80bd01;
+$gap: 5px;
+
+/* 颜色 */
+
+$white: #ffffff;
+$light: #d5dbdb;
+$title: #2c3e50;
+$text: #34495e;
+
+/* 基础布局 */
+
+$padding: 15px;
+$border: 1px solid $light;
+$radius: 4px;
+$font-title: 16px;
+$font-content: 14px;
+$font-info: 12px;
+$font-tag: 10px;
+

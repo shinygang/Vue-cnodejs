@@ -1,0 +1,102 @@
+.page {
+    background-color: $colorfff;
+    height: 100%;
+    padding: 15px 0;
+    .reply_num {
+        margin-top: 20px;
+        background-color: $colore7;
+        padding: 10px 0 10px 10px;
+        border-top: solid 1px $colord4;
+        border-bottom: solid 1px $colord4;
+    }
+    .reply-list {
+        width: 100%;
+        margin-top: 15px;
+        ul {
+            width: 100%;
+            list-style: none;
+            padding-left: 0;
+            li {
+                width: 100%;
+                list-style: none;
+                border-bottom: solid 1px $colord4;
+                &:last-child {
+                    border-bottom: none;
+                }
+                .uped {
+                    color: $color80;
+                }
+                .icon {
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+    .topic_content {
+        margin: 0 10px;
+    }
+    .reply {
+        width: 100%;
+        margin-top: 15px;
+        border-top: solid 1px $colord4;
+        .text {
+            margin: 15px 2%;
+            width: 96%;
+            border-color: $colord4;
+            color: #000;
+        }
+        .btn {
+            display: inline-block;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            margin: 0 2% 15px;
+            width: 96%;
+            background-color: $color80;
+            padding: 10px 0;
+            color: $colorfff;
+        }
+        .err {
+            border-color: red;
+        }
+    }
+    .message {
+        border-bottom: solid 1px $colord4;
+        padding: 10px 0;
+    }
+    .tabs {
+        width: 100%;
+        height: 40px.2;
+        margin-top: 30px;
+        list-style: none;
+        border-bottom: solid 1px $colord4;
+        position: relative;
+        .item {
+            width: 50%;
+            padding: 10px.5 0;
+            float: left;
+            font-size: 16;
+            text-align: center;
+            font-weight: bold;
+        }
+        .read {
+            font-size: $gap*5;
+            color: $color80;
+            position: absolute;
+            right: $gap*1;
+            top: $gap*1.5;
+            font-weight: bold;
+        }
+        .br {
+            border-right: solid 1px $colord4;
+        }
+        .selected {
+            color: $red;
+            border-bottom: solid 2px $red;
+        }
+    }
+    .icon-empty {
+        font-size: 10px5;
+        display: block;
+    }
+}
