@@ -39,7 +39,6 @@ export default {
   watch: {
     show (val) {
       if (!val) {
-        console.log(document.body.className)
         document.body.className = ''
         document.getElementById('page') ? document.getElementById('page').className = '' : ''
       } else {

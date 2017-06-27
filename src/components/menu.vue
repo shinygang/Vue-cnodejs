@@ -2,11 +2,12 @@
   <section id="sideBar" class="nav-list" :class="{'show':showMenu}">
     <user-info></user-info>
     <section class="list-ul">
-      <router-link class="icon-quanbu iconfont item" to="/all">全部</router-link>
-      <router-link class="icon-hao iconfont item" to="/good">精华</router-link>
-      <router-link class="icon-fenxiang iconfont item" to="/share">分享</router-link>
-      <router-link class="icon-wenda iconfont item" to="/ask">问答</router-link>
-      <router-link class="icon-zhaopin iconfont item" to="/job">招聘</router-link>
+      <router-link class="icon-quanbu iconfont item" to="/all/1">全部</router-link>
+      <router-link class="icon-hao iconfont item" to="/good/1">精华</router-link>
+      <router-link class="icon-fenxiang iconfont item" to="/share/1">分享</router-link>
+      <router-link class="icon-wenda iconfont item" to="/ask/1">问答</router-link>
+      <router-link class="icon-zhaopin iconfont item" to="/job/1">招聘</router-link>
+      <router-link class="iconfont item icon-dev" to="/dev/1">客户端测试</router-link>
       <router-link class="icon-xiaoxi iconfont item line" to="/message">消息</router-link>
       <router-link class="icon-about iconfont item" to="/about">关于</router-link>
     </section>

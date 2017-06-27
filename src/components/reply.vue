@@ -21,9 +21,9 @@ export default {
     return {
       hasErr: false,
       content: '',
-      userInfo: this.$store.state.user || {},
+      userInfo: this.$store.state.loginUser || {},
       author_Html: '<p style="text-align:right"><a href="https://github.com/shinygang/Vue-cnodejs"> — — I\'m webapp-cnodejs-vue</a></p>',
-      author_txt: '\r[— — I\'m webapp-cnodejs-vue](https://github.com/shinygang/Vue-cnodejs)'
+      author_txt: '\r\r[— — I\'m webapp-cnodejs-vue](https://github.com/shinygang/Vue-cnodejs)'
     };
   },
   mounted () {

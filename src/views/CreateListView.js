@@ -8,8 +8,8 @@ export default function createListView (type) {
   return {
     name: `${type}-topic-view`,
 
-    asyncData ({ store }) {
-      let page = store.state.route.params.page || 1
+    asyncData ({ store, route }) {
+      let page = route.params.page || 1
       return store.dispatch('FETCH_LIST_DATA', { type, page })
     },
 

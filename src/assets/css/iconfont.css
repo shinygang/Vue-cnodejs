@@ -25,3 +25,13 @@
 .icon-zhaopin:before { content: "\e605"; margin-right: 30px;}
 .icon-xiaoxi:before { content: "\e606"; margin-right: 30px;}
 .icon-about:before { content: "\e607"; margin-right: 30px;}
+.icon-dev:before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url(../images/components/icon-dev.png) no-repeat center center;
+  background-size: cover;
+  margin-right: 30px;
+  vertical-align: top;
+}

@@ -18,10 +18,9 @@ function fetch (child) {
   } else {
 
     return new Promise((resolve, reject) => {
-      console.log(preHost + child)
       nodeFetch(preHost + child).then(res => res.json()).then((res) => {
         logRequests && console.log(`fetched ${child}.`)
-        if (child.indexOf('topics') < 0) {
+        if (child.indexOf('topics') < 0 && child.indexOf('user') < 0 && child.indexOf('message') < 0) {
           cache && cache.set(child, res.data)
           resolve(res.data || {})
         } else {
@@ -50,5 +49,9 @@ export function fetchItems (ids) {
 
 export function fetchUser (loginname) {
   return fetch(`user/${loginname}`)
+}
+
+export function fetchMessage (accesstoken) {
+  return fetch(`messages?accesstoken=${accesstoken}`)
 }
 

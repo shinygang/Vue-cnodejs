@@ -13,7 +13,15 @@ export default {
     Vue.set(state.topics, id, topic || {}) /* false means user not found */
   },
 
-  SET_USER (state, user) {
+  SET_LOGINUSER (state, user) {
+    state.loginUser = user
+  },
+
+  SET_USER (state, { user }) {
     state.user = user
+  },
+
+  SET_MESSAGE: (state, messages) => {
+    state.messages = messages
   }
 }

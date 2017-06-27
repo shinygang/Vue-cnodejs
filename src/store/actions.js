@@ -1,6 +1,7 @@
 import {
   fetchUser,
   fetchTopic,
+  fetchMessage,
   fetchIdsByType
 } from '../api'
 
@@ -24,13 +25,23 @@ export default {
     commit('SET_TOPIC', { id, topic })
   },
 
-  SET_USER: ({commit}, user = {}) => {
-    commit('SET_USER', user)
+  SET_LOGINUSER: ({commit}, user = {}) => {
+    // 存如缓存，防止刷新丢失
+    commit('SET_LOGINUSER', user)
   },
 
   FETCH_USER: ({ commit, state }, { loginname }) => {
-    return state.user
-      ? Promise.resolve(state.user)
-      : fetchUser(loginname).then(user => commit('SET_USER', { user }))
+    return fetchUser(loginname).then(user => commit('SET_USER', { user }))
+  },
+
+  FETCH_MESSAGE: ({ commit, state }, { accesstoken }) => {
+    if (!accesstoken && state.cookies && state.cookies.user) {
+      let user = JSON.parse(state.cookies.user)
+      accesstoken = user ? user.token : ''
+    }
+    return fetchMessage(accesstoken).then(({has_read_messages, hasnot_read_messages}) => {
+      let msg = {has_read_messages, hasnot_read_messages}
+      return commit('SET_MESSAGE', msg)
+    })
   }
 }

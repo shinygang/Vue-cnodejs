@@ -32,6 +32,10 @@
           </router-link>
         </li>
       </ul>
+      <div class="page-item">
+        <router-link v-if="page > 1" :to="'/' + type + '/' + (page - 1)">上一页</router-link>
+        <router-link v-if="topics.length >= 20" :to="'/' + type + '/' + (page + 1)">下一页</router-link>
+      </div>
     </section>
     <nv-top></nv-top>
   </div>
@@ -53,14 +57,18 @@ export default {
   },
   data() {
     return {
-      tab: this.$store.state.activeType,
-      topics: this.$store.getters.activeTopics
+      tab: this.$store.state.activeType
     }
+  },
+  props: {
+    type: String
   },
   computed: {
     page () {
-      console.log(this.$store.state.list)
       return Number(this.$store.state.route.params.page) || 1
+    },
+    topics () {
+      return this.$store.getters.activeTopics
     }
   },
   methods: {

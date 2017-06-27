@@ -17,6 +17,7 @@
 import nvHead from '../components/header.vue';
 import {fetchPost} from '../util/fetch.js'
 import { mapActions } from 'vuex'
+import Cookies from 'js-cookie'
 
 export default {
   data () {
@@ -26,7 +27,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      SET_USER: 'SET_USER'
+      SET_USER: 'SET_LOGINUSER'
     }),
     logon () {
       if (this.token === '') {
@@ -44,6 +45,7 @@ export default {
             token: this.token
           }
           this.SET_USER(user);
+          Cookies.set('user', JSON.stringify(user))
           window.sessionStorage.user = JSON.stringify(user)
           let redirect = decodeURIComponent(this.$route.query.redirect || '/')
           this.$router.push({path:redirect})

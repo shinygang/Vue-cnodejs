@@ -9,6 +9,9 @@ const indexView = (resolve) => require(['../views/index.vue'], resolve)
 const topicView = (resolve) => require(['../views/topic.vue'], resolve)
 const userView = (resolve) => require(['../views/user.vue'], resolve)
 const loginView = (resolve) => require(['../views/login.vue'], resolve)
+const msgView = (resolve) => require(['../views/message.vue'], resolve)
+const aboutView = (resolve) => require(['../views/about.vue'], resolve)
+const newView = (resolve) => require(['../views/new.vue'], resolve)
 
 export function createRouter () {
   return new Router({
@@ -21,9 +24,13 @@ export function createRouter () {
       { path: '/share/:page(\\d+)?', component: createListView('share') },
       { path: '/ask/:page(\\d+)?', component: createListView('ask') },
       { path: '/job/:page(\\d+)?', component: createListView('job') },
+      { path: '/dev/:page(\\d+)?', component: createListView('dev') },
       { path: '/topic/:id([0-9a-zA-Z]+)', component: topicView },
-      { path: '/user/:loginname([0-9a-zA-Z]+)', component: userView },
+      { path: '/user/:loginname', component: userView, meta: { requiresAuth: true } },
       { path: '/login', component: loginView },
+      { path: '/message', component: msgView, meta: { requiresAuth: true } },
+      { path: '/about', component: aboutView },
+      { path: '/add', component: newView },
       { path: '/', redirect: '/index' },
       { path: '*', redirect: '/index' }
     ]

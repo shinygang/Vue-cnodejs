@@ -30,14 +30,34 @@ if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__)
 }
 
+const ckAuth = (to, from, cb) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!(window.sessionStorage.user || (store.state.loginUser && store.state.loginUser.token))) {
+      // router.push({ path: '/login', query: { redirect: to.fullPath }})
+      cb()
+      return
+    } else {
+      if (!store.state.loginUser.token && window.sessionStorage.user) {
+        store.dispatch('SET_LOGINUSER', JSON.parse(window.sessionStorage.user))
+      }
+    }
+  }
+}
+
 // wait until router has resolved all async before hooks
 // and async components...
-router.onReady(() => {
+router.onReady((to, from) => {
+  ckAuth(to, from, () => {
+    router.push({ path: '/login', query: { redirect: to.fullPath }})
+  })
   // Add router hook for handling asyncData.
   // Doing it after initial route is resolved so that we don't double-fetch
   // the data that we already have. Using router.beforeResolve() so that all
   // async components are resolved.
   router.beforeResolve((to, from, next) => {
+    ckAuth(to, from, () => {
+      next({ path: '/login', query: { redirect: to.fullPath }})
+    })
     document.body.className = ''
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)

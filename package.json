@@ -24,10 +24,12 @@
   },
   "dependencies": {
     "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
     "cross-env": "^4.0.0",
     "es6-promise": "^4.1.0",
     "express": "^4.15.2",
     "firebase": "^3.7.2",
+    "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
     "lru-cache": "^4.0.2",
     "serve-favicon": "^2.4.1",

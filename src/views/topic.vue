@@ -78,12 +78,13 @@ export default {
       noData: false,
       topicId: '',
       curReplyId: '',
-      userInfo: this.$store.state.user
+      userInfo: this.$store.state.loginUser
     }
   },
   mixins: [mixin],
   computed: {
     topic () {
+      this.noData = !this.$store.state.topics[this.$route.params.id].title
       return this.$store.state.topics[this.$route.params.id]
     }
   },
@@ -124,10 +125,7 @@ export default {
     upReply (item, idx) {
       if (!this.userInfo.userId) {
         this.$router.push({
-          name: 'login',
-          params: {
-            redirect: encodeURIComponent(this.$route.path)
-          }
+          path: '/login?redirect=' + encodeURIComponent(this.$route.path)
         })
       } else {
         fetchPost(`/reply/${item.id}/ups`, `accesstoken=${this.userInfo.token}`).then((res) => {

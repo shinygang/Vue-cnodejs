@@ -14,11 +14,6 @@ const config = merge(base, {
     'whatwg-fetch': 'whatwg-fetch',
     app: './src/entry-client.js'
   },
-  resolve: {
-    alias: {
-      'create-api': './create-api-client.js'
-    }
-  },
   plugins: [
     // strip dev-only code in Vue source
     new webpack.DefinePlugin({

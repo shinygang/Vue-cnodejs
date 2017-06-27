@@ -6,7 +6,7 @@
     </div>
     <!-- 已登录 -->
     <router-link class="login-yes" v-if="userInfo.loginname" tag="div"
-      :to="{ path: '/user', query: { loginname: userInfo.loginname }}">
+      :to="'/user/' + userInfo.loginname ">
       <div class="avertar">
         <img v-if="userInfo.avatar_url" :src="userInfo.avatar_url">
       </div>
@@ -17,13 +17,15 @@
   </div>
 </template>
 <script>
-import mixin from '../mixin/common.js'
 export default {
-  mixins: [mixin],
   data () {
     return {
-      userInfo: this.$store.state.user || {},
       redirect: encodeURIComponent(this.$route.path)
+    }
+  },
+  computed: {
+    userInfo () {
+      return this.$store.getters.getUser
     }
   }
 }
@@ -174,7 +176,7 @@ export default {
 }
 
 .icon-empty {
-  font-size: 10px5;
+  font-size: 50px;
   color:$colord4;
   display: block;
 }

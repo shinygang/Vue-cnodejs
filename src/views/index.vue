@@ -11,7 +11,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.$router.push({
-        path: 'all'
+        path: '/all/1'
       })
     }, 100)
   }

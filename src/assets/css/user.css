@@ -83,7 +83,7 @@
 .userinfo {
     margin-top:45px;
     width: 100%;
-    background-color: $colore7;
+    background-color: #e9f9f3;
     text-align: center;
     height: 180px;
     .u-img {
@@ -123,24 +123,24 @@
 
 .user-tabs {
     width: 100%;
-    height: 40px.2;
+    height: 40px;
     list-style: none;
     border-bottom: solid 1px $colord4;
     position: relative;
     .item {
         width: 50%;
-        padding: 10px.5 0;
+        padding: 12px 0;
         float: left;
         font-size: 16;
         text-align: center;
         font-weight: bold;
     }
     .read {
-        font-size: $gap*5;
+        font-size: 25px;
         color: $color80;
         position: absolute;
-        right: $gap*1;
-        top: $gap*1.5;
+        right: 5px;
+        top: 75.px;
         font-weight: bold;
     }
     .br {
@@ -150,10 +150,4 @@
         color: $red;
         border-bottom: solid 2px $red;
     }
-}
-
-.icon-empty {
-    font-size: 10px5;
-    color:$colord4;
-    display: block;
 }

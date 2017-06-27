@@ -162,6 +162,10 @@ export function getTabInfo(tab, good, top, isClass) {
         str = '招聘'
         className = 'job'
         break
+      case 'dev':
+        str = '测试'
+        className = 'dev'
+        break
       default:
         str = '暂无'
         className = 'default'

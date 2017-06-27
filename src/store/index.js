@@ -11,12 +11,15 @@ export function createStore () {
     state: {
       activeType: 'all',
       topics: {/* [id: number]: Item */},
-      user: {},
+      user: null,
+      loginUser: {},
+      messages: {},
       lists: {
         all: [],
         good: [/* number */],
         share: [],
         ask: [],
+        dev: [],
         job: []
       }
     },

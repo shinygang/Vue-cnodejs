@@ -53,6 +53,9 @@
         &.share {
             background: #1ABC9C;
         }
+        &.dev {
+            background: #ffff00;
+        }
     }
 }
 .topic-content {

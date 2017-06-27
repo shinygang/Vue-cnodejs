@@ -89,3 +89,19 @@
         }
     }
 }
+
+.page-item {
+    text-align: center;
+    margin: 15px 0 ;
+    a {
+        padding: 7px 20px;
+        border: solid 1px #42b983;
+        border-radius: 2px;
+        cursor: pointer;
+        color: #666;
+
+        &:last-child {
+            margin-left: 20px;
+        }
+    }
+}
