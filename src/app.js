@@ -4,9 +4,6 @@ import { createStore } from './store'
 import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
 import * as filters from './util/filters'
-import Alert from './util/alert'
-
-Vue.use(Alert)
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
@@ -15,7 +12,7 @@ Object.keys(filters).forEach(key => {
 
 // Expose a factory function that creates a fresh set of store, router,
 // app instances on each call (which is called for each SSR request)
-export function createApp () {
+export function createApp() {
   // create store and router instances
   const store = createStore()
   const router = createRouter()
