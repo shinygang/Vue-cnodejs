@@ -1,8 +1,10 @@
 #基于vue.js重写Cnodejs.org社区的webapp [线上访问地址](http://shinygang.coding.me/)
 
-## 注意：当前项目代码已经升级到2.0，采用vue-cli构建的2.0版本。1.x代码请看1.x分支。
-
-## 当前版本采用vue-cli搭建的版本。 非vue-cli的版本请看分支：not-vue-cli
+## 注意：当前项目代码已经升级到2.0，均采用vue-cli搭建的程序，非vue-cli的版本请看分支：not-vue-cli
+ * master分支采用vue-cli构建的2.0版本。
+ * ssr分支采用服务端渲染
+ * 1.x代码请看1.x分支。
+ * not-vue-cli则是没有采用vue-cli搭建的原始版本
 
 -------
 如果你觉得该项目对你有帮助，就打赏作者一杯咖啡吧。
