@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <nv-head page-type="消息" 
-                :fix-head="true" 
+    <div style="height: 100%">
+        <nv-head page-type="消息"
+                :fix-head="true"
                 :show-menu="showMenu"
-                :message-count="no_read_len" 
+                :message-count="no_read_len"
                 :need-add="true" ></nv-head>
         <div class="page" >
             <ul class="tabs">
@@ -14,7 +14,7 @@
                         @click="markall">&#xe60c;</i>
                 </li>
             </ul>
-            <div class="message markdown-body" v-for="item in currentData">
+            <div class="message markdown-body" v-for="(item, idx) in currentData">
                 <section class="user">
                     <img class="head" :src="item.author.avatar_url" />
                     <div class="info">
