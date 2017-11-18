@@ -7,8 +7,8 @@
  * not-vue-cli则是没有采用vue-cli搭建的原始版本
 
 -------
-如果你觉得该项目对你有帮助，就打赏作者一杯咖啡吧。
-![pic](https://segmentfault.com/img/bVqVEt)
+#### ` 如果对你有帮助，恳请给作者累积一个大保健的机会，欢迎扫码`
+![](http://ww1.sinaimg.cn/large/79462090ly1flmcqgz0xwj21080q2anh.jpg)
 
 ###安装
 
